@@ -3,9 +3,84 @@
 @tailwind utilities;
 
 @layer base {
+  @font-face {
+    font-family: 'ProFont';
+    src: url('/src/fonts/ProFontIIx.ttf');
+    font-weight: bold;
+  }
+  @font-face {
+    font-family: 'ElectroHolic';
+    src: url('/src/fonts/ElectroHolic.ttf');
+  }
+  @font-face {
+    font-family: 'Terminess';
+    src: url('/src/fonts/Terminess.ttf');
+  }
+  :root {
+    --font-pro: 'ProFont', monospace;
+    .my-font-pro {
+      font-family: var(--font-pro);
+    }
+    --font-electro: 'ElectroHolic', sans-serif;
+    .my-font-electro {
+      font-family: var(--font-electro);
+    }
+    --font-terminess: 'Terminess', sans-serif;
+    .my-font-terminess {
+      font-family: var(--font-terminess);
+    }
+    font-family: var(--font-pro);
+    --c-1: #aed998;
+    --c-1: #203150;
+  }
+
   *,
   *::before,
   *::after {
     box-sizing: border-box;
+  }
+
+  @keyframes notFound {
+    0% {
+      margin-top: 80%;
+      color: transparent;
+      height: 0;
+      font-size: 0rem;
+    }
+    25% {
+      margin-top: 80%;
+      color: transparent;
+      height: 0;
+      font-size: 3rem;
+    }
+    50% {
+      margin-top: 0.25rem;
+      color: #b91c1c;
+      height: 40vh;
+      font-size: 3.75rem;
+    }
+    70% {
+      margin-top: 4rem;
+      color: #b91c1c;
+      height: 55vh;
+      font-size: 5.5rem;
+    }
+    80% {
+      margin-top: -0.75rem;
+      color: #b91c1c;
+      height: 35vh;
+      font-size: 3.25rem;
+    }
+    100% {
+      margin-top: 0rem;
+      color: #b91c1c;
+      height: 40vh;
+      font-size: 3.75rem;
+    }
+  }
+
+  body {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
   }
 }
