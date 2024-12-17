@@ -1,6 +1,7 @@
 import { USERS } from './UserData';
 
 export const MATCHUPS = [
-  { teams: [USERS.pech.id, USERS.mike.id, USERS.slop.id], title: 'ROUND ONE' },
-  { teams: [USERS.edel.id, USERS.shim.id, USERS.conner.id], title: 'BYE' },
+  { teams: [USERS.mike.id, USERS.shim.id], title: 'SEMI-FINAL 1' },
+  { teams: [USERS.pech.id, USERS.edel.id], title: 'SEMI-FINAL 2' },
+  { teams: [USERS.conner.id, USERS.slop.id], title: 'TOILET BOWL' },
 ];

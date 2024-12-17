@@ -94,7 +94,7 @@ export default function Home() {
             </div>
 
             {MATCHUPS[currentMatchup].teams.length >= 3 ? (
-              <div className='grid grid-cols-1 gap-2 pb-8 sm:grid-cols-2 md:grid-cols-3 xl:gap-4'>
+              <div className='grid grid-cols-1 gap-2 pb-8 sm:grid-cols-2 md:grid-cols-3 xl:gap-4 xl:mx-10'>
                 {MATCHUPS[currentMatchup].teams.map((user_id) => (
                   <TeamScore
                     key={user_id}
@@ -105,19 +105,15 @@ export default function Home() {
                 ))}
               </div>
             ) : (
-              <div className='grid grid-cols-1 gap-2 pb-8 sm:grid-cols-2 xl:gap-4'>
-                <TeamScore
-                  key={MATCHUPS[currentMatchup].teams[0]}
-                  user={getUserFromUserId(currentMatchup[0])}
-                  roster={getRosterFromUserId(currentMatchup[0])}
-                  matchup={getMatchupFromUserId(currentMatchup[0])}
-                />
-                <TeamScore
-                  key={MATCHUPS[currentMatchup].teams[1]}
-                  user={getUserFromUserId(currentMatchup[1])}
-                  roster={getRosterFromUserId(currentMatchup[1])}
-                  matchup={getMatchupFromUserId(currentMatchup[1])}
-                />
+              <div className='grid grid-cols-1 gap-2 pb-8 sm:grid-cols-2 xl:gap-8 xl:mx-12'>
+                {MATCHUPS[currentMatchup].teams.map((user_id) => (
+                  <TeamScore
+                    key={user_id}
+                    user={getUserFromUserId(user_id)}
+                    roster={getRosterFromUserId(user_id)}
+                    matchup={getMatchupFromUserId(user_id)}
+                  />
+                ))}
               </div>
             )}
           </div>
