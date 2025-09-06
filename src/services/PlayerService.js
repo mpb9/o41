@@ -1,10 +1,16 @@
-import { PLAYER_DATA } from '../data/PlayerData';
+import { PLAYER_DATA } from "../data/PlayerData";
 
 export const fetchTeamData = async (playerIds, pts, starters, ir, taxi) => {
   try {
     const teamData = await Promise.all(
       playerIds.map(async (playerId) => {
-        const player = await fetchPlayer(playerId, pts[playerId], starters, ir, taxi);
+        const player = await fetchPlayer(
+          playerId,
+          pts[playerId],
+          starters,
+          ir,
+          taxi
+        );
         return player;
       })
     );
@@ -35,10 +41,10 @@ const fetchSleeperData = async (playerId) => {
       number: p.number || -1,
       age: p.age || -1,
       years_exp: p.years_exp || -1,
-      position: p.position || 'DEF',
-      fantasy_positions: p.fantasy_positions || ['DEF'],
+      position: p.position || "DEF",
+      fantasy_positions: p.fantasy_positions || ["DEF"],
       team: p.team || playerId,
-      status: p.status || 'Active',
+      status: p.status || "Active",
     };
     return playerData;
   } catch (err) {
@@ -48,13 +54,13 @@ const fetchSleeperData = async (playerId) => {
 
 const fetchLineupStatus = (playerId, starters, ir, taxi) => {
   if (starters.includes(playerId)) {
-    return 'starter';
+    return "starter";
   } else if (ir.includes(playerId)) {
-    return 'ir';
+    return "ir";
   } else if (taxi.includes(playerId)) {
-    return 'taxi';
+    return "taxi";
   }
-  return 'bench';
+  return "bench";
 };
 
 export const fetchPlayersByLineupStatus = (players, lineupStatus) => {
@@ -63,15 +69,17 @@ export const fetchPlayersByLineupStatus = (players, lineupStatus) => {
   return pArrSorted;
 };
 const sortByPosition = (pArr) => {
-  const idpPositions = ['LB', 'CB', 'S', 'DE', 'DT', 'DB'];
+  const idpPositions = ["LB", "CB", "S", "DE", "DT", "DB"];
 
-  const qbs = pArr.filter((p) => p[3].position === 'QB');
-  const rbs = pArr.filter((p) => p[3].position === 'RB');
-  const wrs = pArr.filter((p) => p[3].position === 'WR');
-  const tes = pArr.filter((p) => p[3].position === 'TE');
-  const idps = pArr.filter((p) => p[3].fantasy_positions.some((pos) => idpPositions.includes(pos)));
-  const dst = pArr.filter((p) => p[3].position === 'DEF');
-  const k = pArr.filter((p) => p[3].position === 'K');
+  const qbs = pArr.filter((p) => p[3].position === "QB");
+  const rbs = pArr.filter((p) => p[3].position === "RB");
+  const wrs = pArr.filter((p) => p[3].position === "WR");
+  const tes = pArr.filter((p) => p[3].position === "TE");
+  const idps = pArr.filter((p) =>
+    p[3].fantasy_positions.some((pos) => idpPositions.includes(pos))
+  );
+  const dst = pArr.filter((p) => p[3].position === "DEF");
+  const k = pArr.filter((p) => p[3].position === "K");
 
   return [...qbs, ...rbs, ...wrs, ...tes, ...idps, ...dst, ...k];
 };
