@@ -5,6 +5,7 @@ import TeamScore from '../components/team/TeamScore';
 import { MATCHUPS } from '../data/MatchupData';
 import { USERS } from '../data/UserData';
 import { fetchLeagueData, fetchMatchupsData, fetchRostersData, fetchUsersData } from '../services/SleeperService';
+
 export default function Home() {
   const [error, setError] = useState(null);
   const [matchups, setMatchups] = useState(null);
@@ -94,7 +95,7 @@ export default function Home() {
             </div>
 
             {MATCHUPS[currentMatchup].teams.length >= 3 ? (
-              <div className='grid grid-cols-1 gap-2 pb-8 sm:grid-cols-2 md:grid-cols-3 xl:gap-4 xl:mx-10'>
+              <div className='grid grid-cols-1 gap-2 pb-24 sm:grid-cols-2 md:grid-cols-3 xl:gap-4 xl:mx-10'>
                 {MATCHUPS[currentMatchup].teams.map((user_id) => (
                   <TeamScore
                     key={user_id}
@@ -105,7 +106,7 @@ export default function Home() {
                 ))}
               </div>
             ) : (
-              <div className='grid grid-cols-1 gap-2 pb-8 sm:grid-cols-2 xl:gap-8 xl:mx-12'>
+              <div className='grid grid-cols-1 gap-2 pb-24 sm:grid-cols-2 xl:gap-8 xl:mx-14'>
                 {MATCHUPS[currentMatchup].teams.map((user_id) => (
                   <TeamScore
                     key={user_id}
