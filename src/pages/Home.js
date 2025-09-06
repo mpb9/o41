@@ -19,6 +19,7 @@ export default function Home() {
   const [lastUpdated, setLastUpdated] = useState(null);
   const [currentMatchup, setCurrentMatchup] = useState(0);
 
+  // MARK: useEffect(s)
   // info: Get Users Data
   useEffect(() => {
     const getUsersData = async () => {
@@ -64,11 +65,11 @@ export default function Home() {
     return () => clearInterval(intervalId);
   }, []);
 
+  // MARK: Functions
   const toggleMatchup = () => {
     if (currentMatchup + 1 >= MATCHUPS.length) setCurrentMatchup(0);
     else setCurrentMatchup(currentMatchup + 1);
   };
-
   const getUserFromUserId = (user_id) => {
     return users.find((user) => user.user_id === user_id);
   };
@@ -80,6 +81,7 @@ export default function Home() {
     return rosters.find((roster) => roster.user_id === user_id);
   };
 
+  // MARK: Render
   return (
     <div className="relative w-full min-h-screen bg-rad">
       <Header lastUpdated={lastUpdated} activeRoute="Home" />
@@ -88,6 +90,7 @@ export default function Home() {
       rosters !== null &&
       users !== null &&
       currentMatchup !== null ? (
+        // info: Main Content
         <div className="flex flex-col items-center justify-start w-full overflow-scroll h-full-header">
           <div className="w-[95%] px-4 h-full">
             <div className="flex items-center justify-center w-full h-20">
@@ -132,6 +135,7 @@ export default function Home() {
           </div>
         </div>
       ) : (
+        // info: Loading State
         <div className="flex items-center justify-center w-full text-3xl h-full-header text-primary">
           Loading matchups...
         </div>

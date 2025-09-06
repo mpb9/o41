@@ -24,6 +24,6 @@ yarn-error.log*
 
 /src/docs
 /src/data/api
-/src/img/inactive
+**/inactive
 
 .vscode

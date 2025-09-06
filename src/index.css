@@ -4,28 +4,28 @@
 
 @layer base {
   @font-face {
-    font-family: 'ProFont';
-    src: url('/src/fonts/ProFontIIx.ttf');
+    font-family: "ProFont";
+    src: url("/public/fonts/ProFontIIx.ttf");
     font-weight: bold;
   }
   @font-face {
-    font-family: 'ElectroHolic';
-    src: url('/src/fonts/ElectroHolic.ttf');
+    font-family: "ElectroHolic";
+    src: url("/public/fonts/ElectroHolic.ttf");
   }
   @font-face {
-    font-family: 'Terminess';
-    src: url('/src/fonts/Terminess.ttf');
+    font-family: "Terminess";
+    src: url("/public/fonts/Terminess.ttf");
   }
   :root {
-    --font-pro: 'ProFont', monospace;
+    --font-pro: "ProFont", monospace;
     .my-font-pro {
       font-family: var(--font-pro);
     }
-    --font-electro: 'ElectroHolic', sans-serif;
+    --font-electro: "ElectroHolic", sans-serif;
     .my-font-electro {
       font-family: var(--font-electro);
     }
-    --font-terminess: 'Terminess', sans-serif;
+    --font-terminess: "Terminess", sans-serif;
     .my-font-terminess {
       font-family: var(--font-terminess);
     }
