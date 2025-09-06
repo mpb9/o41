@@ -1,7 +1,5 @@
 # Order :four::one: - Fantasy Football
 
-## Links :arrow_upper_right:
-
 - [order-41.com](https://order-41.com)
 - [Sleeper League](https://sleeper.com/leagues/1248116529610883072/team)
 - [Git Repository](https://github.com/mpb9/o41)
