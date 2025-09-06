@@ -1,5 +1,6 @@
-const api_url = 'https://api.sleeper.app/v1/';
-const id = '1049462983430840320';
+const api_url = "https://api.sleeper.app/v1/";
+const id = "1248116529610883072";
+
 export const LEAGUE = {
   id: id,
   url: `https://sleeper.com/leagues/${id}`,
@@ -12,3 +13,8 @@ export const LEAGUE = {
     nfl_state: `${api_url}state/nfl`,
   },
 };
+
+/*
+info: 2024 League ID
+1049462983430840320
+*/
