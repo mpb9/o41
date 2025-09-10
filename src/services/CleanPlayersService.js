@@ -1,4 +1,4 @@
-import players from "../data/api/PlayerData_2025-09-09.json";
+import players from "../data/PlayerData_2025.json";
 
 const keysToKeep = [
   "player_id",

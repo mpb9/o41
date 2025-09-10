@@ -1,4 +1,4 @@
-import PLAYER_DATA_JSON from "../data/api/PlayerData_2025-09-09.json";
+import PLAYER_DATA_JSON from "../data/PlayerData_2025.json";
 export const fetchTeamData = async (playerIds, pts, starters, ir, taxi) => {
   try {
     const teamData = await Promise.all(

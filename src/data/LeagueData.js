@@ -13,8 +13,3 @@ export const LEAGUE = {
     nfl_state: `${api_url}state/nfl`,
   },
 };
-
-/*
-info: 2024 League ID
-1049462983430840320
-*/
