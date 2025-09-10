@@ -1,6 +1,6 @@
-import axios from 'axios';
-import { LEAGUE } from '../data/LeagueData';
-import { USERS } from '../data/UserData';
+import axios from "axios";
+import { LEAGUE } from "../data/LeagueData";
+import { USERS } from "../data/UserData";
 
 // MARK: LEAGUE
 export const fetchLeagueData = async () => {
@@ -23,7 +23,8 @@ export const formatLeague = async (league) => {
     roster_positions: league.roster_positions,
     division_1: league.metadata.division_1,
     division_2: league.metadata.division_2,
-    latest_league_winner_roster_id: league.metadata.latest_league_winner_roster_id,
+    latest_league_winner_roster_id:
+      league.metadata.latest_league_winner_roster_id,
   };
 };
 
@@ -38,12 +39,24 @@ export const fetchRostersData = async () => {
   }
 };
 export const genRosters = async (rosters) => {
-  const mike = formatRoster(rosters.find((roster) => roster.owner_id === USERS.mike.id));
-  const shim = formatRoster(rosters.find((roster) => roster.owner_id === USERS.shim.id));
-  const pech = formatRoster(rosters.find((roster) => roster.owner_id === USERS.pech.id));
-  const edel = formatRoster(rosters.find((roster) => roster.owner_id === USERS.edel.id));
-  const slop = formatRoster(rosters.find((roster) => roster.owner_id === USERS.slop.id));
-  const conner = formatRoster(rosters.find((roster) => roster.owner_id === USERS.conner.id));
+  const mike = formatRoster(
+    rosters.find((roster) => roster.owner_id === USERS.mike.id)
+  );
+  const shim = formatRoster(
+    rosters.find((roster) => roster.owner_id === USERS.shim.id)
+  );
+  const pech = formatRoster(
+    rosters.find((roster) => roster.owner_id === USERS.pech.id)
+  );
+  const edel = formatRoster(
+    rosters.find((roster) => roster.owner_id === USERS.edel.id)
+  );
+  const slop = formatRoster(
+    rosters.find((roster) => roster.owner_id === USERS.slop.id)
+  );
+  const conner = formatRoster(
+    rosters.find((roster) => roster.owner_id === USERS.conner.id)
+  );
   return [mike, shim, pech, edel, slop, conner];
 };
 export const formatRoster = (roster) => {
@@ -74,7 +87,9 @@ export const genUsers = async (users) => {
   const pech = formatUser(users.find((user) => user.user_id === USERS.pech.id));
   const edel = formatUser(users.find((user) => user.user_id === USERS.edel.id));
   const slop = formatUser(users.find((user) => user.user_id === USERS.slop.id));
-  const conner = formatUser(users.find((user) => user.user_id === USERS.conner.id));
+  const conner = formatUser(
+    users.find((user) => user.user_id === USERS.conner.id)
+  );
   return [mike, shim, pech, edel, slop, conner];
 };
 export const formatUser = (user) => {
@@ -99,12 +114,24 @@ export const fetchMatchupsData = async () => {
   }
 };
 export const genMatchups = async (matchups) => {
-  const matchup1 = formatMatchup(matchups.find((matchup) => matchup.roster_id === 1));
-  const matchup2 = formatMatchup(matchups.find((matchup) => matchup.roster_id === 2));
-  const matchup3 = formatMatchup(matchups.find((matchup) => matchup.roster_id === 3));
-  const matchup4 = formatMatchup(matchups.find((matchup) => matchup.roster_id === 4));
-  const matchup5 = formatMatchup(matchups.find((matchup) => matchup.roster_id === 5));
-  const matchup6 = formatMatchup(matchups.find((matchup) => matchup.roster_id === 6));
+  const matchup1 = formatMatchup(
+    matchups.find((matchup) => matchup.roster_id === 1)
+  );
+  const matchup2 = formatMatchup(
+    matchups.find((matchup) => matchup.roster_id === 2)
+  );
+  const matchup3 = formatMatchup(
+    matchups.find((matchup) => matchup.roster_id === 3)
+  );
+  const matchup4 = formatMatchup(
+    matchups.find((matchup) => matchup.roster_id === 4)
+  );
+  const matchup5 = formatMatchup(
+    matchups.find((matchup) => matchup.roster_id === 5)
+  );
+  const matchup6 = formatMatchup(
+    matchups.find((matchup) => matchup.roster_id === 6)
+  );
   return [matchup1, matchup2, matchup3, matchup4, matchup5, matchup6];
 };
 export const formatMatchup = (matchup) => {
@@ -123,6 +150,17 @@ export const formatMatchup = (matchup) => {
 export const fetchNFLStateData = async () => {
   try {
     const response = await axios.get(LEAGUE.api_routes.nfl_state);
+    return response.data;
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+// MARK: ALL PLAYERS
+// info: Run Daily to get all players data
+export const fetchAllPlayersData = async () => {
+  try {
+    const response = await axios.get(LEAGUE.api_routes.players);
     return response.data;
   } catch (err) {
     console.error(err);

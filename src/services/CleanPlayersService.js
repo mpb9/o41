@@ -1,5 +1,4 @@
-// import players from '../data/api/all_players-1734110609482.json';
-import players from "../data/api/all_players-20250906.json";
+import players from "../data/api/PlayerData_2025-09-09.json";
 
 const keysToKeep = [
   "player_id",
@@ -21,9 +20,9 @@ const saveFileLocally = (data) => {
   });
   const url = URL.createObjectURL(blob);
   const link = document.createElement("a");
-  const datetime = new Date().toISOString().slice(0, 10).replace(/:/g, "-");
+  const today = new Date().toISOString().slice(0, 10);
   link.href = url;
-  link.download = `PlayerData_${datetime}.json`;
+  link.download = `PlayerData_${today}.json`;
   link.click();
   URL.revokeObjectURL(url);
 };
@@ -45,7 +44,10 @@ const filterPlayersData = () => {
   });
 
   saveFileLocally(filteredPlayers);
-  console.log("Filtered data saved to filtered_players.json");
+
+  const today = new Date().toISOString().slice(0, 10);
+  console.log(`Filtered data saved to PlayerData_${today}.json`);
+
   return filteredPlayers;
 };
 

@@ -3,9 +3,8 @@ import { useEffect, useState } from "react";
 import Header from "../components/common/Header";
 import TeamScore from "../components/team/TeamScore";
 import { MATCHUPS } from "../data/MatchupData";
-import { USERS } from "../data/UserData";
+
 import {
-  fetchLeagueData,
   fetchMatchupsData,
   fetchRostersData,
   fetchUsersData,
@@ -61,7 +60,7 @@ export default function Home() {
       }
     };
     getMatchupsData();
-    const intervalId = setInterval(getMatchupsData, 10000);
+    const intervalId = setInterval(getMatchupsData, 15000);
     return () => clearInterval(intervalId);
   }, []);
 
@@ -133,6 +132,11 @@ export default function Home() {
               </div>
             )}
           </div>
+        </div>
+      ) : error != null ? (
+        // info: Error State
+        <div className="flex items-center justify-center w-full text-3xl text-red-600 h-full-header">
+          Error: {error}
         </div>
       ) : (
         // info: Loading State

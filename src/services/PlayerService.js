@@ -1,5 +1,4 @@
-import { PLAYER_DATA } from "../data/PlayerData";
-
+import PLAYER_DATA_JSON from "../data/api/PlayerData_2025-09-09.json";
 export const fetchTeamData = async (playerIds, pts, starters, ir, taxi) => {
   try {
     const teamData = await Promise.all(
@@ -33,26 +32,34 @@ export const fetchPlayer = async (playerId, playerPts, starters, ir, taxi) => {
 
 const fetchSleeperData = async (playerId) => {
   try {
-    const p = await PLAYER_DATA[playerId];
-    const playerData = {
-      full_name: p.full_name || playerId,
-      first_name: p.first_name || playerId,
-      last_name: p.last_name || playerId,
-      number: p.number || -1,
-      age: p.age || -1,
-      years_exp: p.years_exp || -1,
-      position: p.position || "DEF",
-      fantasy_positions: p.fantasy_positions || ["DEF"],
-      team: p.team || playerId,
-      status: p.status || "Active",
+    const pj = PLAYER_DATA_JSON[playerId] || null;
+    if (pj === null) {
+      console.log("WARNING!!! Undefined Player:", playerId);
+      throw new Error("Undefined Player");
+    }
+    const playerDataJson = {
+      full_name: pj.full_name || playerId,
+      first_name: pj.first_name || playerId,
+      last_name: pj.last_name || playerId,
+      number: pj.number || -1,
+      age: pj.age || -1,
+      years_exp: pj.years_exp || -1,
+      position: pj.position || "DEF",
+      fantasy_positions: pj.fantasy_positions || ["DEF"],
+      team: pj.team || playerId,
+      status: pj.status || "Active",
     };
-    return playerData;
+    return playerDataJson;
   } catch (err) {
     console.error(err);
   }
 };
 
-const fetchLineupStatus = (playerId, starters, ir, taxi) => {
+const fetchLineupStatus = (playerId, starters = [], ir = [], taxi = []) => {
+  if (starters === null) starters = [];
+  if (ir === null) ir = [];
+  if (taxi === null) taxi = [];
+
   if (starters.includes(playerId)) {
     return "starter";
   } else if (ir.includes(playerId)) {
