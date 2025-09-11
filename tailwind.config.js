@@ -8,7 +8,7 @@ module.exports = {
       },
       backgroundImage: {
         "sleeper-green": "url('/public/img/sleeper-green.png')",
-
+        "google-drive": "url('/public/img/google-drive.png')",
         // info: (DIAMETER at X Y, colorCenter, colorEdge)
         rad: "radial-gradient(circle 70vh at 50% 50vh, #444, transparent);",
         "rad-red":

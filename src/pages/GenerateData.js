@@ -1,4 +1,4 @@
-import Header from "../components/common/Header";
+import Header from "../components/Header";
 import filterPlayersData from "../services/CleanPlayersService";
 
 export default function GenerateData() {

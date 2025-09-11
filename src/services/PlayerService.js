@@ -46,7 +46,7 @@ const fetchSleeperData = async (playerId) => {
       years_exp: pj.years_exp || -1,
       position: pj.position || "DEF",
       fantasy_positions: pj.fantasy_positions || ["DEF"],
-      team: pj.team || playerId,
+      team: pj.team || "FA",
       status: pj.status || "Active",
     };
     return playerDataJson;

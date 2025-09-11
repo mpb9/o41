@@ -1,7 +1,7 @@
 import { ArrowFatRight } from "@phosphor-icons/react";
 import { useEffect, useState } from "react";
-import Header from "../components/common/Header";
-import TeamScore from "../components/team/TeamScore";
+import Header from "../components/Header";
+import TeamScore from "../components/TeamScore";
 import { MATCHUPS } from "../data/MatchupData";
 
 import {
@@ -94,7 +94,7 @@ export default function Home() {
           <div className="w-[95%] px-4 h-full">
             <div className="flex items-center justify-center w-full h-20">
               <div className="hidden w-1/3 sm:block"></div>
-              <h1 className="w-1/2 text-3xl text-center cursor-default sm:w-1/3 text-stone-200">
+              <h1 className="w-1/2 text-2xl text-center cursor-default sm:text-3xl sm:w-1/3 text-stone-200">
                 {MATCHUPS[currentMatchup].title}
               </h1>
               <div className="flex items-center pt-[3px] justify-end w-1/2 h-full sm:w-1/3 md:pr-14 text-primary">
