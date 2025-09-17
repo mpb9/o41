@@ -2,13 +2,15 @@ import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { fetchNflState } from "./api/_helper";
 import {
+  Bylaws,
   GenerateData,
   Home,
   InactiveLeague,
   Matchups,
   NotFound,
+  Standings,
+  Teams,
 } from "./pages/_helper";
-
 import { getAllMatchups, getAllRosters, getAllUsers } from "./services/_helper";
 import { IS_LEAGUE_ACTIVE } from "./utils/leagueInfo";
 
@@ -89,7 +91,9 @@ function App() {
   ) {
     return (
       <div className="flex items-center justify-center w-full min-h-screen bg-stone-800">
-        <span className="text-lg font-bold text-stone-200">Loading...</span>
+        <div className="flex items-center justify-center w-full text-3xl h-full-header text-primary">
+          loading...
+        </div>
       </div>
     );
   }
@@ -106,6 +110,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/teams" element={<Teams />} />
           <Route
             path="/matchups"
             element={
@@ -118,6 +123,8 @@ function App() {
               />
             }
           />
+          <Route path="/standings" element={<Standings />} />
+          <Route path="/bylaws" element={<Bylaws />} />
           <Route path="/generate" element={<GenerateData />} />
           <Route path="/*" element={<NotFound />} />
         </Routes>

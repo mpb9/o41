@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { fetchNflState } from "../api/_helper";
-import { Header, Matchup } from "../components/_helper";
+import { Header } from "../components/_helper";
 import {
   getAllMatchups,
   getAllRosters,
@@ -76,26 +76,31 @@ export default function Home() {
 
   return (
     <div className="relative w-full min-h-screen bg-rad">
-      <Header last_updated={lastUpdated} active_route="home" />
-      {matchups !== null &&
-      rosters !== null &&
-      users !== null &&
-      nflState !== null ? (
-        <Matchup
-          matchups={matchups}
-          rosters={rosters}
-          users={users}
-          nflState={nflState}
-        />
-      ) : error != null ? (
-        <div className="flex items-center justify-center w-full text-3xl text-red-600 h-full-header">
-          error: {error.toLowerCase()}
+      <Header active_route="home" />
+      <div className="flex flex-row w-full h-full-header">
+        <div className="hidden w-1/6 h-full border-0 border-r-1 bg-stone-950 border-stone-600 md:flex md:flex-col md:items-center md:justify-between">
+          <div className="pt-4">
+            <span className="text-3xl font-black text-stone-300">O41</span>
+            <span className="block text-sm italic text-stone-400">v2.0.0</span>
+          </div>
+          <img
+            src="/img/logo.png"
+            alt="ORDER 41"
+            className="mx-auto rounded-lg"
+            width={"100%"}
+            height={50}
+          />
+          {/* STANDINGS */}
+          {/* TOP SCORERS */}
         </div>
-      ) : (
-        <div className="flex items-center justify-center w-full text-3xl h-full-header text-primary">
-          loading matchups...
+        <div className="w-full text-2xl text-center cursor-default sm:text-2xl md:text-3xl md:w-5/6 text-primary">
+          <h1 className="mt-4 text-5xl font-black">ORDER 41</h1>
+
+          {/* ORDER 41 */}
+          {/* MATCHUP PREVIEWS */}
+          {/* LEAGUE DETAILS */}
         </div>
-      )}
+      </div>
     </div>
   );
 }
