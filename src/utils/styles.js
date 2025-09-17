@@ -4,8 +4,8 @@ export const POSITION_COLORS = {
   WR: "#B0E0E6DD",
   TE: "#ffa973DD",
   IDP: "#f59cff",
-  DEF: "#fbcb1ddd",
-  DST: "#fbcb1ddd",
+  DEF: "#ffff7fdd",
+  DST: "#ffff7fdd",
   K: "#a39bfcdd",
   NA: "#A7A19FDD",
 };

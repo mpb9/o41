@@ -19,7 +19,7 @@ module.exports = {
         "not-found": "5s notFound",
       },
       height: {
-        "full-header": "calc(100vh - 4rem)",
+        "full-header": "calc(100vh - 3.5rem)",
       },
       borderWidth: {
         1: "1px",

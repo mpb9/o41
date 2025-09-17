@@ -28,7 +28,7 @@ export default function MatchupPlayer(props) {
         >
           {props.player.position}
         </span>
-        <span className="font-mono text-lg md:text-base xl:text-lg">
+        <span className="font-mono text-base xl:text-lg">
           {props.player.first_name[0]} {props.player.last_name}
         </span>
         <span className="pl-2 overflow-hidden text-xs text-stone-400">
@@ -36,7 +36,7 @@ export default function MatchupPlayer(props) {
         </span>
       </div>
       <div
-        className="w-[64px] sm:w-[56px] lg:w-[70px] py-[3px] bg-stone-900 tracking-wider text-primary font-mono border-l-[1px] pl-[2px]"
+        className="w-[64px] sm:w-[56px] lg:w-[72px] py-[3px] bg-stone-900 tracking-wider text-primary font-mono border-l-[1px] pl-[2px] text-[0.9rem] sm:text-sm lg:text-base text-center"
         style={{
           color: ptsColor,
           borderColor: ptsColor,
