@@ -22,6 +22,7 @@ export default class Roster {
   taxi = [];
   user_id;
   waiver_budget_used = 0;
+
   constructor(json = {}) {
     this.division_id = Number(json.settings?.division) || null;
     this.league_id = String(json.league_id) || null;
