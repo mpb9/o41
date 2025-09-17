@@ -20,6 +20,9 @@ module.exports = {
       height: {
         "full-header": "calc(100vh - 4rem)",
       },
+      borderWidth: {
+        1: "1px",
+      },
     },
   },
   plugins: [],
