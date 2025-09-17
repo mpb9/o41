@@ -4,7 +4,11 @@ import {
   getMatchupByUserId,
   getMatchupsByMatchupId,
 } from "./MatchupService";
-import { getPlayer, getPlayersByLineupStatus } from "./PlayerService";
+import {
+  getPlayer,
+  getPlayersByLineupStatus,
+  getPlayersByRosterAndMatchup,
+} from "./PlayerService";
 import {
   getAllRosters,
   getRosterByUserId,
@@ -21,6 +25,7 @@ export {
   getMatchupsByMatchupId,
   getPlayer,
   getPlayersByLineupStatus,
+  getPlayersByRosterAndMatchup,
   getRosterByUserId,
   getRostersByMatchupId,
   getUserByUserId,

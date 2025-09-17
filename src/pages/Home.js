@@ -19,7 +19,7 @@ export default function Home() {
   const [nflState, setNflState] = useState(null);
   const [lastUpdated, setLastUpdated] = useState(null);
   const [currentMatchup, setCurrentMatchup] = useState(1);
-  const interval = 15000;
+  const interval = 5000;
 
   useEffect(() => {
     async function getUsers() {
@@ -29,6 +29,7 @@ export default function Home() {
           throw new Error("No user data available.");
         setUsers(updatedUsers);
         setError(null);
+        // console.log("USERS", updatedUsers);
       } catch (err) {
         console.error("Home: Error fetching users.");
         setError(err.message);
@@ -41,6 +42,7 @@ export default function Home() {
           throw new Error("No roster data available.");
         setRosters(updatedRosters);
         setError(null);
+        // console.log("ROSTERS", updatedRosters);
       } catch (err) {
         console.error("Home: Error fetching rosters.");
         setError(err.message);
@@ -54,6 +56,7 @@ export default function Home() {
         setMatchups(updatedMatchups);
         setLastUpdated(new Date());
         setError(null);
+        // console.log("MATCHUPS", updatedMatchups);
       } catch (err) {
         console.error("Home: Error fetching matchups.");
         setError(err.message);
@@ -65,6 +68,7 @@ export default function Home() {
         if (!updatedNflState) throw new Error("No NFL state data available.");
         setNflState(updatedNflState);
         setError(null);
+        // console.log("NFL STATE", updatedNflState);
       } catch (err) {
         console.error("Home: Error fetching NFL state.");
         setError(err.message);
@@ -91,6 +95,7 @@ export default function Home() {
       {matchups !== null &&
       rosters !== null &&
       users !== null &&
+      nflState !== null &&
       currentMatchup !== null ? (
         <div className="flex flex-col items-center justify-start w-full overflow-scroll h-full-header">
           <div className="w-[95%] px-4 h-full">
@@ -98,8 +103,8 @@ export default function Home() {
               <div className="hidden w-1/3 sm:block"></div>
               <h1 className="w-1/2 text-2xl text-center cursor-default sm:text-3xl sm:w-1/3 text-stone-200">
                 {nflState?.season_type === "regular"
-                  ? `MATCHUPS - WEEK ${nflState?.display_week}`
-                  : `THE PLAYOFFS`}
+                  ? `WEEK ${nflState?.display_week} MATCHUPS`
+                  : `PLAYOFFS`}
               </h1>
               <div className="flex items-center pt-[3px] justify-end w-1/2 h-full sm:w-1/3 md:pr-14 text-primary">
                 <button

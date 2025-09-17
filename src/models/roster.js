@@ -1,30 +1,34 @@
 export default class Roster {
   constructor(json = {}) {
-    this.division_id = json.settings?.division || null;
-    this.league_id = json.league_id || null;
+    this.division_id = Number(json.settings?.division) || null;
+    this.league_id = String(json.league_id) || null;
     this.locker_room_guy = null; // ? null for now
     this.nicknames = null; // ? null for now
-    this.players = json.players || [];
+    this.player_ids = json.players || [];
     this.pts = {
-      fpts: json.settings?.fpts + 0.01 * json.settings?.fpts_decimal || 0,
+      fpts:
+        Number(json.settings?.fpts + 0.01 * json.settings?.fpts_decimal) || 0,
       fpts_against:
-        json.settings?.fpts_against +
-          0.01 * json.settings?.fpts_against_decimal || 0,
-      ppts: json.settings?.ppts + 0.01 * json.settings?.ppts_decimal || 0,
+        Number(
+          json.settings?.fpts_against +
+            0.01 * json.settings?.fpts_against_decimal
+        ) || 0,
+      ppts:
+        Number(json.settings?.ppts + 0.01 * json.settings?.ppts_decimal) || 0,
     };
     this.record = {
-      wins: json.settings?.wins || 0,
-      losses: json.settings?.losses || 0,
-      ties: json.settings?.ties || 0,
-      results: json.metadata?.record || "",
-      streak: json.metadata?.streak || "",
+      wins: Number(json.settings?.wins) || 0,
+      losses: Number(json.settings?.losses) || 0,
+      ties: Number(json.settings?.ties) || 0,
+      results: String(json.metadata?.record) || "",
+      streak: String(json.metadata?.streak) || "",
     };
-    this.reserve = json.reserve || [];
-    this.roster_id = json.roster_id || null;
+    this.ir = json.reserve || [];
+    this.roster_id = Number(json.roster_id) || null;
     this.starters = json.starters || [];
     this.taxi = json.taxi || [];
-    this.user_id = json.owner_id || null;
-    this.waiver_budget_used = json.settings?.waiver_budget_used || 0;
+    this.user_id = String(json.owner_id) || null;
+    this.waiver_budget_used = Number(json.settings?.waiver_budget_used) || 0;
   }
 }
 

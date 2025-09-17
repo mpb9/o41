@@ -1,24 +1,22 @@
 import { Player } from "../models/_helper";
 import PLAYER_DATA_JSON from "../utils/PlayerData_2025.json";
 
-//! change
-export const fetchTeamData = async (playerIds, pts, starters, ir, taxi) => {
-  try {
-    const teamData = await Promise.all(
-      playerIds.map(async (playerId) => {
-        const player = getPlayer(playerId, pts[playerId], starters, ir, taxi);
-        return player;
-      })
+export function getPlayersByRosterAndMatchup(roster, matchup) {
+  const players = roster.player_ids.map((playerId) => {
+    return getPlayer(
+      playerId,
+      matchup.players_pts[playerId] || 0,
+      roster.starters,
+      roster.ir,
+      roster.taxi
     );
-    return teamData;
-  } catch (err) {
-    console.error(err);
-  }
-};
+  });
+  return players;
+}
 
 export function getPlayer(playerId, playerPts, starters, ir, taxi) {
-  const sleeperData = PLAYER_DATA_JSON[playerId] || null;
-  if (sleeperData === null) {
+  const sleeperPlayerJson = PLAYER_DATA_JSON[playerId] || null;
+  if (sleeperPlayerJson === null) {
     console.log("WARNING!!! Undefined Player:", playerId);
     return null;
   }
@@ -27,7 +25,7 @@ export function getPlayer(playerId, playerPts, starters, ir, taxi) {
     player_id: playerId,
     pts: playerPts,
     lineup_status: lineupStatus,
-    ...sleeperData,
+    ...sleeperPlayerJson,
   };
   return new Player(playerJson);
 }
