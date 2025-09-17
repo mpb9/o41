@@ -5,16 +5,16 @@ import {
   getPlayersByLineupStatus,
   getPlayersByRosterAndMatchup,
 } from "../services/_helper";
-import { PlayerScore } from "./_helper";
+import { MatchupPlayer } from "./_helper";
 
-TeamScore.propTypes = {
+MatchupTeam.propTypes = {
   user: PropTypes.instanceOf(User).isRequired,
   roster: PropTypes.instanceOf(Roster).isRequired,
   matchup: PropTypes.instanceOf(Matchup).isRequired,
 };
-export default function TeamScore(props) {
+export default function MatchupTeam(props) {
   const [showBench, setShowBench] = useState(true);
-  const [team, setTeam] = useState(null);
+  const [players, setPlayers] = useState(null);
   const [starters, setStarters] = useState([]);
   const [bench, setBench] = useState([]);
   const [taxi, setTaxi] = useState([]);
@@ -22,12 +22,15 @@ export default function TeamScore(props) {
 
   useEffect(() => {
     function getPlayers() {
-      const players = getPlayersByRosterAndMatchup(props.roster, props.matchup);
-      setTeam(players);
-      setStarters(getPlayersByLineupStatus(players, "starter"));
-      setBench(getPlayersByLineupStatus(players, "bench"));
-      setTaxi(getPlayersByLineupStatus(players, "taxi"));
-      setIr(getPlayersByLineupStatus(players, "ir"));
+      const updatedPlayers = getPlayersByRosterAndMatchup(
+        props.roster,
+        props.matchup
+      );
+      setPlayers(updatedPlayers);
+      setStarters(getPlayersByLineupStatus(updatedPlayers, "starter"));
+      setBench(getPlayersByLineupStatus(updatedPlayers, "bench"));
+      setTaxi(getPlayersByLineupStatus(updatedPlayers, "taxi"));
+      setIr(getPlayersByLineupStatus(updatedPlayers, "ir"));
     }
     getPlayers();
   }, [props]);
@@ -51,11 +54,11 @@ export default function TeamScore(props) {
         </span>
       </div>
 
-      {team != null && starters.length > 0 ? (
+      {players != null && starters.length > 0 ? (
         <div className="w-full rounded-b-lg">
           {/* STARTERS */}
           {starters.map((player) => (
-            <PlayerScore key={player.player_id} player={player} />
+            <MatchupPlayer key={player.player_id} player={player} />
           ))}
 
           {/* BENCH */}
@@ -68,21 +71,21 @@ export default function TeamScore(props) {
           {showBench ? (
             <div className="bg-stone-400 sm:text-[0.85rem] lg:text-base text-base w-full border-b-1 border-stone-600">
               {bench.map((player) => (
-                <PlayerScore key={player.player_id} player={player} />
+                <MatchupPlayer key={player.player_id} player={player} />
               ))}
               <div className="flex items-center justify-center w-full h-8 border-b-0 border-1 bg-stone-900 border-stone-600 text-stone-200">
                 <span className="tracking-[0.15rem]">IR</span>
               </div>
               {/* IR */}
               {ir.map((player) => (
-                <PlayerScore key={player.player_id} player={player} />
+                <MatchupPlayer key={player.player_id} player={player} />
               ))}
               <div className="flex items-center justify-center w-full h-8 border-b-0 border-1 bg-stone-900 border-stone-600 text-stone-200">
                 <span className="tracking-[0.15rem]">Taxi</span>
               </div>
               {/* TAXI */}
               {taxi.map((player) => (
-                <PlayerScore key={player.player_id} player={player} />
+                <MatchupPlayer key={player.player_id} player={player} />
               ))}
             </div>
           ) : (

@@ -4,10 +4,10 @@ import { Player } from "../models/_helper";
 import { getPlayerPtsColor } from "../services/_helper";
 import { POSITION_COLORS, PTS_COLORS } from "../utils/styles";
 
-PlayerScore.propTypes = {
+MatchupPlayer.propTypes = {
   player: PropTypes.instanceOf(Player).isRequired,
 };
-export default function PlayerScore(props) {
+export default function MatchupPlayer(props) {
   const [positionColor, setPositionColor] = useState("#f59cff");
   const [ptsColor, setPtsColor] = useState(PTS_COLORS.really_low);
 

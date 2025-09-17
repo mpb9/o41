@@ -1,5 +1,5 @@
 import Header from "./Header";
-import PlayerScore from "./PlayerScore";
-import TeamScore from "./TeamScore";
+import MatchupPlayer from "./MatchupPlayer";
+import MatchupTeam from "./MatchupTeam";
 
-export { Header, PlayerScore, TeamScore };
+export { Header, MatchupPlayer, MatchupTeam };
