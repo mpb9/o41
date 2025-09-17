@@ -1,4 +1,4 @@
-# Order :four::one: - Fantasy Football
+# ORDER :four::one: - Fantasy Football
 
 - [order-41.com](https://order-41.com)
 - [Sleeper League](https://sleeper.com/leagues/1248116529610883072/team)
@@ -13,7 +13,7 @@
 cd o41 && npm run start
 ```
 
-### Deploy
+### Deployment
 
 ```shell
 cd o41 && npm run deploy

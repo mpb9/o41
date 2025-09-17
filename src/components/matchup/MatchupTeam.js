@@ -1,11 +1,11 @@
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
-import { Matchup, Roster, User } from "../models/_helper";
+import { Matchup, Roster, User } from "../../models/_helper";
 import {
   getPlayersByLineupStatus,
   getPlayersByRosterAndMatchup,
-} from "../services/_helper";
-import { MatchupPlayer } from "./_helper";
+} from "../../services/_helper";
+import { MatchupPlayer } from "../_helper";
 
 MatchupTeam.propTypes = {
   user: PropTypes.instanceOf(User).isRequired,

@@ -1,5 +1,5 @@
 import Header from "./Header";
-import MatchupPlayer from "./MatchupPlayer";
-import MatchupTeam from "./MatchupTeam";
+import MatchupPlayer from "./matchup/MatchupPlayer";
+import MatchupTeam from "./matchup/MatchupTeam";
 
 export { Header, MatchupPlayer, MatchupTeam };
