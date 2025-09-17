@@ -6,15 +6,11 @@ export default async function fetchMatchups() {
   try {
     const nflState = await fetchNflState();
     if (!nflState) throw new Error("NFL state data is unavailable.");
-
     if (nflState.season_type !== "regular") return getPlayoffMatchups(nflState);
-    // return formatMatchups(getPlayoffMatchups(nflState));
 
     const sleeperMatchups = await fetchSleeperMatchups(nflState.display_week);
     if (!sleeperMatchups)
       throw new Error("Sleeper matchup data is unavailable.");
-    // return formatMatchups(sleeperMatchups);
-
     return sleeperMatchups;
   } catch (error) {
     console.error("fetchMatchups:", error.message);
@@ -38,7 +34,6 @@ async function fetchSleeperMatchups(week = "") {
       throw new Error(`Error fetching matchups: ${response.statusText}`);
     }
     const matchups = await response.json();
-    // return formatMatchups(matchups);
     return matchups;
   } catch (error) {
     console.error("fetchSleeperMatchups:", error.message);

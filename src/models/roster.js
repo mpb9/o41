@@ -1,4 +1,27 @@
 export default class Roster {
+  division_id;
+  league_id;
+  locker_room_guy;
+  nicknames;
+  player_ids = [];
+  pts = {
+    fpts: 0.0,
+    fpts_against: 0.0,
+    ppts: 0.0,
+  };
+  record = {
+    wins: 0,
+    losses: 0,
+    ties: 0,
+    results: "",
+    streak: "",
+  };
+  ir = [];
+  roster_id;
+  starters = [];
+  taxi = [];
+  user_id;
+  waiver_budget_used = 0;
   constructor(json = {}) {
     this.division_id = Number(json.settings?.division) || null;
     this.league_id = String(json.league_id) || null;

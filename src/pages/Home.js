@@ -56,7 +56,7 @@ export default function Home() {
         setMatchups(updatedMatchups);
         setLastUpdated(new Date());
         setError(null);
-        // console.log("MATCHUPS", updatedMatchups);
+        console.log("MATCHUPS", updatedMatchups);
       } catch (err) {
         console.error("Home: Error fetching matchups.");
         setError(err.message);

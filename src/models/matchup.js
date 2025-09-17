@@ -1,4 +1,12 @@
 export default class Matchup {
+  custom_points = 0.0;
+  matchup_id;
+  player_ids = [];
+  players_pts = {};
+  pts = 0.0;
+  roster_id;
+  starters = [];
+  starters_pts = [];
   constructor(json) {
     this.custom_pts = Number(json.custom_points) || 0.0;
     this.matchup_id = Number(json.matchup_id) || null;

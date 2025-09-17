@@ -13,9 +13,6 @@ export default function MatchupPlayer(props) {
 
   useEffect(() => {
     setPositionColor(POSITION_COLORS[props.player.position] || "#f59cff");
-  }, [props.player.position]);
-
-  useEffect(() => {
     setPtsColor(getPlayerPtsColor(props.player.pts, props.player.position));
   }, [props.player.pts, props.player.position]);
 

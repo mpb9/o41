@@ -1,4 +1,9 @@
 export default class User {
+  avatar;
+  display_name;
+  team_name;
+  user_id;
+
   constructor(json = {}) {
     this.avatar = String(json.avatar) || null;
     this.display_name = String(json.display_name) || null;
