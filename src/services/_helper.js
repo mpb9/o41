@@ -6,6 +6,7 @@ import {
 } from "./MatchupService";
 import {
   getPlayer,
+  getPlayerPtsColor,
   getPlayersByLineupStatus,
   getPlayersByRosterAndMatchup,
 } from "./PlayerService";
@@ -24,6 +25,7 @@ export {
   getMatchupByUserId,
   getMatchupsByMatchupId,
   getPlayer,
+  getPlayerPtsColor,
   getPlayersByLineupStatus,
   getPlayersByRosterAndMatchup,
   getRosterByUserId,

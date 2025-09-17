@@ -35,7 +35,7 @@ export default function TeamScore(props) {
   return (
     <div className="w-full h-full overflow-scroll text-center text-black cursor-default">
       {/* NAME */}
-      <div className="flex flex-col items-center justify-center w-full px-2 py-3 h-[4.5rem] overflow-hidden border-1 border-b-1 rounded-t-lg border-stone-600 min-h-[4.5rem] bg-stone-900 lg:h-fill lg:min-h-0 lg:py-6">
+      <div className="flex flex-col items-center justify-center w-full px-2 py-3 h-[4.5rem] overflow-hidden border-2 rounded-t-lg border-stone-600 min-h-[4.5rem] bg-stone-900 lg:h-fill lg:min-h-0 lg:py-6">
         <span className="text-base font-black leading-5 lg:text-lg text-stone-300">
           {props.user.team_name}
         </span>
@@ -45,7 +45,7 @@ export default function TeamScore(props) {
       </div>
 
       {/* PTS */}
-      <div className="w-full py-1 bg-stone-950 border-x-1 border-stone-600">
+      <div className="w-full py-1 bg-stone-950 border-x-2 border-b-1 border-stone-600">
         <span className="text-lg font-bold text-primary">
           {props.matchup.pts} pts
         </span>
@@ -58,28 +58,29 @@ export default function TeamScore(props) {
             <PlayerScore key={player.player_id} player={player} />
           ))}
 
+          {/* BENCH */}
           <div
             className="flex items-center justify-center w-full transition-colors duration-300 border-2 border-b-0 cursor-pointer h-9 bg-stone-900 border-stone-600 hover:bg-stone-800 text-stone-200 hover:text-stone-500"
             onClick={() => setShowBench(!showBench)}
           >
             <span className="tracking-[0.15rem]">BENCH</span>
           </div>
-
-          {/* BENCH */}
           {showBench ? (
-            <div className="bg-stone-400 sm:text-[0.85rem] lg:text-base text-base w-full border-b-2 border-stone-600">
+            <div className="bg-stone-400 sm:text-[0.85rem] lg:text-base text-base w-full border-b-1 border-stone-600">
               {bench.map((player) => (
                 <PlayerScore key={player.player_id} player={player} />
               ))}
-              <div className="flex items-center justify-center w-full h-8 border-2 border-b-0 bg-stone-900 border-stone-600 text-stone-200">
+              <div className="flex items-center justify-center w-full h-8 border-b-0 border-1 bg-stone-900 border-stone-600 text-stone-200">
                 <span className="tracking-[0.15rem]">IR</span>
               </div>
+              {/* IR */}
               {ir.map((player) => (
                 <PlayerScore key={player.player_id} player={player} />
               ))}
-              <div className="flex items-center justify-center w-full h-8 border-2 border-b-0 bg-stone-900 border-stone-600 text-stone-200">
+              <div className="flex items-center justify-center w-full h-8 border-b-0 border-1 bg-stone-900 border-stone-600 text-stone-200">
                 <span className="tracking-[0.15rem]">Taxi</span>
               </div>
+              {/* TAXI */}
               {taxi.map((player) => (
                 <PlayerScore key={player.player_id} player={player} />
               ))}

@@ -4,8 +4,10 @@ export const POSITION_COLORS = {
   WR: "#B0E0E6DD",
   TE: "#ffa973DD",
   IDP: "#f59cff",
-  DEF: "#FFD700DD",
-  K: "#a39bfcEE",
+  DEF: "#fbcb1ddd",
+  DST: "#fbcb1ddd",
+  K: "#a39bfcdd",
+  NA: "#A7A19FDD",
 };
 
 export const PTS_COLORS = {
@@ -14,4 +16,5 @@ export const PTS_COLORS = {
   medium_low: "#ffff7fC0",
   medium_high: "#B0E0E6C0",
   high: "#98FB98C0",
+  NA: "#A7A19FC0",
 };
