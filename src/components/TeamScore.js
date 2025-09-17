@@ -1,19 +1,17 @@
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
-import {
-  fetchPlayersByLineupStatus,
-  fetchTeamData,
-} from "../services/PlayerService";
-import PlayerScore from "./PlayerScore";
+import { Matchup, Roster, User } from "../models/_helper";
+import { getPlayersByLineupStatus } from "../services/_helper";
+import { fetchTeamData } from "../services/PlayerService"; // ! change this
+import { PlayerScore } from "./_helper";
 
 TeamScore.propTypes = {
-  user: PropTypes.object.isRequired,
-  roster: PropTypes.object.isRequired,
-  matchup: PropTypes.object.isRequired,
+  user: PropTypes.instanceOf(User).isRequired,
+  roster: PropTypes.instanceOf(Roster).isRequired,
+  matchup: PropTypes.instanceOf(Matchup).isRequired,
 };
 
 export default function TeamScore(props) {
-  const [error, setError] = useState(null);
   const [showBench, setShowBench] = useState(true);
   const [team, setTeam] = useState(null);
   const [starters, setStarters] = useState(null);
@@ -31,20 +29,14 @@ export default function TeamScore(props) {
           props.roster.reserve,
           props.roster.taxi
         );
-        const starterData = fetchPlayersByLineupStatus(teamData, "starter");
-        const benchData = fetchPlayersByLineupStatus(teamData, "bench");
-        const taxiData = fetchPlayersByLineupStatus(teamData, "taxi");
-        const reserveData = fetchPlayersByLineupStatus(teamData, "ir");
 
         setTeam(teamData);
-        setStarters(starterData);
-        setBench(benchData);
-        setTaxi(taxiData);
-        setIr(reserveData);
-
-        setError(null);
+        setStarters(getPlayersByLineupStatus(teamData, "starter"));
+        setBench(getPlayersByLineupStatus(teamData, "bench"));
+        setTaxi(getPlayersByLineupStatus(teamData, "taxi"));
+        setIr(getPlayersByLineupStatus(teamData, "ir"));
       } catch (err) {
-        setError(err.message);
+        console.error(err);
       }
     };
     getPlayers();
@@ -72,7 +64,7 @@ export default function TeamScore(props) {
           {props.user.team_name}
         </span>
         <span className="pt-1 text-sm italic text-stone-400 lg:pt-0">
-          {props.roster.settings.wins}-{props.roster.settings.losses}
+          {props.roster.record.wins}-{props.roster.record.losses}
         </span>
       </div>
 
@@ -86,15 +78,15 @@ export default function TeamScore(props) {
       {recievedData() ? (
         <div className="w-full rounded-b-lg">
           {/* STARTERS */}
-          {starters.map((player, index) => (
+          {starters.map((player) => (
             <PlayerScore
-              key={index}
-              id={player[0]}
-              first_name={player[3].first_name}
-              last_name={player[3].last_name}
-              pts={player[1]}
-              pos={player[3].position}
-              team={player[3].team}
+              key={player.player_id}
+              id={player.player_id}
+              first_name={player.first_name}
+              last_name={player.last_name}
+              pts={player.pts}
+              pos={player.position}
+              team={player.team}
             />
           ))}
 
@@ -108,43 +100,43 @@ export default function TeamScore(props) {
           {/* BENCH */}
           {showBench ? (
             <div className="bg-stone-400 sm:text-[0.85rem] lg:text-base text-base w-full border-b-2 border-stone-600">
-              {bench.map((player, index) => (
+              {bench.map((player) => (
                 <PlayerScore
-                  key={index}
-                  id={player[0]}
-                  first_name={player[3].first_name}
-                  last_name={player[3].last_name}
-                  pts={player[1]}
-                  pos={player[3].position}
-                  team={player[3].team}
+                  key={player.player_id}
+                  id={player.player_id}
+                  first_name={player.first_name}
+                  last_name={player.last_name}
+                  pts={player.pts}
+                  pos={player.position}
+                  team={player.team}
                 />
               ))}
               <div className="flex items-center justify-center w-full h-8 border-2 border-b-0 bg-stone-900 border-stone-600 text-stone-200">
                 <span className="tracking-[0.15rem]">IR</span>
               </div>
-              {ir.map((player, index) => (
+              {ir.map((player) => (
                 <PlayerScore
-                  key={index}
-                  id={player[0]}
-                  first_name={player[3].first_name}
-                  last_name={player[3].last_name}
-                  pts={player[1]}
-                  pos={player[3].position}
-                  team={player[3].team}
+                  key={player.player_id}
+                  id={player.player_id}
+                  first_name={player.first_name}
+                  last_name={player.last_name}
+                  pts={player.pts}
+                  pos={player.position}
+                  team={player.team}
                 />
               ))}
               <div className="flex items-center justify-center w-full h-8 border-2 border-b-0 bg-stone-900 border-stone-600 text-stone-200">
                 <span className="tracking-[0.15rem]">Taxi</span>
               </div>
-              {taxi.map((player, index) => (
+              {taxi.map((player) => (
                 <PlayerScore
-                  key={index}
-                  id={player[0]}
-                  first_name={player[3].first_name}
-                  last_name={player[3].last_name}
-                  pts={player[1]}
-                  pos={player[3].position}
-                  team={player[3].team}
+                  key={player.player_id}
+                  id={player.player_id}
+                  first_name={player.first_name}
+                  last_name={player.last_name}
+                  pts={player.pts}
+                  pos={player.position}
+                  team={player.team}
                 />
               ))}
             </div>

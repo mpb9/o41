@@ -1,15 +1,12 @@
-import PLAYER_DATA_JSON from "../data/PlayerData_2025.json";
+import { Player } from "../models/_helper";
+import PLAYER_DATA_JSON from "../utils/PlayerData_2025.json";
+
+//! change
 export const fetchTeamData = async (playerIds, pts, starters, ir, taxi) => {
   try {
     const teamData = await Promise.all(
       playerIds.map(async (playerId) => {
-        const player = await fetchPlayer(
-          playerId,
-          pts[playerId],
-          starters,
-          ir,
-          taxi
-        );
+        const player = getPlayer(playerId, pts[playerId], starters, ir, taxi);
         return player;
       })
     );
@@ -19,43 +16,23 @@ export const fetchTeamData = async (playerIds, pts, starters, ir, taxi) => {
   }
 };
 
-export const fetchPlayer = async (playerId, playerPts, starters, ir, taxi) => {
-  try {
-    const sleeperData = await fetchSleeperData(playerId);
-    const lineupStatus = fetchLineupStatus(playerId, starters, ir, taxi);
-    const playerData = [playerId, playerPts, lineupStatus, sleeperData];
-    return playerData;
-  } catch (err) {
-    console.error(err);
+export function getPlayer(playerId, playerPts, starters, ir, taxi) {
+  const sleeperData = PLAYER_DATA_JSON[playerId] || null;
+  if (sleeperData === null) {
+    console.log("WARNING!!! Undefined Player:", playerId);
+    return null;
   }
-};
+  const lineupStatus = getLineupStatus(playerId, starters, ir, taxi);
+  const playerJson = {
+    player_id: playerId,
+    pts: playerPts,
+    lineup_status: lineupStatus,
+    ...sleeperData,
+  };
+  return new Player(playerJson);
+}
 
-const fetchSleeperData = async (playerId) => {
-  try {
-    const pj = PLAYER_DATA_JSON[playerId] || null;
-    if (pj === null) {
-      console.log("WARNING!!! Undefined Player:", playerId);
-      throw new Error("Undefined Player");
-    }
-    const playerDataJson = {
-      full_name: pj.full_name || playerId,
-      first_name: pj.first_name || playerId,
-      last_name: pj.last_name || playerId,
-      number: pj.number || -1,
-      age: pj.age || -1,
-      years_exp: pj.years_exp || -1,
-      position: pj.position || "DEF",
-      fantasy_positions: pj.fantasy_positions || ["DEF"],
-      team: pj.team || "FA",
-      status: pj.status || "Active",
-    };
-    return playerDataJson;
-  } catch (err) {
-    console.error(err);
-  }
-};
-
-const fetchLineupStatus = (playerId, starters = [], ir = [], taxi = []) => {
+function getLineupStatus(playerId, starters = [], ir = [], taxi = []) {
   if (starters === null) starters = [];
   if (ir === null) ir = [];
   if (taxi === null) taxi = [];
@@ -68,25 +45,26 @@ const fetchLineupStatus = (playerId, starters = [], ir = [], taxi = []) => {
     return "taxi";
   }
   return "bench";
-};
+}
 
-export const fetchPlayersByLineupStatus = (players, lineupStatus) => {
-  const pArr = players.filter((member) => member[2] === lineupStatus);
+export function getPlayersByLineupStatus(players, lineupStatus) {
+  const pArr = players.filter(
+    (player) => player.lineup_status === lineupStatus
+  );
   const pArrSorted = sortByPosition(pArr);
   return pArrSorted;
-};
-const sortByPosition = (pArr) => {
+}
+
+function sortByPosition(pArr) {
   const idpPositions = ["LB", "CB", "S", "DE", "DT", "DB"];
 
-  const qbs = pArr.filter((p) => p[3].position === "QB");
-  const rbs = pArr.filter((p) => p[3].position === "RB");
-  const wrs = pArr.filter((p) => p[3].position === "WR");
-  const tes = pArr.filter((p) => p[3].position === "TE");
-  const idps = pArr.filter((p) =>
-    p[3].fantasy_positions.some((pos) => idpPositions.includes(pos))
-  );
-  const dst = pArr.filter((p) => p[3].position === "DEF");
-  const k = pArr.filter((p) => p[3].position === "K");
+  const qbs = pArr.filter((p) => p.position === "QB");
+  const rbs = pArr.filter((p) => p.position === "RB");
+  const wrs = pArr.filter((p) => p.position === "WR");
+  const tes = pArr.filter((p) => p.position === "TE");
+  const idps = pArr.filter((p) => idpPositions.includes(p.position));
+  const dst = pArr.filter((p) => p.position === "DEF");
+  const k = pArr.filter((p) => p.position === "K");
 
   return [...qbs, ...rbs, ...wrs, ...tes, ...idps, ...dst, ...k];
-};
+}

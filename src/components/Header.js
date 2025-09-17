@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
-import { LEAGUE } from "../data/LeagueData";
+import { HYPERLINK } from "../utils/leagueInfo";
+
 export default function Header({ lastUpdated, activeRoute }) {
   return (
     <div className="flex items-center justify-center w-full text-center sm:bg-[#7e7a75] h-[4rem] px-0 sm:px-8 xl:px-10">
@@ -34,7 +35,7 @@ export default function Header({ lastUpdated, activeRoute }) {
 
       <div className="flex items-center justify-center w-full h-full sm:justify-end sm:w-1/4">
         <a
-          href={LEAGUE.sleeper}
+          href={HYPERLINK.sleeper}
           target="_blank"
           rel="noreferrer"
           className="w-[2.75rem] h-full py-[12px] hover:scale-110 transition-transform"
@@ -42,7 +43,7 @@ export default function Header({ lastUpdated, activeRoute }) {
           <div className="w-full h-full bg-no-repeat bg-contain bg-sleeper-green" />
         </a>
         <a
-          href={LEAGUE.drive}
+          href={HYPERLINK.drive}
           target="_blank"
           rel="noreferrer"
           className="w-[2.75rem] h-full pt-[11px] ml-4 pb-[5px] hover:scale-110 transition-transform"

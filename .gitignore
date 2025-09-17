@@ -22,8 +22,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-/src/docs
-/src/data/api
+**/docs
+# /src/utils/*.json
 **/inactive
 
 .vscode
+package-lock.json

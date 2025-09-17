@@ -1,8 +1,16 @@
 {
   "name": "order-41",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "homepage": "https://order-41.com",
-  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mpb9/o41.git"
+  },
+  "author": {
+    "name": "Michael Beebe",
+    "email": "michaelbeebe1031@gmail.com",
+    "url": "https://michael-beebe.com"
+  },
   "dependencies": {
     "@phosphor-icons/react": "^2.1.7",
     "@testing-library/jest-dom": "^5.17.0",

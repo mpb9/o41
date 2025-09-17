@@ -1,13 +1,9 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import GenerateData from "./pages/GenerateData";
-import Home from "./pages/Home";
-import InactiveLeague from "./pages/InactiveLeague";
-import NotFound from "./pages/NotFound";
-
-const isLeagueInactive = false;
+import { GenerateData, Home, InactiveLeague, NotFound } from "./pages/_helper";
+import { IS_LEAGUE_ACTIVE } from "./utils/leagueInfo";
 
 function App() {
-  if (isLeagueInactive) return <InactiveLeague />;
+  if (!IS_LEAGUE_ACTIVE) return <InactiveLeague />;
 
   return (
     <div className="min-h-screen bg-stone-800">

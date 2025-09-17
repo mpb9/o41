@@ -1,5 +1,5 @@
 import { ArrowUp } from "@phosphor-icons/react";
-import Header from "../components/Header";
+import { Header } from "../components/_helper";
 
 export default function NotFound() {
   return (
