@@ -18,3 +18,14 @@ export const PTS_COLORS = {
   high: "#98FB98C0",
   NA: "#A7A19FC0",
 };
+
+export const HEADER_LINK_CLASSNAMES = {
+  DESKTOP: {
+    active: "text-primary font-bold",
+    inactive: "text-stone-200 hover:text-primary hover:font-bold",
+  },
+  MOBILE: {
+    active: "text-primary font-bold",
+    inactive: "text-stone-200 hover:text-primary hover:font-bold",
+  },
+};

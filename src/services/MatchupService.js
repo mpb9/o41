@@ -2,9 +2,9 @@ import { fetchMatchups } from "../api/_helper";
 import { Matchup } from "../models/_helper";
 import { getRosterByUserId } from "./_helper";
 
-export async function getAllMatchups() {
+export async function getAllMatchups(nfl_state = null) {
   try {
-    const matchupsJson = await fetchMatchups();
+    const matchupsJson = await fetchMatchups(nfl_state);
     if (!matchupsJson) throw new Error("No matchup data available.");
     return matchupsJson.map((matchupJson) => new Matchup(matchupJson));
   } catch (error) {

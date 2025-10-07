@@ -2,9 +2,9 @@ import { API__SLEEPER } from "../utils/apiRoutes";
 import { PLAYOFF_MATCHUPS } from "../utils/playoffInfo";
 import { fetchNflState } from "./_helper";
 
-export default async function fetchMatchups() {
+export default async function fetchMatchups(nfl_state = null) {
   try {
-    const nflState = await fetchNflState();
+    const nflState = nfl_state || (await fetchNflState());
     if (!nflState) throw new Error("NFL state data is unavailable.");
     if (nflState.season_type !== "regular") return getPlayoffMatchups(nflState);
 

@@ -14,6 +14,11 @@ import {
 import { getAllMatchups, getAllRosters, getAllUsers } from "./services/_helper";
 import { IS_LEAGUE_ACTIVE } from "./utils/leagueInfo";
 
+const RELOAD_INTERVAL_MS = {
+  matchups: 15000,
+  nfl_state: 60000,
+};
+
 function App() {
   const [error, setError] = useState(null);
   const [matchups, setMatchups] = useState(null);
@@ -21,8 +26,8 @@ function App() {
   const [users, setUsers] = useState(null);
   const [nflState, setNflState] = useState(null);
   const [lastUpdated, setLastUpdated] = useState(null);
-  const interval = 5000;
 
+  // MARK: useEffect([])
   useEffect(() => {
     async function getUsers() {
       try {
@@ -48,19 +53,6 @@ function App() {
         setError(err.message);
       }
     }
-    async function getMatchups() {
-      try {
-        const updatedMatchups = await getAllMatchups();
-        if (!updatedMatchups || updatedMatchups.length === 0)
-          throw new Error("No matchup data available.");
-        setMatchups(updatedMatchups);
-        setLastUpdated(new Date());
-        setError(null);
-      } catch (err) {
-        console.error("Home: Error fetching matchups.");
-        setError(err.message);
-      }
-    }
     async function getNflState() {
       try {
         const updatedNflState = await fetchNflState();
@@ -74,15 +66,36 @@ function App() {
     }
     getUsers();
     getRosters();
-    getMatchups();
     getNflState();
 
-    const timeout = setInterval(getMatchups, interval);
+    const timeout = setInterval(getNflState, RELOAD_INTERVAL_MS.nfl_state);
     return () => clearInterval(timeout);
   }, []);
 
+  // MARK: useEffect([nflState])
+  useEffect(() => {
+    async function getMatchups() {
+      try {
+        const updatedMatchups = await getAllMatchups(nflState);
+        if (!updatedMatchups || updatedMatchups.length === 0)
+          throw new Error("No matchup data available.");
+        setMatchups(updatedMatchups);
+        setLastUpdated(new Date());
+        setError(null);
+      } catch (err) {
+        console.error("Home: Error fetching matchups.");
+        setError(err.message);
+      }
+    }
+    getMatchups();
+    const timeout = setInterval(getMatchups, RELOAD_INTERVAL_MS.matchups);
+    return () => clearInterval(timeout);
+  }, [nflState]);
+
+  // MARK: INACTIVE
   if (!IS_LEAGUE_ACTIVE) return <InactiveLeague />;
 
+  // MARK: LOADING
   if (
     users === null ||
     rosters === null ||
@@ -98,6 +111,7 @@ function App() {
     );
   }
 
+  // MARK: ERROR
   if (error) {
     return (
       <div className="flex items-center justify-center w-full min-h-screen bg-stone-800">
@@ -105,6 +119,8 @@ function App() {
       </div>
     );
   }
+
+  // MARK: BASE
   return (
     <div className="min-h-screen bg-stone-800">
       <BrowserRouter>

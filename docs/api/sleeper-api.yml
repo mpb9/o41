@@ -1,0 +1,1224 @@
+openapi: 3.0.4
+info:
+  title: Sleeper API - ORDER 41
+  version: 1.0.0
+  description: manages requests to the [Sleeper API](https://docs.sleeper.com) for custom fantasy football league website, [order-41.com](https://order-41.com).
+  contact:
+    name: Michael Beebe
+    email: michaelbeebe1031@gmail.com
+    url: https://michael-beebe.com
+externalDocs:
+  description: GitHub repository
+  url: https://github.com/mpb9/o41
+servers:
+- url: https://api.sleeper.app/v1
+  description: Sleeper API base URL
+
+tags:
+- name: Avatar
+  description: variations of a specific Sleeper avatar
+- name: Draft
+  description: information related to a specific Sleeper draft
+- name: League
+  description: information related to a specific Sleeper league
+- name: Matchup
+  description: information related to a specific Sleeper matchup for a specific roster
+- name: Players
+  description: operations related to NFL players
+- name: State
+  description: information about the current state of the NFL
+- name: User
+  description: information related to a specific Sleeper user
+
+paths:
+  /avatars/{avatar_id}:
+    servers:
+    - url: https://sleepercdn.com
+      description: Sleeper CDN Avatars base URL
+    parameters:
+    - in: path
+      name: avatar_id
+      required: true
+      description: the **avatar_id** of a given **Avatar**
+      schema:
+        $ref: "#/components/schemas/AvatarId"
+      example: "4bee202f537f9694cea8085a5c208496"
+    get:
+      summary: avatar by avatar_id
+      description: retrieves a specific **Avatar** by its **avatar_id**
+      operationId: getAvatarById
+      tags: [ Avatar ]
+      responses:
+        "200":
+          description: Avatar image
+          content:
+            image/*:
+              schema:
+                type: string
+                format: binary
+        "4XX":
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /avatars/thumbs/{avatar_id}:
+    servers:
+    - url: https://sleepercdn.com
+      description: Sleeper CDN Avatars base URL
+    parameters:
+    - in: path
+      name: avatar_id
+      required: true
+      description: the **avatar_id** of a given **Avatar**
+      schema:
+        $ref: "#/components/schemas/AvatarId"
+      example: "4bee202f537f9694cea8085a5c208496"
+    get:
+      summary: avatar thumbnail by avatar_id
+      description: retrieves a thumbnail version of a specific **Avatar** by its **avatar_id**
+      operationId: getAvatarThumbnailById
+      tags: [ Avatar ]
+      responses:
+        "200":
+          description: Avatar thumbnail image
+          content:
+            image/*:
+              schema:
+                type: string
+                format: binary
+        "4XX":
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /draft/{draft_id}:
+    parameters:
+    - in: path
+      name: draft_id
+      required: true
+      description: the **draft_id** of a given **Draft**
+      schema:
+        type: string
+        pattern: ^[0-9]{1,20}$
+      example: "1248116529619275776"
+    get:
+      summary: draft by draft_id
+      description: retrieves a specific **Draft** by its **draft_id**
+      operationId: getDraftById
+      tags: [ Draft ]
+      responses:
+        "200":
+          description: Draft object
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+        "4XX":
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /draft/{draft_id}/picks:
+    parameters:
+    - in: path
+      name: draft_id
+      required: true
+      description: the **draft_id** of a given **Draft**
+      schema:
+        type: string
+        pattern: ^[0-9]{1,20}$
+      example: "1248116529619275776"
+    get:
+      summary: draft picks by draft_id
+      description: retrieves all **DraftPicks** associated with a specific **Draft** by its **draft_id**
+      operationId: getDraftPicksByDraftId
+      tags: [ Draft ]
+      responses:
+        "200":
+          description: list of DraftPick objects
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  additionalProperties: true
+        "4XX":
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /draft/{draft_id}/traded_picks:
+    parameters:
+    - in: path
+      name: draft_id
+      required: true
+      description: the **draft_id** of a given **Draft**
+      schema:
+        type: string
+        pattern: ^[0-9]{1,20}$
+      example: "1248116529619275776"
+    get:
+      summary: traded draft picks by draft_id
+      description: retrieves all **TradedDraftPicks** associated with a specific **Draft** by its **draft_id**
+      operationId: getTradedDraftPicksByDraftId
+      tags: [ Draft ]
+      responses:
+        "200":
+          description: list of TradedDraftPick objects
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  additionalProperties: true
+        "4XX":
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /league/{league_id}:
+    parameters:
+    - in: path
+      name: league_id
+      required: true
+      description: the **league_id** of a given **League**
+      schema:
+        $ref: "#/components/schemas/LeagueId"
+      example: "1248116529610883072"
+    get:
+      summary: league by league_id
+      description: retrieves a specific **League** by its **league_id**
+      operationId: getLeagueById
+      tags: [ League ]
+      responses:
+        "200":
+          description: League object
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/League"
+        "4XX":
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /league/{league_id}/drafts:
+    parameters:
+    - in: path
+      name: league_id
+      required: true
+      description: the **league_id** of a given **League**
+      schema:
+        $ref: "#/components/schemas/LeagueId"
+      example: "1248116529610883072"
+    get:
+      summary: drafts by league_id
+      description: retrieves all **SleeperDrafts** associated with a specific **League** by its **league_id**
+      operationId: getDraftsByLeagueId
+      tags: [ League, Draft ]
+      responses:
+        "200":
+          description: list of Draft objects
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  additionalProperties: true
+        "4XX":
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /league/{league_id}/losers_bracket:
+    parameters:
+    - in: path
+      name: league_id
+      required: true
+      description: the **league_id** of a given **League**
+      schema:
+        $ref: "#/components/schemas/LeagueId"
+      example: "1248116529610883072"
+    get:
+      summary: losers bracket by league_id
+      description: retrieves the **LosersBracket** associated with a specific **League** by its **league_id**
+      operationId: getLosersBracketByLeagueId
+      tags: [ League ]
+      responses:
+        "200":
+          description: LosersBracket object
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+        "4XX":
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /league/{league_id}/matchups/{week}:
+    parameters:
+    - in: path
+      name: league_id
+      required: true
+      description: the **league_id** of a given **League**
+      schema:
+        $ref: "#/components/schemas/LeagueId"
+      example: "1248116529610883072"
+    - in: path
+      name: week
+      required: true
+      description: week number of the **Matchups** to retrieve
+      schema:
+        type: integer
+        format: int32
+        minimum: 1
+        maximum: 18
+      example: 5
+    get:
+      summary: matchups by league_id and week
+      description: retrieves all **Matchups** for a specific **League** by its **league_id** during a given **week**
+      operationId: getMatchupsByLeagueIdAndWeek
+      tags: [ League, Matchup ]
+      responses:
+        "200":
+          description: list of Matchup objects
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Matchup"
+        "4XX":
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /league/{league_id}/rosters:
+    parameters:
+    - in: path
+      name: league_id
+      required: true
+      description: the **league_id** of a given **League**
+      schema:
+        $ref: "#/components/schemas/LeagueId"
+      example: "1248116529610883072"
+    get:
+      summary: rosters by league_id
+      description: retrieves all **Rosters** associated with a specific **League** by its **league_id**
+      operationId: getRostersByLeagueId
+      tags: [ League ]
+      responses:
+        "200":
+          description: list of Roster objects
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Roster"
+        "4XX":
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /league/{league_id}/traded_picks:
+    parameters:
+    - in: path
+      name: league_id
+      required: true
+      description: the **league_id** of a given **League**
+      schema:
+        $ref: "#/components/schemas/LeagueId"
+      example: "1248116529610883072"
+    get:
+      summary: traded draft picks by league_id
+      description: retrieves all **TradedDraftPicks** associated with a specific **League** by its **league_id**
+      operationId: getTradedDraftPicksByLeagueId
+      tags: [ League, Draft ]
+      responses:
+        "200":
+          description: list of TradedDraftPick objects
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  additionalProperties: true
+        "4XX":
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /league/{league_id}/transactions/{week}:
+    parameters:
+    - in: path
+      name: league_id
+      required: true
+      description: the **league_id** of a given **League**
+      schema:
+        $ref: "#/components/schemas/LeagueId"
+      example: "1248116529610883072"
+    - in: path
+      name: week
+      required: true
+      description: week number of the **Transactions** to retrieve
+      schema:
+        type: integer
+        format: int32
+        minimum: 1
+        maximum: 18
+      example: 5
+    get:
+      summary: transactions by league_id and week
+      description: retrieves all **Transactions** for a specific **League** by its **league_id** during a given **week**
+      operationId: getTransactionsByLeagueIdAndWeek
+      tags: [ League ]
+      responses:
+        "200":
+          description: list of Transaction objects
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  additionalProperties: true
+        "4XX":
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /league/{league_id}/users:
+    parameters:
+    - in: path
+      name: league_id
+      required: true
+      description: the **league_id** of a given **League**
+      schema:
+        $ref: "#/components/schemas/LeagueId"
+      example: "1248116529610883072"
+    get:
+      summary: users by league_id
+      description: retrieves all **Users** participating in a specific **League** by its **league_id**
+      operationId: getUsersByLeagueId
+      tags: [ League, User ]
+      responses:
+        "200":
+          description: list of User objects
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/User"
+        "4XX":
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /league/{league_id}/winners_bracket:
+    parameters:
+    - in: path
+      name: league_id
+      required: true
+      description: the **league_id** of a given **League**
+      schema:
+        $ref: "#/components/schemas/LeagueId"
+      example: "1248116529610883072"
+    get:
+      summary: winners bracket by league_id
+      description: retrieves the **WinnersBracket** associated with a specific **League** by its **league_id**
+      operationId: getWinnersBracketByLeagueId
+      tags: [ League ]
+      responses:
+        "200":
+          description: WinnersBracket object
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+        "4XX":
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /players/nfl:
+    get:
+      summary: all NFL players
+      description: retrieves a list of all NFL **Players**
+      operationId: getAllNflPlayers
+      tags: [ Players ]
+      responses:
+        "200":
+          description: list of Player objects
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Player"
+        "4XX":
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /players/nfl/trending/{type}:
+    parameters:
+    - in: path
+      name: type
+      required: true
+      description: type of trending players to retrieve
+      schema:
+        type: string
+        pattern: ^(add|drop)$
+      example: "add"
+    - in: query
+      name: lookback_hours
+      required: false
+      description: lookback period in hours (default 24)
+      schema:
+        type: integer
+        format: int32
+        minimum: 1
+        maximum: 168 # 7 days
+      example: 24
+    - in: query
+      name: limit
+      required: false
+      description: maximum number of players to retrieve (default 25)
+      schema:
+        type: integer
+        format: int32
+        minimum: 1
+        maximum: 100
+      example: 25
+    get:
+      summary: trending NFL players
+      description: retrieves a list of trending NFL **Players** based on the specified **type**
+      operationId: getTrendingNflPlayers
+      tags: [ Players ]
+      responses:
+        "200":
+          description: list of trending Players
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    count:
+                      type: integer
+                      format: int32
+                      description: number of transactions for the given player in the lookback period
+                      example: 150
+                    player_id:
+                      $ref: "#/components/schemas/PlayerId"
+        "4XX":
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /state/nfl:
+    get:
+      summary: current NFL state
+      description: retrieves information about the current state of the NFL
+      operationId: getNflState
+      tags: [ State ]
+      responses:
+        "200":
+          description: NFL state object
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NflState"
+        "4XX":
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /user/{user_id}:
+    parameters:
+    - in: path
+      name: user_id
+      required: true
+      description: the **user_id** (or **username**) of a given **User**
+      schema:
+        $ref: "#/components/schemas/UserId"
+      example: "465557925683785728"
+    get:
+      summary: user by user_id (or username)
+      description: retrieves a specific **User** by its **user_id** (or **username**)
+      operationId: getUserById
+      tags: [ User ]
+      responses:
+        "200":
+          description: User object
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        "4XX":
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /user/{user_id}/drafts/nfl/{season}:
+    parameters:
+    - in: path
+      name: user_id
+      required: true
+      description: the **user_id** (or **username**) of a given **User**
+      schema:
+        $ref: "#/components/schemas/UserId"
+      example: "465557925683785728"
+    - in: path
+      name: season
+      required: true
+      description: league year *(YYYY)*
+      schema:
+        type: string
+        pattern: ^[0-9]{4}$
+      example: "2025"
+    get:
+      summary: drafts by user and season
+      description: retrieves all **SleeperDrafts** performed by a **User** during a given **season**
+      operationId: getDraftsByUserAndSeason
+      tags: [ User, Draft ]
+      responses:
+        "200":
+          description: the requested user data
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        "4XX":
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /user/{user_id}/leagues/nfl/{season}:
+    parameters:
+    - in: path
+      name: user_id
+      required: true
+      description: the **user_id** (or **username**) of a given **User**
+      schema:
+        $ref: "#/components/schemas/UserId"
+      example: "465557925683785728"
+    - in: path
+      name: season
+      required: true
+      description: league year *(YYYY)*
+      schema:
+        type: string
+        pattern: ^[0-9]{4}$
+      example: "2025"
+    get:
+      summary: leagues by user and season
+      description: retrieves all **Leagues** a **User** is participating in during a given **season**
+      operationId: getLeaguesByUserAndSeason
+      tags: [ User, League ]
+      responses:
+        "200":
+          description: the requested league(s) data
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/League"
+        "4XX":
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+components:
+  schemas:
+
+    AvatarId:
+      type: string
+      pattern: ^[a-z0-9]{32}$
+      description: unique Avatar id
+      example: "4bee202f537f9694cea8085a5c208496"
+
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          pattern: ^.{0,512}$
+          description: error message
+          example: "User not found"
+      additionalProperties: false
+
+    League:
+      type: object
+      properties:
+        avatar:
+          $ref: "#/components/schemas/AvatarId"
+        draft_id:
+          type: string
+          pattern: ^[0-9]{1,20}$
+          description: unique id of the **Draft** associated with the **League**
+          example: "1248116529619275776"
+        league_id:
+          $ref: "#/components/schemas/LeagueId"
+        metadata:
+          $ref: "#/components/schemas/LeagueMetadata"
+        name:
+          type: string
+          pattern: ^.{1,64}$
+          description: name of the **League**
+          example: "ORDER 41"
+        previous_league_id:
+          $ref: "#/components/schemas/LeagueId"
+        roster_positions:
+          type: array
+          items:
+            type: string
+            pattern: ^[A-Z_]{1,16}$
+        scoring_settings:
+          type: object
+          additionalProperties:
+            type: number
+            format: double
+          description: scoring settings for the **League**
+          example: { "sack": 1.0, "fgm_40_49": 0.0, "pass_int": -2, "fgmiss_50p": -1, "pts_allow_0": 5.0, "pass_2pt": 2.0, "yds_allow_450_499": -5, "st_td": 6.0, "fgm_yds_over_30": 0.1, "rec_td": 6.0, "yds_allow_400_449": -3, "fgm_30_39": 0.0, "xpmiss": -41, "rush_td": 6.0, "yds_allow_550p": -7, "yds_allow_350_399": -1, "fgm": 3.0, "rec_2pt": 2.0, "st_fum_rec": 0.0, "fgmiss": 0.0, "ff": 0.0, "fgmiss_30_39": -4, "rec": 0.5, "yds_allow_200_299": 2.0, "pts_allow_14_20": 1.0, "def_2pt": 2.0, "fgm_0_19": 0.0, "int": 2.0, "def_st_fum_rec": 2.0, "fum_lost": -2, "pts_allow_1_6": 4.0, "fgmiss_20_29": -10, "fgm_20_29": 0.0, "yds_allow_500_549": -6, "pts_allow_21_27": 0.0, "xpm": 1.0, "fgmiss_0_19": -10, "rush_2pt": 2.0, "yds_allow_300_349": 0.0, "fum_rec": 2.0, "def_st_td": 6.0, "fgm_50p": 5.0, "def_td": 6.0, "safe": 10.0, "pass_yd": 0.04, "fgmiss_40_49": -3, "blk_kick": 0.0, "pass_td": 4.0, "yds_allow_100_199": 3.0, "rush_yd": 0.1, "yds_allow_0_100": 5.0, "fum": 0.0, "pts_allow_28_34": -1, "pts_allow_35p": -4, "fum_rec_td": 6.0, "rec_yd": 0.1, "def_st_ff": 0.0, "pts_allow_7_13": 3.0, "st_ff": 0.0 }
+        season:
+          type: string
+          pattern: ^[0-9]{4}$
+          description: season year of the **League**
+          example: "2024"
+        season_type:
+          type: string
+          enum: [ regular, playoffs, all ]
+          description: season type of the **League**
+          example: "regular"
+        settings:
+          type: object
+          additionalProperties:
+            type: integer
+            format: int32
+          description: settings for the **League**
+          example: { "best_ball": 0, "last_report": 4, "waiver_budget": 100, "disable_adds": 0, "divisions": 2, "capacity_override": 0, "waiver_bid_min": 0, "taxi_deadline": 4, "draft_rounds": 5, "reserve_allow_na": 0, "start_week": 1, "playoff_seed_type": 0, "playoff_teams": 5, "veto_votes_needed": 3, "num_teams": 6, "daily_waivers_hour": 0, "playoff_type": 0, "taxi_slots": 5, "last_scored_leg": 5, "daily_waivers_days": 5461, "playoff_week_start": 15, "waiver_clear_days": 1, "reserve_allow_doubtful": 0, "commissioner_direct_invite": 0, "veto_auto_poll": 0, "reserve_allow_dnr": 0, "taxi_allow_vets": 1, "waiver_day_of_week": 2, "playoff_round_type": 0, "reserve_allow_out": 1, "reserve_allow_sus": 0, "veto_show_votes": 0, "trade_deadline": 12, "taxi_years": 2, "daily_waivers": 0, "disable_trades": 0, "pick_trading": 1, "type": 2, "max_keepers": 1, "waiver_type": 2, "league_average_match": 0, "trade_review_days": 1, "bench_lock": 1, "offseason_adds": 0, "leg": 5, "reserve_slots": 4, "reserve_allow_cov": 0, "daily_waivers_last_ran": 13 }
+        status:
+          type: string
+          enum: [ in_season, complete ]
+          description: current status of the **League**
+          example: "in_season"
+        total_rosters:
+          type: integer
+          format: int32
+          minimum: 2
+          maximum: 32
+          description: total number of **Rosters** in the **League**
+          example: 6
+      additionalProperties: true
+      required:
+      - avatar
+      - draft_id
+      - league_id
+
+    LeagueId:
+      type: string
+      pattern: ^[0-9]{1,20}$
+      description: unique id of the **League**
+      example: "1248116529610883072"
+
+    LeagueMetadata:
+      type: object
+      properties:
+        division_1:
+          type: string
+          pattern: ^.{0,32}$
+          description: name of division 1 in the **League**
+          example: "West"
+        division_1_avatar:
+          type: string
+          minLength: 1
+          maxLength: 128
+          description: avatar url of division 1 in the **League**
+          example: "https://sleepercdn.com/uploads/89777e49b593e1a87e1f8716e828d8c9.jpg"
+        division_2:
+          type: string
+          pattern: ^.{0,32}$
+          description: name of division 2 in the **League**
+          example: "East"
+        division_2_avatar:
+          type: string
+          minLength: 1
+          maxLength: 128
+          description: avatar url of division 2 in the **League**
+          example: "https://sleepercdn.com/uploads/89777e49b593e1a87e1f8716e828d8c9.jpg"
+        keeper_deadline:
+          type: string
+          pattern: ^[0-9]{1,2}$
+          description: week number representing the **League**'s keeper deadline
+          example: "5"
+        latest_league_winner_roster_id:
+          type: string
+          pattern: ^[0-9]{1}$
+          description: roster id of the most recent **League** champion
+          example: "4"
+      additionalProperties: true
+
+    Matchup:
+      type: object
+      properties:
+        custom_points:
+          type: number
+          format: double
+          description: custom points applied to the given **Roster** in the **Matchup**
+          example: 0.0
+        matchup_id:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 6 # number of teams in league
+          description: id of the **Matchup**
+          example: 1
+        players:
+          type: array
+          items:
+            $ref: "#/components/schemas/PlayerId"
+          description: list of **Player** ids on the given **Roster** in the **Matchup**
+          example: [ "3976", "1234", "5678" ]
+        players_points:
+          type: object
+          additionalProperties:
+            type: number
+            format: double
+          description: mapping of unique **Player** ids to their respective points in the **Matchup**
+          example: { "3976": 10.0, "1234": 5.0 }
+        points:
+          type: number
+          format: double
+          description: total points scored by the given **Roster** in the **Matchup**
+          example: 125.0
+        roster_id:
+          $ref: "#/components/schemas/RosterId"
+        starters:
+          type: array
+          items:
+            $ref: "#/components/schemas/PlayerId"
+          description: list of starting **Player** ids
+          example: [ "3976", "1234" ]
+        starters_points:
+          type: array
+          items:
+            type: number
+            format: double
+          description: list of points corresponding to each starting **Player** in the **Matchup**
+          example: [ 10.0, 5.0 ]
+      additionalProperties: false
+      required:
+      - custom_points
+      - matchup_id
+      - players
+      - players_points
+      - points
+      - roster_id
+      - starters
+      - starters_points
+
+    NflState:
+      type: object
+      properties:
+        display_week:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 18
+          description: current NFL display week number
+          example: 5
+        league_create_season:
+          type: string
+          pattern: ^[0-9]{4}$
+          description: current NFL league creation season year
+          example: "2024"
+        league_season:
+          type: string
+          pattern: ^[0-9]{4}$
+          description: current NFL league season year
+          example: "2024"
+        leg:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 5
+          description: current NFL leg number
+          example: 5
+        previous_season:
+          type: string
+          pattern: ^[0-9]{4}$
+          description: previous NFL season year
+          example: "2023"
+        season:
+          type: string
+          pattern: ^[0-9]{4}$
+          description: current NFL season year
+          example: "2024"
+        season_has_scores:
+          type: boolean
+          description: indicates if the current NFL season has scores
+          example: true
+        season_start_date:
+          type: string
+          format: date
+          description: start date of the current NFL season
+          example: "2024-09-05"
+        season_type:
+          type: string
+          enum: [ regular, playoffs, off-season ]
+          description: current NFL season type
+          example: "regular"
+        week:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 18
+          description: current NFL week number
+          example: 6
+      additionalProperties: false
+      required:
+      - display_week
+      - league_create_season
+      - league_season
+      - leg
+      - previous_season
+      - season
+      - season_has_scores
+      - season_start_date
+      - season_type
+      - week
+
+    Player:
+      type: object
+      properties:
+        age:
+          type: integer
+          format: int32
+          minimum: 0
+          maximum: 100
+          description: age of the **Player**
+          example: 25
+        fantasy_positions:
+          type: array
+          items:
+            type: string
+            enum: [ QB, RB, WR, TE, OL, DL, LB, DB, K, P, DEF, HC ]
+          description: list of fantasy positions of the **Player**
+          example: [ "QB", "RB" ]
+        first_name:
+          type: string
+          pattern: ^[A-Za-z\-]{1,32}$
+          description: first name of the **Player**
+          example: "Mitchell"
+        full_name:
+          type: string
+          pattern: ^[A-Za-z\-\s]{1,64}$
+          description: full name of the **Player**
+          example: "Mitchell Trubisky"
+        last_name:
+          type: string
+          pattern: ^[A-Za-z\-]{1,32}$
+          description: last name of the **Player**
+          example: "Trubisky"
+        number:
+          type: integer
+          format: int32
+          minimum: 0
+          maximum: 99
+          description: jersey number of the **Player**
+          example: 12
+        player_id:
+          type: string
+          pattern: ^[A-Z0-9]{1,6}$
+          description: unique id of the **Player**
+          example: "3976"
+        position:
+          type: string
+          enum: [ QB, RB, WR, TE, C, G, T, DL, DE, DT, LB, CB, S, K, P, HC, DEF ]
+          description: primary position of the **Player**
+          example: "QB"
+        status:
+          type: string
+          enum: [ Active, Inactive, Injured Reserve, Practice Squad ]
+          description: current status of the **Player**
+          example: "Active"
+        team:
+          type: string
+          enum: [ ARI, ATL, BAL, BUF, CAR, CHI, CIN, CLE, DAL, DEN, DET, GB, HOU, IND, JAX, KC, LAC, LAR, LV, MIA, MIN, NE, NO, NYG, NYJ, PHI, PIT, SF, SEA, TB, TEN, WAS ]
+          description: current team of the **Player**
+          example: "NE"
+        years_exp:
+          type: integer
+          format: int32
+          minimum: 0
+          maximum: 30
+          description: number of years of experience the **Player** has in the NFL
+          example: 3
+      additionalProperties: true
+      required:
+      - fantasy_positions
+      - first_name
+      - last_name
+      - player_id
+      - position
+      - team
+
+    PlayerId:
+      type: string
+      pattern: ^[A-Z0-9]{1,6}$
+      description: unique id of the **Player**
+      example: "3976"
+
+    Roster:
+      type: object
+      properties:
+        league_id:
+          type: string
+          pattern: ^[0-9]{1,20}$
+          description: unique id of the **League** the **Roster** belongs to
+          example: "1248116529610883072"
+        metadata:
+          $ref: "#/components/schemas/RosterMetadata"
+        owner_id:
+          $ref: "#/components/schemas/UserId"
+        players:
+          type: array
+          items:
+            $ref: "#/components/schemas/PlayerId"
+          description: list of all **Player** ids on the **Roster**
+          example: [ "12501", "MIN", "7588", "11564", "6806", "11643", "6149", "3451", "7528", "9997", "9500", "11600", "6794", "11199", "12547", "7611", "4950", "7543", "11563", "2394", "12536", "10236", "12541", "1479", "11628", "7090", "10444", "12457", "7523", "9511", "4663", "9484", "8137", "12518", "SEA", "8131", "12535", "12529", "5870", "9488", "421", "12507", "11584" ]
+        reserve:
+          type: array
+          items:
+            $ref: "#/components/schemas/PlayerId"
+          description: list of **Player** ids on the **Roster**'s reserve/suspended list
+          example: [ "10444", "12507", "4663", "7528" ]
+        roster_id:
+          $ref: "#/components/schemas/RosterId"
+        settings:
+          $ref: "#/components/schemas/RosterSettings"
+        starters:
+          type: array
+          items:
+            $ref: "#/components/schemas/PlayerId"
+          description: list of starting **Player** ids on the **Roster**
+          example: [ "11563", "11564", "7543", "7611", "7588", "6806", "11628", "9488", "8137", "9997", "12518", "10236", "1479", "9484", "5870", "3451", "MIN" ]
+        taxi:
+          type: array
+          items:
+            $ref: "#/components/schemas/PlayerId"
+          description: list of **Player** ids on the **Roster**'s taxi squad
+          example: [ "11600", "11643", "12457", "12536", "12547" ]
+      additionalProperties: true
+      required:
+      - roster_id
+      - league_id
+      - owner_id
+
+    RosterId:
+      type: integer
+      format: int32
+      minimum: 1
+      maximum: 6 # number of teams in league
+      description: unique id of the **Roster**
+      example: 6
+
+    RosterMetadata:
+      type: object
+      properties:
+        record:
+          type: string
+          pattern: ^[WLT]{1,18}$
+          description: current win-loss(-tie) record of the **Roster**
+          example: "WWWLLTWWL"
+        streak:
+          type: string
+          pattern: ^(W[0-9]{1,2}|L[0-9]{1,2}|T[0-9]{1,2})$
+          description: current win/loss/tie streak of the **Roster**
+          example: "W3"
+      additionalProperties: true
+
+    RosterSettings:
+      type: object
+      properties:
+        division:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 6 # number of teams in league
+          description: division id of the **Roster**
+          example: 2
+        fpts:
+          type: integer
+          format: int32
+          description: total fantasy points scored by the **Roster** in a given **season**
+          example: 1500
+        fpts_against:
+          type: integer
+          format: int32
+          description: total fantasy points scored against the **Roster** in a given **season**
+          example: 1400
+        fpts_against_decimal:
+          type: integer
+          format: int32
+          minimum: 0
+          maximum: 99
+          description: decimal portion of total fantasy points scored against the **Roster** in a given **season**
+          example: 75
+        fpts_decimal:
+          type: integer
+          format: int32
+          minimum: 0
+          maximum: 99
+          description: decimal portion of total fantasy points scored by the **Roster** in a given **season**
+          example: 50
+        losses:
+          type: integer
+          format: int32
+          minimum: 0
+          maximum: 18 # number of weeks in season
+          description: total losses by the **Roster** in a given **season**
+          example: 5
+        ppts:
+          type: integer
+          format: int32
+          description: total possible fantasy points scored by the **Roster** in a given **season**
+          example: 1600
+        ppts_decimal:
+          type: integer
+          format: int32
+          minimum: 0
+          maximum: 99
+          description: decimal portion of total possible fantasy points scored by the **Roster** in a given **season**
+          example: 50
+        ties:
+          type: integer
+          format: int32
+          minimum: 0
+          maximum: 18 # number of weeks in season
+          description: total ties by the **Roster** in a given **season**
+          example: 1
+        total_moves:
+          type: integer
+          format: int32
+          minimum: 0
+          description: total number of transactions made by the **Roster** in a given **season**
+          example: 25
+        waiver_budget_used:
+          type: integer
+          format: int32
+          minimum: 0
+          description: total waiver budget used by the **Roster** in a given **season**
+          example: 43
+        waiver_position:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 6 # number of teams in league
+          description: current waiver position of the **Roster** in a given **season**
+          example: 4
+        wins:
+          type: integer
+          format: int32
+          minimum: 0
+          maximum: 18 # number of weeks in season
+          description: total wins by the **Roster** in a given **season**
+          example: 10
+      additionalProperties: false
+      required:
+      - wins
+      - losses
+      - ties
+      - fpts
+      - fpts_decimal
+      - fpts_against
+      - fpts_against_decimal
+      - ppts
+      - ppts_decimal
+      - total_moves
+      - waiver_budget_used
+      - waiver_position
+      - division
+
+    User:
+      type: object
+      properties:
+        avatar:
+          $ref: "#/components/schemas/AvatarId"
+        display_name:
+          type: string
+          pattern: ^[A-Za-z0-9]{1,32}$
+          description: display name
+          example: "MIKEBEEBE"
+        user_id:
+          $ref: "#/components/schemas/UserId"
+        username:
+          type: string
+          pattern: ^[a-z0-9]{1,32}$
+          description: unique name
+          example: "mikebeebe"
+      additionalProperties: true
+      required:
+      - avatar
+      - display_name
+      - user_id
+      - username
+
+    UserId:
+      type: string
+      pattern: ^[0-9]{1,20}$
+      description: unique id of the **User**
+      example: "465557925683785728"

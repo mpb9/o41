@@ -100,7 +100,7 @@ export function getPlayerPtsColor(pts = 0, pos = "NA") {
     return PTS_COLORS.low;
   } else if (pts < 12) {
     return PTS_COLORS.medium_low;
-  } else if (pts < 20) {
+  } else if (pts < 18) {
     return PTS_COLORS.medium_high;
   }
   return PTS_COLORS.high;

@@ -1,6 +1,4 @@
-import { ArrowFatRight } from "@phosphor-icons/react";
 import PropTypes from "prop-types";
-import { useState } from "react";
 import {
   getMatchupByRosterId,
   getRostersByMatchupId,
