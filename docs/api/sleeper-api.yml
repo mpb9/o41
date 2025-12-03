@@ -740,7 +740,7 @@ components:
           example: "2024"
         season_type:
           type: string
-          enum: [ regular, playoffs, all ]
+          enum: [ regular, playoffs ]
           description: season type of the **League**
           example: "regular"
         settings:
@@ -784,8 +784,7 @@ components:
           example: "West"
         division_1_avatar:
           type: string
-          minLength: 1
-          maxLength: 128
+          pattern: ^.{1,128}$
           description: avatar url of division 1 in the **League**
           example: "https://sleepercdn.com/uploads/89777e49b593e1a87e1f8716e828d8c9.jpg"
         division_2:
@@ -795,8 +794,7 @@ components:
           example: "East"
         division_2_avatar:
           type: string
-          minLength: 1
-          maxLength: 128
+          pattern: ^.{1,128}$
           description: avatar url of division 2 in the **League**
           example: "https://sleepercdn.com/uploads/89777e49b593e1a87e1f8716e828d8c9.jpg"
         keeper_deadline:
@@ -951,6 +949,32 @@ components:
           maximum: 100
           description: age of the **Player**
           example: 25
+        college:
+          type: string
+          pattern: ^.{0,64}$
+          description: college the **Player** attended
+          example: "North Carolina"
+        depth_chart_position:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 10
+          description: depth chart position of the **Player**
+          example: 1
+        espn_id:
+          type: integer
+          format: int32
+          minimum: 0
+          maximum: 99999999
+          description: ESPN id of the **Player**
+          example: 30363
+        fantasy_data_id:
+          type: integer
+          format: int32
+          minimum: 0
+          maximum: 99999999
+          description: FantasyData id of the **Player**
+          example: 12501
         fantasy_positions:
           type: array
           items:
@@ -963,6 +987,11 @@ components:
           pattern: ^[A-Za-z\-]{1,32}$
           description: first name of the **Player**
           example: "Mitchell"
+        injury_status:
+          type: string
+          pattern: ^.{0,32}$
+          description: injury status of the **Player**
+          example: "Healthy"
         full_name:
           type: string
           pattern: ^[A-Za-z\-\s]{1,64}$
@@ -990,16 +1019,56 @@ components:
           enum: [ QB, RB, WR, TE, C, G, T, DL, DE, DT, LB, CB, S, K, P, HC, DEF ]
           description: primary position of the **Player**
           example: "QB"
+        search_full_name:
+          type: string
+          pattern: ^[A-Za-z\-\s]{1,64}$
+          description: full name of the **Player** in lowercase for search purposes
+          example: "mitchelltrubisky"
         status:
           type: string
           enum: [ Active, Inactive, Injured Reserve, Practice Squad ]
           description: current status of the **Player**
           example: "Active"
+        stats_id:
+          type: integer
+          format: int32
+          minimum: 0
+          maximum: 99999999
+          description: Stats id of the **Player**
+          example: 728169
+        swish_id:
+          type: integer
+          format: int32
+          minimum: 0
+          maximum: 99999999
+          description: Swish id of the **Player**
+          example: 3976
+        rotowire_id:
+          type: integer
+          format: int32
+          minimum: 0
+          maximum: 99999999
+          description: RotoWire id of the **Player**
+          example: 11709
+        rotoworld_id:
+          type: integer
+          format: int32
+          minimum: 0
+          maximum: 99999999
+          description: RotoWire id of the **Player**
+          example: 12135
         team:
           type: string
           enum: [ ARI, ATL, BAL, BUF, CAR, CHI, CIN, CLE, DAL, DEN, DET, GB, HOU, IND, JAX, KC, LAC, LAR, LV, MIA, MIN, NE, NO, NYG, NYJ, PHI, PIT, SF, SEA, TB, TEN, WAS ]
           description: current team of the **Player**
           example: "NE"
+        yahoo_id:
+          type: integer
+          format: int32
+          minimum: 0
+          maximum: 99999999
+          description: Yahoo id of the **Player**
+          example: 12345
         years_exp:
           type: integer
           format: int32

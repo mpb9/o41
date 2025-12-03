@@ -1,7 +1,21 @@
+import HeaderDesktop from "./header/desktop/HeaderDesktop";
+import HeaderDesktopNavLink from "./header/desktop/HeaderDesktopNavLink";
 import Header from "./header/Header";
-import HeaderNavLink from "./header/HeaderNavLink";
+import HeaderMobile from "./header/mobile/HeaderMobile";
+import HeaderMobileDropdownMenu from "./header/mobile/HeaderMobileDropdownMenu";
+import HeaderMobileNavLink from "./header/mobile/HeaderMobileNavLink";
 import Matchup from "./matchup/Matchup";
 import MatchupPlayer from "./matchup/MatchupPlayer";
 import MatchupTeam from "./matchup/MatchupTeam";
 
-export { Header, HeaderNavLink, Matchup, MatchupPlayer, MatchupTeam };
+export {
+  Header,
+  HeaderDesktop,
+  HeaderDesktopNavLink,
+  HeaderMobile,
+  HeaderMobileDropdownMenu,
+  HeaderMobileNavLink,
+  Matchup,
+  MatchupPlayer,
+  MatchupTeam,
+};

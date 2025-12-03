@@ -4,8 +4,8 @@ import { fetchNflState } from "./api/_helper";
 import {
   Bylaws,
   GenerateData,
-  Home,
   InactiveLeague,
+  League,
   Matchups,
   NotFound,
   Standings,
@@ -125,10 +125,10 @@ function App() {
     <div className="min-h-screen bg-stone-800">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/league" element={<League />} />
           <Route path="/teams" element={<Teams />} />
           <Route
-            path="/matchups"
+            path="/"
             element={
               <Matchups
                 matchups={matchups}
