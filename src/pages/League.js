@@ -1,5 +1,4 @@
 import { Header } from "../components/_helper";
-import HeaderMobileDropdownMenu from "../components/header/mobile/HeaderMobileDropdownMenu";
 
 export default function League() {
   return (
