@@ -72,7 +72,7 @@ export default function Bylaws() {
             <p>
               At the conclusion of each post-season, the League excretes a new
               Toilet Bowl Loser. If you lose the Toilet Bowl, you must spin{" "}
-              <a href={DOCUMENTS.punishments} target="_blank">
+              <a href={DOCUMENTS.punishments} target="_blank" rel="noopener">
                 The Wheel™
               </a>{" "}
               to determine the means of your humiliation.
@@ -178,11 +178,7 @@ export default function Bylaws() {
         <BylawArticleHeading
           number="VII"
           title={
-            <a
-              href={DOCUMENTS.punishments}
-              target="_blank"
-              // className="text-blue-900 hover:underline"
-            >
+            <a href={DOCUMENTS.punishments} target="_blank" rel="noopener">
               THE WHEEL™
             </a>
           }
@@ -254,7 +250,7 @@ export default function Bylaws() {
         />
 
         {/* FOOTNOTES */}
-        <div className="w-full mt-6 mb-12 max-w-[860px]">
+        <div className="w-full mt-6 mb-12 max-w-[800px]">
           <hr className="mb-8 border-stone-950" />
           <div className="ml-3 text-[0.925rem] italic leading-4">
             <p className="mb-1.5 -indent-2.5">
