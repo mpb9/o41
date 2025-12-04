@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { fetchNflState } from "./api/_helper";
+import { fetchLeague, fetchNflState } from "./api/_helper";
 import {
   Bylaws,
   GenerateData,
@@ -20,15 +20,30 @@ const RELOAD_INTERVAL_MS = {
 };
 
 function App() {
-  const [error, setError] = useState(null);
-  const [matchups, setMatchups] = useState(null);
-  const [rosters, setRosters] = useState(null);
+  const [league, setLeague] = useState(null);
   const [users, setUsers] = useState(null);
+  const [rosters, setRosters] = useState(null);
+  const [matchups, setMatchups] = useState(null);
   const [nflState, setNflState] = useState(null);
   const [lastUpdated, setLastUpdated] = useState(null);
+  const [error, setError] = useState(null);
 
   // MARK: useEffect([])
   useEffect(() => {
+    async function getLeague() {
+      try {
+        const updatedLeague = await fetchLeague();
+        if (!updatedLeague) throw new Error("No league data available.");
+
+        // console.log(updatedLeague);
+
+        setLeague(updatedLeague);
+        setError(null);
+      } catch (err) {
+        // console.error("App: Error fetching league.");
+        setError(err.message);
+      }
+    }
     async function getUsers() {
       try {
         const updatedUsers = await getAllUsers();
@@ -37,7 +52,7 @@ function App() {
         setUsers(updatedUsers);
         setError(null);
       } catch (err) {
-        console.error("Home: Error fetching users.");
+        console.error("App: Error fetching users.");
         setError(err.message);
       }
     }
@@ -49,7 +64,7 @@ function App() {
         setRosters(updatedRosters);
         setError(null);
       } catch (err) {
-        console.error("Home: Error fetching rosters.");
+        console.error("App: Error fetching rosters.");
         setError(err.message);
       }
     }
@@ -60,10 +75,11 @@ function App() {
         setNflState(updatedNflState);
         setError(null);
       } catch (err) {
-        console.error("Home: Error fetching NFL state.");
+        console.error("App: Error fetching NFL state.");
         setError(err.message);
       }
     }
+    getLeague();
     getUsers();
     getRosters();
     getNflState();
@@ -83,7 +99,7 @@ function App() {
         setLastUpdated(new Date());
         setError(null);
       } catch (err) {
-        console.error("Home: Error fetching matchups.");
+        console.error("App: Error fetching matchups.");
         setError(err.message);
       }
     }
@@ -97,6 +113,7 @@ function App() {
 
   // MARK: LOADING
   if (
+    league === null ||
     users === null ||
     rosters === null ||
     matchups === null ||
@@ -126,7 +143,10 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/league" element={<League />} />
-          <Route path="/teams" element={<Teams />} />
+          <Route
+            path="/teams"
+            element={<Teams users={users} rosters={rosters} />}
+          />
           <Route
             path="/"
             element={
@@ -139,7 +159,7 @@ function App() {
               />
             }
           />
-          <Route path="/standings" element={<Standings />} />
+          <Route path="/standings" element={<Standings users={users} />} />
           <Route path="/bylaws" element={<Bylaws />} />
           <Route path="/generate" element={<GenerateData />} />
           <Route path="/*" element={<NotFound />} />

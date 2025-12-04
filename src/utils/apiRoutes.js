@@ -20,7 +20,7 @@ export const API__SLEEPER = {
       `${API_URL__SLEEPER}draft/${draft_id}/traded_picks`,
   },
   drafts: `${API_URL__SLEEPER}league/${LEAGUE_ID}/drafts`,
-  league: `${API_URL__SLEEPER}league/${LEAGUE_ID}`,
+  league: (league_id = LEAGUE_ID) => `${API_URL__SLEEPER}league/${league_id}`,
   matchups: (week = "") =>
     `${API_URL__SLEEPER}league/${LEAGUE_ID}/matchups/${week}`,
   nfl_state: `${API_URL__SLEEPER}state/nfl`,

@@ -1,3 +1,6 @@
+import BylawArticleHeading from "./bylaw/BylawArticleHeading";
+import BylawSubsectionHeading from "./bylaw/BylawSubsectionHeading";
+import BylawText from "./bylaw/BylawText";
 import HeaderDesktop from "./header/desktop/HeaderDesktop";
 import HeaderDesktopNavLink from "./header/desktop/HeaderDesktopNavLink";
 import Header from "./header/Header";
@@ -7,8 +10,12 @@ import HeaderMobileNavLink from "./header/mobile/HeaderMobileNavLink";
 import Matchup from "./matchup/Matchup";
 import MatchupPlayer from "./matchup/MatchupPlayer";
 import MatchupTeam from "./matchup/MatchupTeam";
+import TypographyTitle from "./typography/TypographyTitle";
 
 export {
+  BylawArticleHeading,
+  BylawSubsectionHeading,
+  BylawText,
   Header,
   HeaderDesktop,
   HeaderDesktopNavLink,
@@ -18,4 +25,5 @@ export {
   Matchup,
   MatchupPlayer,
   MatchupTeam,
+  TypographyTitle,
 };

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 import { Header, Matchup } from "../components/_helper";
 
-Matchup.propTypes = {
+Matchups.propTypes = {
   matchups: PropTypes.array.isRequired,
   rosters: PropTypes.array.isRequired,
   users: PropTypes.array.isRequired,
@@ -38,7 +38,7 @@ export default function Matchups({
             </h1>
             <h1 className="hidden w-1/3 text-3xl text-center cursor-default sm:text-2xl md:text-3xl sm:block text-stone-200">
               {nfl_state.season_type === "regular"
-                ? `WEEK ${nfl_state.display_week} MATCHUPS`
+                ? `WEEK ${nfl_state.display_week}`
                 : `PLAYOFFS`}
             </h1>
             <div className="flex items-center pt-[3px] justify-end w-1/3 h-full md:pr-14 text-primary">

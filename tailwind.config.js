@@ -11,10 +11,13 @@ module.exports = {
         drive: "url('/public/img/drive.png')",
         "drive-black": "url('/public/img/drive-black.png')",
         "order-41": "url('/public/img/logo-secondary.png')",
+
         // info: (DIAMETER at X Y, colorCenter, colorEdge)
         rad: "radial-gradient(circle 70vh at 50% 50vh, #444, transparent);",
         "rad-red":
           "radial-gradient(circle 70vh at 50% 85vh, #A71504AA, transparent);",
+        "rad-white":
+          "radial-gradient(circle 70vh at 50% 50vh, #e7e3dd, #d0d0d099);",
       },
       animation: {
         "not-found": "5s notFound",

@@ -82,5 +82,9 @@
   body {
     overflow-x: hidden;
     scroll-behavior: smooth;
+    color: #e7e5e4;
+  }
+  sup {
+    font-style: italic;
   }
 }
