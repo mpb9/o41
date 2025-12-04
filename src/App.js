@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { fetchLeague, fetchNflState } from "./api/_helper";
+import { fetchNflState } from "./api/_helper";
 import {
   Bylaws,
   GenerateData,
@@ -11,7 +11,12 @@ import {
   Standings,
   Teams,
 } from "./pages/_helper";
-import { getAllMatchups, getAllRosters, getAllUsers } from "./services/_helper";
+import {
+  getAllLeagues,
+  getAllMatchups,
+  getAllRosters,
+  getAllUsers,
+} from "./services/_helper";
 import { IS_LEAGUE_ACTIVE } from "./utils/leagueInfo";
 
 const RELOAD_INTERVAL_MS = {
@@ -20,7 +25,7 @@ const RELOAD_INTERVAL_MS = {
 };
 
 function App() {
-  const [league, setLeague] = useState(null);
+  const [leagues, setLeagues] = useState(null);
   const [users, setUsers] = useState(null);
   const [rosters, setRosters] = useState(null);
   const [matchups, setMatchups] = useState(null);
@@ -30,17 +35,15 @@ function App() {
 
   // MARK: useEffect([])
   useEffect(() => {
-    async function getLeague() {
+    async function getLeagues() {
       try {
-        const updatedLeague = await fetchLeague();
-        if (!updatedLeague) throw new Error("No league data available.");
-
-        // console.log(updatedLeague);
-
-        setLeague(updatedLeague);
+        const updatedLeagues = await getAllLeagues();
+        if (!updatedLeagues) throw new Error("No leagues data available.");
+        setLeagues(updatedLeagues);
         setError(null);
+        //console.log(updatedLeagues); //! temp
       } catch (err) {
-        // console.error("App: Error fetching league.");
+        console.error("App: Error fetching leagues.");
         setError(err.message);
       }
     }
@@ -79,7 +82,7 @@ function App() {
         setError(err.message);
       }
     }
-    getLeague();
+    getLeagues();
     getUsers();
     getRosters();
     getNflState();
@@ -113,7 +116,7 @@ function App() {
 
   // MARK: LOADING
   if (
-    league === null ||
+    leagues === null ||
     users === null ||
     rosters === null ||
     matchups === null ||

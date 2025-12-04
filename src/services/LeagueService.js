@@ -1,20 +1,31 @@
 import { fetchLeague } from "../api/_helper";
-import {
-  League,
-  LeagueMetadata,
-  LeagueSettings,
-  ScoringSettings,
-} from "../models/_helper";
+import { League } from "../models/_helper";
+import { LEAGUE_ID } from "../utils/leagueInfo";
 
-export async function getLeague() {
+export async function getAllLeagues() {
   try {
-    const leagueJson = await fetchLeague();
-    if (!leagueJson) throw new Error("No league data available.");
-    console.log(leagueJson);
-
-    return leagueJson; //! temp
+    let leagues = [];
+    let previousLeagueId = LEAGUE_ID;
+    while (previousLeagueId !== null) {
+      let league = await getLeagueByLeagueId(previousLeagueId);
+      if (!league) throw new Error("No league data available.");
+      leagues.push(league);
+      previousLeagueId = league.previous_league_id;
+    }
+    return leagues;
   } catch (err) {
-    console.error("getLeague:", err.message);
+    console.error("getLeagues:", err.message);
+    return null;
+  }
+}
+
+export async function getLeagueByLeagueId(league_id = LEAGUE_ID) {
+  try {
+    const leagueJson = await fetchLeague(league_id);
+    if (!leagueJson) throw new Error("No league data available.");
+    return new League(leagueJson);
+  } catch (err) {
+    console.error("getLeagueByLeagueId:", err.message);
     return null;
   }
 }

@@ -1,53 +1,96 @@
 export default class LeagueSettings {
   constructor(json = {}) {
-    this.bench_lock = Number(json.bench_lock) || 0;
-    this.best_ball = Number(json.best_ball) || 0;
-    this.capacity_override = Number(json.capacity_override) || 0;
-    this.commissioner_direct_invite =
-      Number(json.commissioner_direct_invite) || 0;
-    this.daily_waivers = Number(json.daily_waivers) || 0;
-    this.daily_waivers_days = Number(json.daily_waivers_days) || 0;
-    this.daily_waivers_hour = Number(json.daily_waivers_hour) || 0;
-    this.daily_waivers_last_ran = Number(json.daily_waivers_last_ran) || 0;
-    this.disable_adds = Number(json.disable_adds) || 0;
-    this.disable_trades = Number(json.disable_trades) || 0;
-    this.divisions = Number(json.divisions) || 0;
-    this.draft_rounds = Number(json.draft_rounds) || 0;
-    this.last_report = Number(json.last_report) || 0;
-    this.last_scored_leg = Number(json.last_scored_leg) || 0;
-    this.league_average_match = Number(json.league_average_match) || 0;
-    this.leg = Number(json.leg) || 0;
-    this.max_keepers = Number(json.max_keepers) || 0;
-    this.num_teams = Number(json.num_teams) || 0;
-    this.offseason_adds = Number(json.offseason_adds) || 0;
-    this.pick_trading = Number(json.pick_trading) || 0;
-    this.playoff_round_type = Number(json.playoff_round_type) || 0;
-    this.playoff_seed_type = Number(json.playoff_seed_type) || 0;
-    this.playoff_teams = Number(json.playoff_teams) || 0;
-    this.playoff_type = Number(json.playoff_type) || 0;
-    this.playoff_week_start = Number(json.playoff_week_start) || 0;
-    this.reserve_allow_cov = Number(json.reserve_allow_cov) || 0;
-    this.reserve_allow_dnr = Number(json.reserve_allow_dnr) || 0;
-    this.reserve_allow_doubtful = Number(json.reserve_allow_doubtful) || 0;
-    this.reserve_allow_na = Number(json.reserve_allow_na) || 0;
-    this.reserve_allow_out = Number(json.reserve_allow_out) || 0;
-    this.reserve_allow_sus = Number(json.reserve_allow_sus) || 0;
-    this.reserve_slots = Number(json.reserve_slots) || 0;
-    this.start_week = Number(json.start_week) || 0;
-    this.taxi_allow_vets = Number(json.taxi_allow_vets) || 0;
-    this.taxi_deadline = Number(json.taxi_deadline) || 0;
-    this.taxi_slots = Number(json.taxi_slots) || 0;
-    this.taxi_years = Number(json.taxi_years) || 0;
-    this.trade_deadline = Number(json.trade_deadline) || 0;
-    this.trade_review_days = Number(json.trade_review_days) || 0;
-    this.type = Number(json.type) || 0;
-    this.veto_auto_poll = Number(json.veto_auto_poll) || 0;
-    this.veto_show_votes = Number(json.veto_show_votes) || 0;
-    this.veto_votes_needed = Number(json.veto_votes_needed) || 0;
-    this.waiver_bid_min = Number(json.waiver_bid_min) || 0;
-    this.waiver_budget = Number(json.waiver_budget) || 0;
-    this.waiver_clear_days = Number(json.waiver_clear_days) || 0;
-    this.waiver_day_of_week = Number(json.waiver_day_of_week) || 0;
-    this.waiver_type = Number(json.waiver_type) || 0;
+    this.bench_lock = json.bench_lock ? Number(json.bench_lock) : 0;
+    this.best_ball = json.best_ball ? Number(json.best_ball) : 0;
+    this.capacity_override = json.capacity_override
+      ? Number(json.capacity_override)
+      : 0;
+    this.commissioner_direct_invite = json.commissioner_direct_invite
+      ? Number(json.commissioner_direct_invite)
+      : 0;
+    this.daily_waivers = json.daily_waivers ? Number(json.daily_waivers) : 0;
+    this.daily_waivers_days = json.daily_waivers_days
+      ? Number(json.daily_waivers_days)
+      : 0;
+    this.daily_waivers_hour = json.daily_waivers_hour
+      ? Number(json.daily_waivers_hour)
+      : 0;
+    this.daily_waivers_last_ran = json.daily_waivers_last_ran
+      ? Number(json.daily_waivers_last_ran)
+      : 0;
+    this.disable_adds = json.disable_adds ? Number(json.disable_adds) : 0;
+    this.disable_trades = json.disable_trades ? Number(json.disable_trades) : 0;
+    this.divisions = json.divisions ? Number(json.divisions) : 0;
+    this.draft_rounds = json.draft_rounds ? Number(json.draft_rounds) : 0;
+    this.last_report = json.last_report ? Number(json.last_report) : 0;
+    this.last_scored_leg = json.last_scored_leg
+      ? Number(json.last_scored_leg)
+      : 0;
+    this.league_average_match = json.league_average_match
+      ? Number(json.league_average_match)
+      : 0;
+    this.leg = json.leg ? Number(json.leg) : 0;
+    this.max_keepers = json.max_keepers ? Number(json.max_keepers) : 0;
+    this.num_teams = json.num_teams ? Number(json.num_teams) : 0;
+    this.offseason_adds = json.offseason_adds ? Number(json.offseason_adds) : 0;
+    this.pick_trading = json.pick_trading ? Number(json.pick_trading) : 0;
+    this.playoff_round_type = json.playoff_round_type
+      ? Number(json.playoff_round_type)
+      : 0;
+    this.playoff_seed_type = json.playoff_seed_type
+      ? Number(json.playoff_seed_type)
+      : 0;
+    this.playoff_teams = json.playoff_teams ? Number(json.playoff_teams) : 0;
+    this.playoff_type = json.playoff_type ? Number(json.playoff_type) : 0;
+    this.playoff_week_start = json.playoff_week_start
+      ? Number(json.playoff_week_start)
+      : 0;
+    this.reserve_allow_cov = json.reserve_allow_cov
+      ? Number(json.reserve_allow_cov)
+      : 0;
+    this.reserve_allow_dnr = json.reserve_allow_dnr
+      ? Number(json.reserve_allow_dnr)
+      : 0;
+    this.reserve_allow_doubtful = json.reserve_allow_doubtful
+      ? Number(json.reserve_allow_doubtful)
+      : 0;
+    this.reserve_allow_na = json.reserve_allow_na
+      ? Number(json.reserve_allow_na)
+      : 0;
+    this.reserve_allow_out = json.reserve_allow_out
+      ? Number(json.reserve_allow_out)
+      : 0;
+    this.reserve_allow_sus = json.reserve_allow_sus
+      ? Number(json.reserve_allow_sus)
+      : 0;
+    this.reserve_slots = json.reserve_slots ? Number(json.reserve_slots) : 0;
+    this.start_week = json.start_week ? Number(json.start_week) : 0;
+    this.taxi_allow_vets = json.taxi_allow_vets
+      ? Number(json.taxi_allow_vets)
+      : 0;
+    this.taxi_deadline = json.taxi_deadline ? Number(json.taxi_deadline) : 0;
+    this.taxi_slots = json.taxi_slots ? Number(json.taxi_slots) : 0;
+    this.taxi_years = json.taxi_years ? Number(json.taxi_years) : 0;
+    this.trade_deadline = json.trade_deadline ? Number(json.trade_deadline) : 0;
+    this.trade_review_days = json.trade_review_days
+      ? Number(json.trade_review_days)
+      : 0;
+    this.type = json.type ? Number(json.type) : 0;
+    this.veto_auto_poll = json.veto_auto_poll ? Number(json.veto_auto_poll) : 0;
+    this.veto_show_votes = json.veto_show_votes
+      ? Number(json.veto_show_votes)
+      : 0;
+    this.veto_votes_needed = json.veto_votes_needed
+      ? Number(json.veto_votes_needed)
+      : 0;
+    this.waiver_bid_min = json.waiver_bid_min ? Number(json.waiver_bid_min) : 0;
+    this.waiver_budget = json.waiver_budget ? Number(json.waiver_budget) : 0;
+    this.waiver_clear_days = json.waiver_clear_days
+      ? Number(json.waiver_clear_days)
+      : 0;
+    this.waiver_day_of_week = json.waiver_day_of_week
+      ? Number(json.waiver_day_of_week)
+      : 0;
+    this.waiver_type = json.waiver_type ? Number(json.waiver_type) : 0;
   }
 }

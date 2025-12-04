@@ -1,3 +1,4 @@
+import { getAllLeagues, getLeagueByLeagueId } from "./LeagueService";
 import {
   getAllMatchups,
   getMatchupByRosterId,
@@ -18,9 +19,11 @@ import {
 import { getAllUsers, getUserByUserId } from "./UserService";
 
 export {
+  getAllLeagues,
   getAllMatchups,
   getAllRosters,
   getAllUsers,
+  getLeagueByLeagueId,
   getMatchupByRosterId,
   getMatchupByUserId,
   getMatchupsByMatchupId,

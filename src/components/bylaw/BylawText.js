@@ -1,7 +1,7 @@
 export default function BylawText({ text }) {
   return (
-    <p className="leading-5 indent-8 sm:indent-24 max-w-[860px] text-left">
+    <div className="w-full leading-[1.3rem] indent-8 sm:indent-20 max-w-[860px] text-left">
       {text}
-    </p>
+    </div>
   );
 }

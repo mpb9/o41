@@ -21,6 +21,8 @@ export default function fetchPlayerState(playerId = "") {
     status: pj.status || "Active",
   };
 
+  return playerState; // ! temp
+
   // if (playerState.age ==) return playerDataJson;
   // ...
 

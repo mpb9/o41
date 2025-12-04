@@ -85,6 +85,23 @@
     color: #e7e5e4;
   }
   sup {
-    font-style: italic;
+    font-size: 78%;
+  }
+
+  /* MARK: Bylaws */
+  #bylaws p + p,
+  #bylaws li + li {
+    margin-top: 0.5rem;
+  }
+
+  #bylaws ul li.list-item::marker {
+    /* font-weight: 900; */
+  }
+
+  #bylaws a {
+    color: #1e3a8a;
+  }
+  #bylaws a:hover {
+    text-decoration: underline;
   }
 }
