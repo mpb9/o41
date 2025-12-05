@@ -37,6 +37,8 @@ export const POSITIONS = {
 export const DOCUMENTS = {
   punishments:
     "https://docs.google.com/spreadsheets/d/1NXQt9zkc82ljSSKEJcQZk9BWn8u9CoSpjK0HdojTXhQ/edit?usp=sharing",
+  locker_room_guy:
+    "https://docs.google.com/document/d/10FduZwbcmfX3dedjUVTDcdZrOu0kQKoMX6C7iMBgsSc/edit?usp=sharing",
 };
 
 export const DIVISIONS = {

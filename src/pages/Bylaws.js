@@ -27,7 +27,8 @@ export default function Bylaws() {
           }
         />
 
-        {/* DYNASTY */}
+        {/* MARK: DYNASTY
+         */}
         <BylawArticleHeading number="I" title="DYNASTY" />
         <BylawSubsectionHeading number="1" title="Primordial Delimitations" />
         <BylawText
@@ -94,7 +95,8 @@ export default function Bylaws() {
           }
         />
 
-        {/* OWNERS */}
+        {/* MARK: OWNERS
+         */}
         <BylawArticleHeading number="II" title="OWNERS" />
         <BylawSubsectionHeading number="1" title="Founding Members" />
         <BylawText
@@ -136,7 +138,8 @@ export default function Bylaws() {
           }
         />
 
-        {/* SEASONS */}
+        {/* MARK: SEASONS
+         */}
         <BylawArticleHeading number="III" title="SEASONS" />
         <BylawSubsectionHeading number="1" title="Regular" />
         <BylawText
@@ -162,19 +165,42 @@ export default function Bylaws() {
         />
         <BylawSubsectionHeading number="5" title="Free Agency" />
 
-        {/* ROSTERS */}
+        {/* MARK: ROSTERS
+         */}
         <BylawArticleHeading number="IV" title="ROSTERS" />
         <BylawSubsectionHeading number="1" title="Positions" />
-
-        {/* SCORING */}
+        <BylawSubsectionHeading
+          number={
+            <a
+              href={DOCUMENTS.locker_room_guy}
+              target="_blank"
+              rel="noreferrer"
+            >
+              2
+            </a>
+          }
+          title={
+            <a
+              href={DOCUMENTS.locker_room_guy}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Locker Room Guy
+            </a>
+          }
+        />
+        {/* MARK: SCORING
+         */}
         <BylawArticleHeading number="V" title="SCORING" />
 
-        {/* DRAFTS */}
+        {/* MARK: DRAFTS
+         */}
         <BylawArticleHeading number="VI" title="DRAFTS" />
         <BylawSubsectionHeading number="1" title="Rookie Draft" />
         <BylawSubsectionHeading number="2" title="Dynasty Draft" />
 
-        {/* THE WHEEL™ */}
+        {/* MARK: THE WHEEL™
+         */}
         <BylawArticleHeading
           number="VII"
           title={
@@ -249,7 +275,8 @@ export default function Bylaws() {
           }
         />
 
-        {/* FOOTNOTES */}
+        {/* MARK: FOOTNOTES
+         */}
         <div className="w-full mt-6 mb-12 max-w-[800px]">
           <hr className="mb-8 border-stone-950" />
           <div className="ml-3 text-[0.925rem] italic leading-4">
