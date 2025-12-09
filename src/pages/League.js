@@ -1,6 +1,9 @@
 import { Header } from "../components/_helper";
 
-export default function League() {
+export default function League({ leagues, rosters, users }) {
+  console.log(leagues[0]);
+  console.log(rosters[0]);
+  console.log(users[0]);
   return (
     <div className="relative w-full min-h-screen bg-rad">
       <Header active_route="league" />
@@ -24,9 +27,6 @@ export default function League() {
           <h1 className="flex items-center justify-center mt-6 text-5xl font-black">
             ORDER 41
           </h1>
-
-          {/* ORDER 41 */}
-          {/* MATCHUP PREVIEWS */}
           {/* LEAGUE DETAILS */}
         </div>
       </div>

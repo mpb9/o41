@@ -34,6 +34,7 @@ function App() {
   const [error, setError] = useState(null);
 
   // MARK: useEffect([])
+  // info: leagues, users, roster, nflState
   useEffect(() => {
     async function getLeagues() {
       try {
@@ -41,7 +42,6 @@ function App() {
         if (!updatedLeagues) throw new Error("No leagues data available.");
         setLeagues(updatedLeagues);
         setError(null);
-        //console.log(updatedLeagues); //! temp
       } catch (err) {
         console.error("App: Error fetching leagues.");
         setError(err.message);
@@ -92,6 +92,7 @@ function App() {
   }, []);
 
   // MARK: useEffect([nflState])
+  // info: matchups, lastUpdated
   useEffect(() => {
     async function getMatchups() {
       try {
@@ -145,7 +146,12 @@ function App() {
     <div className="min-h-screen bg-stone-800">
       <BrowserRouter>
         <Routes>
-          <Route path="/league" element={<League />} />
+          <Route
+            path="/league"
+            element={
+              <League leagues={leagues} rosters={rosters} users={users} />
+            }
+          />
           <Route
             path="/teams"
             element={<Teams users={users} rosters={rosters} />}
