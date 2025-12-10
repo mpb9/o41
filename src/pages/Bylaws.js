@@ -13,7 +13,7 @@ export default function Bylaws() {
       <Header active_route="bylaws" />
       <div
         id="bylaws"
-        className="flex flex-col items-center px-6 overflow-scroll sm:px-24 md:px-36 h-full-header font-[electro] text-stone-900"
+        className="flex flex-col items-center px-6 overflow-scroll sm:px-24 md:px-36 h-full-header font-[electro] text-dark"
       >
         <TypographyTitle
           text={
@@ -168,7 +168,53 @@ export default function Bylaws() {
         {/* MARK: ROSTERS
          */}
         <BylawArticleHeading number="IV" title="ROSTERS" />
-        <BylawSubsectionHeading number="1" title="Positions" />
+        <BylawSubsectionHeading number="1" title="Starters" />
+        <BylawText
+          text={
+            <p>
+              Each week, teams participating in a matchup <i>must</i> start two
+              (2) quarterbacks, four (4) running backs, four (4) wide recievers,
+              two (2) tight ends, two (2) flexs (RB, WR, or TE), one (1)
+              superflex (QB, RB, WR, or TE), one (1) kicker, and one (1) defense
+              / special teams. Each starter must, beyond a reasonable doubt,
+              give said team the greatest chance of victory in the given week's
+              matchup.
+            </p>
+          }
+        />
+        <BylawSubsectionHeading number="2" title="Bench" />
+        <BylawText
+          text={
+            <p>
+              A team's bench consists of, at most, eighteen (18) players. One
+              (1) of which <i>must</i> be the designated{" "}
+              <a
+                href={DOCUMENTS.locker_room_guy}
+                target="_blank"
+                rel="noreferrer"
+              >
+                locker room guy
+              </a>
+              .
+            </p>
+          }
+        />
+        <BylawSubsectionHeading number="3" title="Injured Reserve" />
+        <BylawText
+          text={
+            <p>
+              The injured reserve (IR) consists of, at most, four (4) players.
+              Players on the IR <i>must</i> hold the injury status of{" "}
+              <b className="text-red-600">OUT</b>,{" "}
+              <b className="text-red-600">PUP</b>, or{" "}
+              <b className="text-red-600">IR</b> to be placed on IR. Players
+              currently on IR that no longer hold these injury statuses{" "}
+              <i>must</i> be removed from the IR prior to the start of their
+              next game.
+            </p>
+          }
+        />
+        <BylawSubsectionHeading number="4" title="Taxi" />
         <BylawSubsectionHeading
           number={
             <a
@@ -176,7 +222,7 @@ export default function Bylaws() {
               target="_blank"
               rel="noreferrer"
             >
-              2
+              5
             </a>
           }
           title={

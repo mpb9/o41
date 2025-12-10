@@ -2,7 +2,7 @@ import { HYPERLINK } from "../../../utils/leagueInfo";
 import { HeaderMobileDropdownMenu } from "../../_helper";
 export default function HeaderMobile({ active_route }) {
   return (
-    <div className="flex sm:hidden items-center justify-center w-full text-center bg-stone-950 h-[3.25rem] border-b-2 border-b-stone-600">
+    <div className="flex sm:hidden items-center justify-center w-full text-center bg-dark h-[3.25rem] border-b border-b-secondary">
       <div className="flex items-center">
         <a
           href={HYPERLINK.drive}

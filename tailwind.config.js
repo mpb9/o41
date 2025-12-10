@@ -5,6 +5,11 @@ module.exports = {
     extend: {
       colors: {
         primary: "#AED998",
+        secondary: "#57534E", // stone-600
+        dark: "#0C0A09", // stone-950
+        light: "#E7E5E4", // stone-200
+        "rad-outer": "#292524", // stone-800"
+        "rad-inner": "#444",
       },
       backgroundImage: {
         "sleeper-green": "url('/public/img/sleeper-green.png')",
@@ -13,11 +18,15 @@ module.exports = {
         "order-41": "url('/public/img/logo-secondary.png')",
 
         // info: (DIAMETER at X Y, colorCenter, colorEdge)
-        rad: "radial-gradient(circle 70vh at 50% 50vh, #444, transparent);",
+        rad: "radial-gradient(circle 70vh at 50% 50vh, #44403c, transparent);",
         "rad-red":
           "radial-gradient(circle 70vh at 50% 85vh, #A71504AA, transparent);",
         "rad-white":
           "radial-gradient(circle 70vh at 50% 50vh, #e7e3dd, #d0d0d099);",
+        "rad-black":
+          "radial-gradient(circle 80vh at 50% 50vh, #44403c, #0e1000);",
+        "rad-blue":
+          "radial-gradient(circle 80vh at 50% 50vh, #301e22, #030819);",
       },
       animation: {
         "not-found": "5s notFound",

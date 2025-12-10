@@ -1,4 +1,8 @@
-import { getAllLeagues, getLeagueByLeagueId } from "./LeagueService";
+import {
+  getAllLeagues,
+  getLeagueByLeagueId,
+  getLeagueBySeason,
+} from "./LeagueService";
 import {
   getAllMatchups,
   getMatchupByRosterId,
@@ -14,16 +18,24 @@ import {
 import {
   getAllRosters,
   getRosterByUserId,
+  getRostersByDivisionId,
   getRostersByMatchupId,
 } from "./RosterService";
-import { getAllUsers, getUserByUserId } from "./UserService";
+import {
+  getAllUsers,
+  getAllUsersByRosters,
+  getUserByRosterId,
+  getUserByUserId,
+} from "./UserService";
 
 export {
   getAllLeagues,
   getAllMatchups,
   getAllRosters,
   getAllUsers,
+  getAllUsersByRosters,
   getLeagueByLeagueId,
+  getLeagueBySeason,
   getMatchupByRosterId,
   getMatchupByUserId,
   getMatchupsByMatchupId,
@@ -32,6 +44,8 @@ export {
   getPlayersByLineupStatus,
   getPlayersByRosterAndMatchup,
   getRosterByUserId,
+  getRostersByDivisionId,
   getRostersByMatchupId,
+  getUserByRosterId,
   getUserByUserId,
 };

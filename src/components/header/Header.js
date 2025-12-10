@@ -16,13 +16,13 @@ export default function Header({ last_updated, active_route }) {
   }
 
   return (
-    <div className="flex items-center justify-center w-full text-center bg-stone-950 h-[3.25rem] sm:h-[3.5rem] px-2 sm:px-8 xl:px-8">
+    <div className="flex items-center justify-center w-full text-center bg-dark h-[3.25rem] sm:h-[3.5rem] px-2 sm:px-8 xl:px-8">
       <NavLink
         to="/"
         className={`${
           active_route === "matchups"
             ? HEADER_LINK_CLASSNAMES.DESKTOP.active
-            : "text-stone-200 hover:text-primary hover:font-bold text-5xl my-font-electro"
+            : "text-light hover:text-primary hover:font-bold text-5xl my-font-electro"
         } `}
       >
         ORDER 41

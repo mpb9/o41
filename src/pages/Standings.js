@@ -1,15 +1,42 @@
-import { Header, TypographyTitle } from "../components/_helper";
 import PropTypes from "prop-types";
+import {
+  Header,
+  StandingsDynasty,
+  StandingsLeague,
+  StandingsSeason,
+} from "../components/_helper";
 
 Standings.propTypes = {
-  users: PropTypes.array.isRequired,
+  leagues: PropTypes.arrayOf(PropTypes.object).isRequired,
+  rosters: PropTypes.arrayOf(PropTypes.object).isRequired,
+  users: PropTypes.arrayOf(PropTypes.object).isRequired,
+  nfl_state: PropTypes.object.isRequired,
 };
-export default function Standings({ users }) {
+export default function Standings({ leagues, rosters, users, nfl_state }) {
   return (
-    <div className="relative w-full min-h-screen bg-rad">
+    <div className="relative w-full min-h-screen bg-rad-black">
       <Header active_route="standings" />
-      <div className="flex flex-col items-center justify-start w-full overflow-scroll h-full-header">
-        <TypographyTitle text="STANDINGS" />
+      <div className="w-full pb-20 overflow-y-scroll h-full-header">
+        <StandingsSeason
+          leagues={leagues}
+          rosters={rosters}
+          users={users}
+          nfl_state={nfl_state}
+        />
+        <div className="w-full h-1 my-4"></div>
+        <StandingsDynasty
+          leagues={leagues}
+          rosters={rosters}
+          users={users}
+          nfl_state={nfl_state}
+        />
+        <div className="w-full h-1 my-4"></div>
+        <StandingsLeague
+          leagues={leagues}
+          rosters={rosters}
+          users={users}
+          nfl_state={nfl_state}
+        />
       </div>
     </div>
   );

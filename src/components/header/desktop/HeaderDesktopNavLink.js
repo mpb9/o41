@@ -5,7 +5,7 @@ export default function HeaderDesktopNavLink({ to, active_route, label }) {
     return (
       <NavLink
         to={to}
-        className={`${HEADER_LINK_CLASSNAMES.DESKTOP.active} text-lg sm:text-xl mx-2 sm:mx-3`}
+        className={`${HEADER_LINK_CLASSNAMES.DESKTOP.active} text-lg sm:text-xl mx-1.5 md:mx-2 lg:mx-3 xl:mx-4`}
       >
         {label}
       </NavLink>
@@ -18,7 +18,7 @@ export default function HeaderDesktopNavLink({ to, active_route, label }) {
         active_route === to.replace("/", "")
           ? HEADER_LINK_CLASSNAMES.DESKTOP.active
           : HEADER_LINK_CLASSNAMES.DESKTOP.inactive
-      } text-lg sm:text-xl mx-2 sm:mx-3`}
+      } text-lg sm:text-lg md:text-xl mx-1.5 md:mx-2 lg:mx-3 xl:mx-4`}
     >
       {label}
     </NavLink>

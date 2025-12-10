@@ -18,8 +18,8 @@ export default function HeaderMobileDropdownMenu({ active_route }) {
 
       {showDropdown ? (
         <>
-          <div className="absolute top-[3.25rem] left-0 w-full h-[calc(100vh-3.25rem)] bg-[#aed99866]"></div>
-          <div className="absolute left-[28vw] w-[44vw] flex flex-col items-center justify-center border-4 top-[3.125rem] pt-3 pb-5 bg-stone-950 border-stone-600 border-t-stone-950 rounded-b-lg">
+          <div className="absolute z-10 top-[3.25rem] left-0 w-full h-[calc(100vh-3.25rem)] bg-[#aed99866]"></div>
+          <div className="absolute z-10 left-[28vw] w-[44vw] flex flex-col items-center justify-center border-4 top-[3.125rem] pt-3 pb-5 bg-dark border-secondary border-t-dark rounded-b-lg">
             <HeaderMobileNavLink
               to="/league"
               active_route={active_route}

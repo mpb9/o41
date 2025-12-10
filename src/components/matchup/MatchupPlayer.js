@@ -19,7 +19,7 @@ export default function MatchupPlayer(props) {
   return (
     <div
       key={props.player.player_id}
-      className="flex bg-stone-700 items-center overflow-hidden justify-center w-full border-b-0 border-t-1 sm:text-[0.85rem] lg:text-base border-2 border-stone-600"
+      className="flex bg-stone-700 items-center overflow-hidden justify-center w-full border-b-0 border-t-1 sm:text-[0.85rem] lg:text-base border-2 border-secondary"
     >
       <div className="flex items-baseline flex-1 overflow-hidden text-left text-stone-100 whitespace-nowrap">
         <span

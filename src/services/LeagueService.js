@@ -29,3 +29,10 @@ export async function getLeagueByLeagueId(league_id = LEAGUE_ID) {
     return null;
   }
 }
+
+export function getLeagueBySeason(leagues = [], target_season = 0) {
+  const league = leagues.find(({ season }) => {
+    return season === target_season;
+  });
+  return league;
+}

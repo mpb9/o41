@@ -25,7 +25,8 @@ export const API__SLEEPER = {
     `${API_URL__SLEEPER}league/${LEAGUE_ID}/matchups/${week}`,
   nfl_state: `${API_URL__SLEEPER}state/nfl`,
   players: `${API_URL__SLEEPER}players/nfl`,
-  rosters: `${API_URL__SLEEPER}league/${LEAGUE_ID}/rosters`,
+  rosters: (league_id = LEAGUE_ID) =>
+    `${API_URL__SLEEPER}league/${league_id}/rosters`,
   traded_picks: `${API_URL__SLEEPER}league/${LEAGUE_ID}/traded_picks`,
   transactions: (week = "") =>
     `${API_URL__SLEEPER}league/${LEAGUE_ID}/transactions/${week}`,

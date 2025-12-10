@@ -7,7 +7,7 @@ Teams.propTypes = {
 };
 export default function Teams({ rosters, users }) {
   return (
-    <div className="relative w-full min-h-screen bg-rad">
+    <div className="relative w-full min-h-screen bg-rad-black">
       <Header active_route="teams" />
       <div className="flex flex-col items-center justify-start w-full overflow-scroll h-full-header">
         <TypographyTitle text="TEAMS" />

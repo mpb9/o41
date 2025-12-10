@@ -7,12 +7,11 @@ import {
 import { MatchupTeam } from "../_helper";
 
 Matchup.propTypes = {
-  matchups: PropTypes.array.isRequired,
-  rosters: PropTypes.array.isRequired,
-  users: PropTypes.array.isRequired,
+  matchups: PropTypes.arrayOf(PropTypes.object).isRequired,
+  rosters: PropTypes.arrayOf(PropTypes.object).isRequired,
+  users: PropTypes.arrayOf(PropTypes.object).isRequired,
   current_matchup: PropTypes.number.isRequired,
 };
-
 export default function Matchup({ matchups, rosters, users, current_matchup }) {
   return (
     <>

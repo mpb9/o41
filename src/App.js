@@ -6,6 +6,7 @@ import {
   GenerateData,
   InactiveLeague,
   League,
+  Loading,
   Matchups,
   NotFound,
   Standings,
@@ -20,8 +21,8 @@ import {
 import { IS_LEAGUE_ACTIVE } from "./utils/leagueInfo";
 
 const RELOAD_INTERVAL_MS = {
-  matchups: 15000,
-  nfl_state: 60000,
+  matchups: 10000,
+  nfl_state: 30000,
 };
 
 function App() {
@@ -123,13 +124,7 @@ function App() {
     matchups === null ||
     nflState === null
   ) {
-    return (
-      <div className="flex items-center justify-center w-full min-h-screen bg-stone-800">
-        <div className="flex items-center justify-center w-full text-3xl h-full-header text-primary">
-          loading...
-        </div>
-      </div>
-    );
+    return <Loading />;
   }
 
   // MARK: ERROR
@@ -143,13 +138,18 @@ function App() {
 
   // MARK: BASE
   return (
-    <div className="min-h-screen bg-stone-800">
+    <div className="min-h-screen bg-rad-outer">
       <BrowserRouter>
         <Routes>
           <Route
             path="/league"
             element={
-              <League leagues={leagues} rosters={rosters} users={users} />
+              <League
+                leagues={leagues}
+                rosters={rosters}
+                users={users}
+                nfl_state={nflState}
+              />
             }
           />
           <Route
@@ -168,7 +168,17 @@ function App() {
               />
             }
           />
-          <Route path="/standings" element={<Standings users={users} />} />
+          <Route
+            path="/standings"
+            element={
+              <Standings
+                leagues={leagues}
+                rosters={rosters}
+                users={users}
+                nfl_state={nflState}
+              />
+            }
+          />
           <Route path="/bylaws" element={<Bylaws />} />
           <Route path="/generate" element={<GenerateData />} />
           <Route path="/*" element={<NotFound />} />

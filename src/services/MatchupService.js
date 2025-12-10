@@ -8,7 +8,7 @@ export async function getAllMatchups(nfl_state = null) {
     const nflState = nfl_state === null ? await fetchNflState() : nfl_state;
     if (!nflState) throw new Error("NFL state data is unavailable.");
 
-    if (nflState.season_type !== "regular") {
+    if (nflState.status !== "in_season") {
       const playoffMatchups = await getAllPlayoffMatchups(nflState);
       if (!playoffMatchups)
         throw new Error("Playoff matchup data is unavailable.");
@@ -33,7 +33,7 @@ export async function getAllPlayoffMatchups(nfl_state = null) {
     let playoffRound = null;
     PLAYOFF_SCHEDULE.forEach((round) => {
       if (
-        round.season === nfl_state.season &&
+        round.season === Number(nfl_state.season) &&
         round.week === nfl_state.display_week
       ) {
         playoffRound = round;
@@ -58,7 +58,6 @@ export async function getAllPlayoffMatchups(nfl_state = null) {
         });
       }
     });
-
     return sleeperMatchups;
   } catch (error) {
     console.error("getAllPlayoffMatchups:", error.message);

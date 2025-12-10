@@ -7,9 +7,16 @@ import Header from "./header/Header";
 import HeaderMobile from "./header/mobile/HeaderMobile";
 import HeaderMobileDropdownMenu from "./header/mobile/HeaderMobileDropdownMenu";
 import HeaderMobileNavLink from "./header/mobile/HeaderMobileNavLink";
+import LeagueSidebar from "./league/LeagueSidebar";
 import Matchup from "./matchup/Matchup";
 import MatchupPlayer from "./matchup/MatchupPlayer";
 import MatchupTeam from "./matchup/MatchupTeam";
+import StandingsDynasty from "./standings/StandingsDynasty";
+import StandingsLeague from "./standings/StandingsLeague";
+import StandingsSeason from "./standings/StandingsSeason";
+import StandingsSelector from "./standings/StandingsSelector";
+import StandingsTableHeader from "./standings/StandingsTableHeader";
+import StandingsTableTitle from "./standings/StandingsTableTitle";
 import TypographyTitle from "./typography/TypographyTitle";
 
 export {
@@ -22,8 +29,15 @@ export {
   HeaderMobile,
   HeaderMobileDropdownMenu,
   HeaderMobileNavLink,
+  LeagueSidebar,
   Matchup,
   MatchupPlayer,
   MatchupTeam,
+  StandingsDynasty,
+  StandingsLeague,
+  StandingsSeason,
+  StandingsSelector,
+  StandingsTableHeader,
+  StandingsTableTitle,
   TypographyTitle,
 };
