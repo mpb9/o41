@@ -1,5 +1,4 @@
 import PropTypes from "prop-types";
-import { useState } from "react";
 
 StandingsSelector.propTypes = {
   options: PropTypes.arrayOf(PropTypes.any).isRequired,
@@ -12,10 +11,7 @@ export default function StandingsSelector({
   additional_text = "",
   onStandingsChange,
 }) {
-  const [active, setActive] = useState(options[0]);
-
   function handleChange(event) {
-    setActive(event.target.value);
     onStandingsChange(event.target.value);
   }
 

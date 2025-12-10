@@ -31,7 +31,7 @@ export default function Matchups({
       );
     });
     setPlayoffRound(updatedRound);
-  }, []);
+  }, [nfl_state]);
 
   function toggleMatchup() {
     if (matchups.find(({ matchup_id }) => matchup_id === currentMatchup + 1)) {

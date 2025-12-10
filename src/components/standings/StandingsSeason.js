@@ -60,7 +60,7 @@ export default function StandingsSeason({ leagues, rosters, users }) {
         getAllUsersByRosters(divisionRosters[1], users),
       ]);
     }
-  }, [divisionRosters]);
+  }, [divisionRosters, users]);
 
   useEffect(() => {
     async function getRostersByLeagueId(league_id = LEAGUE_ID) {

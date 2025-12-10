@@ -56,7 +56,7 @@ export default function StandingsLeague({
       ]);
     }
     getDivisionizedData();
-  }, []);
+  }, [rosters, users]);
 
   if (divisionRosters !== null && divisionUsers !== null) {
     return (

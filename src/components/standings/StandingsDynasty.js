@@ -27,7 +27,7 @@ export default function StandingsDynasty({
   const [activeDynasty, setActiveDynasty] = useState(
     DYNASTIES[DYNASTIES.length - 1]
   );
-  const [dynastyData, setDynastyData] = useState(null);
+  // const [dynastyData, setDynastyData] = useState(null);
   const headers = [
     <NavLink to="/teams" className="hover:underline">
       Team

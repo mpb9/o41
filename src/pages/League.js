@@ -19,10 +19,11 @@ export default function League({ leagues, rosters, users, nfl_state }) {
           nfl_state={nfl_state}
         />
         <div className="w-full bg-rad-black md:bg-rad-black border-secondary md:w-3/4 xl:w-4/5 2xl:w-5/6 text-primary">
-          <h1 className="flex items-center justify-center my-3 text-3xl md:text-4xl 2xl:text-5xl text-dark">
+          <h1 className="flex items-center justify-center my-5 text-3xl cursor-default md:text-4xl 2xl:text-5xl text-dark">
             {leagues[0].name}
           </h1>
-          {/* LEAGUE DETAILS */}
+          {/* LEAGUE PICTURE */}
+
           <StandingsSeason
             leagues={leagues}
             rosters={rosters}
