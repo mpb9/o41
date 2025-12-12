@@ -7,7 +7,7 @@ import {
   getAllUsersByRosters,
   getRostersByDivisionId,
 } from "../../services/_helper";
-import { TABLE_CLASSNAMES } from "../../utils/styles";
+import { TABLE_CLASSNAMES } from "../../styles";
 import { StandingsTableHeader, StandingsTableTitle } from "../_helper";
 
 StandingsLeague.propTypes = {

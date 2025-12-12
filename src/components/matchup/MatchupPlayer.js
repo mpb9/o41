@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import { Player } from "../../models/_helper";
 import { getPlayerPtsColor } from "../../services/_helper";
-import { POSITION_COLORS, PTS_COLORS } from "../../utils/styles";
+import { POSITION_COLORS, PTS_COLORS } from "../../styles";
 
 MatchupPlayer.propTypes = {
   player: PropTypes.instanceOf(Player).isRequired,

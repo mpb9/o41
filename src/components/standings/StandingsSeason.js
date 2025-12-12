@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { LEAGUE_ID } from "../../constants/leagueInfo";
 import { League, Roster, User } from "../../models/_helper";
 import { Loading } from "../../pages/_helper";
 import {
@@ -9,8 +10,7 @@ import {
   getLeagueBySeason,
   getRostersByDivisionId,
 } from "../../services/_helper";
-import { LEAGUE_ID } from "../../utils/leagueInfo";
-import { TABLE_CLASSNAMES } from "../../utils/styles";
+import { TABLE_CLASSNAMES } from "../../styles";
 import {
   StandingsSelector,
   StandingsTableHeader,

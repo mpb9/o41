@@ -2,8 +2,8 @@ import { ArrowFatRight } from "@phosphor-icons/react";
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import { Header, Matchup } from "../components/_helper";
+import { PLAYOFF_SCHEDULE } from "../constants/playoffInfo";
 import { Matchup as MatchupModel, Roster, User } from "../models/_helper";
-import { PLAYOFF_SCHEDULE } from "../utils/playoffInfo";
 
 Matchups.propTypes = {
   matchups: PropTypes.arrayOf(PropTypes.instanceOf(MatchupModel)).isRequired,
@@ -42,9 +42,9 @@ export default function Matchups({
   return (
     <div className="relative w-full min-h-screen bg-rad-black">
       <Header last_updated={last_updated} active_route="matchups" />
-      <div className="flex flex-col items-center justify-start w-full overflow-scroll h-full-header">
+      <div className="flex flex-col items-center justify-start w-full overflow-scroll h-full-header-mobile sm:h-full-header">
         <div className="w-[95%] px-4 h-full">
-          <div className="flex items-center justify-center w-full h-14 sm:h-20">
+          <div className="flex items-center justify-center w-full my-2 h-14 sm:h-20 sm:pt-0">
             <div className="hidden w-1/3 sm:block"></div>
             <h1 className="block w-1/2 text-2xl text-center cursor-default sm:text-2xl md:text-3xl sm:hidden text-light">
               {nfl_state.status === "in_season"
@@ -56,9 +56,9 @@ export default function Matchups({
                 ? `WEEK ${nfl_state.display_week}`
                 : `${playoffRound?.matchup_titles[currentMatchup - 1]}`}
             </h1>
-            <div className="flex items-center pt-[3px] justify-end w-1/3 h-full md:pr-14 text-primary">
+            <div className="flex items-center pt-0.5 justify-end w-1/3 h-full md:pr-14 text-primary">
               <button
-                className="flex items-center justify-center px-3 text-base sm:text-[1.3rem] rounded-lg h-[50%] bg-stone-900 hover:bg-primary hover:text-stone-900"
+                className="flex items-center justify-center px-3 text-base sm:text-[1.3rem] rounded-lg h-2/3 sm:h-1/2 bg-stone-900 hover:bg-primary hover:text-stone-900"
                 onClick={toggleMatchup}
               >
                 <span>NEXT</span>

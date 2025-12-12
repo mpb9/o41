@@ -1,6 +1,6 @@
 import { Player } from "../models/_helper";
-import PLAYER_DATA_JSON from "../utils/PlayerData_2025.json";
-import { PTS_COLORS } from "../utils/styles";
+import PLAYER_DATA_JSON from "../PlayerData_2025.json";
+import { PTS_COLORS } from "../styles";
 
 export function getPlayer(playerId, playerPts, starters, ir, taxi) {
   const sleeperPlayerJson = PLAYER_DATA_JSON[playerId] || null;

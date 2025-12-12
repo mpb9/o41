@@ -1,10 +1,10 @@
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { TOILET_BOWLS } from "../../constants/playoffInfo";
 import { League, Roster, User } from "../../models/_helper";
 import { Loading } from "../../pages/_helper";
 import { getUserByRosterId } from "../../services/_helper";
-import { TOILET_BOWLS } from "../../utils/playoffInfo";
 
 LeagueSidebar.propTypes = {
   leagues: PropTypes.arrayOf(PropTypes.instanceOf(League)).isRequired,

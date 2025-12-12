@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { HYPERLINK } from "../../../utils/leagueInfo";
+import { HYPERLINK } from "../../../constants/leagueInfo";
 import { HeaderDesktopNavLink } from "../../_helper";
 
 export default function HeaderDesktop({ last_updated, active_route }) {
@@ -52,7 +52,11 @@ export default function HeaderDesktop({ last_updated, active_route }) {
           rel="noreferrer"
           className="mx-1 transition-transform md:mx-1.5 sm:hover:scale-110"
         >
-          <img src="/img/sleeper-green.png" alt="Sleeper" width={34} />
+          <img
+            src="/img/companies/sleeper-green.png"
+            alt="Sleeper"
+            width={34}
+          />
         </a>
         <a
           href={HYPERLINK.drive}
@@ -61,7 +65,7 @@ export default function HeaderDesktop({ last_updated, active_route }) {
           className="mx-1.5 md:mx-2.5 transition-transform sm:hover:scale-110"
         >
           <img
-            src="/img/drive.png"
+            src="/img/companies/drive.png"
             alt="Google Drive"
             width={44}
             className="pt-[2px]"

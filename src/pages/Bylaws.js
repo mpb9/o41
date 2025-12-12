@@ -5,7 +5,7 @@ import {
   Header,
   TypographyTitle,
 } from "../components/_helper";
-import { DOCUMENTS } from "../utils/leagueInfo";
+import { DOCUMENTS } from "../constants/fileInfo";
 
 export default function Bylaws() {
   return (
@@ -13,7 +13,7 @@ export default function Bylaws() {
       <Header active_route="bylaws" />
       <div
         id="bylaws"
-        className="flex flex-col items-center px-6 overflow-scroll sm:px-24 md:px-36 h-full-header font-[electro] text-dark"
+        className="flex flex-col items-center px-6 overflow-scroll sm:px-24 md:px-36 h-full-header-mobile sm:h-full-header font-[electro] text-dark"
       >
         <TypographyTitle
           text={

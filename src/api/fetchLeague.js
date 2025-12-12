@@ -1,5 +1,5 @@
-import { API__SLEEPER } from "../utils/apiRoutes";
-import { LEAGUE_ID } from "../utils/leagueInfo";
+import { API__SLEEPER } from "../constants/apiRoutes";
+import { LEAGUE_ID } from "../constants/leagueInfo";
 
 export default async function fetchLeague(leagueId = LEAGUE_ID) {
   try {

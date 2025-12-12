@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { TABLE_CLASSNAMES } from "../../utils/styles";
+import { TABLE_CLASSNAMES } from "../../styles";
 
 StandingsTableHeader.propTypes = {
   headers: PropTypes.arrayOf(PropTypes.any).isRequired,

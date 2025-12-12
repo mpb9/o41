@@ -1,6 +1,6 @@
 import { fetchRosters } from "../api/_helper";
+import { LEAGUE_ID } from "../constants/leagueInfo";
 import { Roster } from "../models/_helper";
-import { LEAGUE_ID } from "../utils/leagueInfo";
 
 export async function getAllRosters(league_id = LEAGUE_ID) {
   try {

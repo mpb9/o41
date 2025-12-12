@@ -1,6 +1,6 @@
 import { fetchMatchups, fetchNflState } from "../api/_helper";
+import { PLAYOFF_SCHEDULE } from "../constants/playoffInfo";
 import { Matchup } from "../models/_helper";
-import { PLAYOFF_SCHEDULE } from "../utils/playoffInfo";
 import { getRosterByUserId } from "./_helper";
 
 export async function getAllMatchups(nfl_state = null) {

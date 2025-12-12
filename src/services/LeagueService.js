@@ -1,6 +1,6 @@
 import { fetchLeague } from "../api/_helper";
+import { LEAGUE_ID } from "../constants/leagueInfo";
 import { League } from "../models/_helper";
-import { LEAGUE_ID } from "../utils/leagueInfo";
 
 export async function getAllLeagues() {
   try {

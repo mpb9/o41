@@ -20,7 +20,7 @@ export default function StandingsSelector({
       <div className="relative inline-block mx-3 text-lg text-left md:text-xl 2xl:text-2xl">
         <select
           onChange={handleChange}
-          className="block w-full px-2 py-1 pr-10 leading-tight border-2 rounded-sm shadow appearance-none cursor-pointer text-dark bg-primary border-dark hover:bg-transparent active:bg-primary focus:outline-none focus:shadow-outline"
+          className="block w-full py-1 pl-3 pr-10 leading-tight border-2 shadow-md appearance-none cursor-pointer shadow-dark rounded-xl text-dark bg-primary border-dark hover:bg-transparent active:bg-primary focus:outline-none focus:shadow-outline"
         >
           {options.map((option, index) => (
             <option value={option} key={index}>

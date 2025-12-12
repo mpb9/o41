@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { HEADER_LINK_CLASSNAMES } from "../../utils/styles";
+import { HEADER_LINK_CLASSNAMES } from "../../styles";
 import { HeaderDesktop, HeaderMobile } from "../_helper";
 
 export default function Header({ last_updated, active_route }) {

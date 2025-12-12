@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { fetchNflState } from "./api/_helper";
+import { IS_LEAGUE_ACTIVE } from "./constants/leagueInfo";
 import {
   Bylaws,
   GenerateData,
@@ -18,7 +19,6 @@ import {
   getAllRosters,
   getAllUsers,
 } from "./services/_helper";
-import { IS_LEAGUE_ACTIVE } from "./utils/leagueInfo";
 
 const RELOAD_INTERVAL_MS = {
   matchups: 10000,

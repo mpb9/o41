@@ -1,4 +1,4 @@
-import { API__SLEEPER } from "../utils/apiRoutes";
+import { API__SLEEPER } from "../constants/apiRoutes";
 
 export default async function fetchUsers() {
   try {

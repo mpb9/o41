@@ -1,4 +1,4 @@
-import { HYPERLINK } from "../../../utils/leagueInfo";
+import { HYPERLINK } from "../../../constants/leagueInfo";
 import { HeaderMobileDropdownMenu } from "../../_helper";
 export default function HeaderMobile({ active_route }) {
   return (
@@ -11,7 +11,7 @@ export default function HeaderMobile({ active_route }) {
           className="transition-transform"
         >
           <img
-            src="/img/drive.png"
+            src="/img/companies/drive.png"
             alt="Google Drive"
             width={34}
             className="pt-[2px]"
@@ -24,7 +24,11 @@ export default function HeaderMobile({ active_route }) {
           rel="noreferrer"
           className="transition-transform"
         >
-          <img src="/img/sleeper-green.png" alt="Sleeper" width={28} />
+          <img
+            src="/img/companies/sleeper-green.png"
+            alt="Sleeper"
+            width={28}
+          />
         </a>
       </div>
     </div>

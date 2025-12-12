@@ -12,15 +12,16 @@ module.exports = {
         "rad-inner": "#444",
       },
       backgroundImage: {
-        "sleeper-green": "url('/public/img/sleeper-green.png')",
-        drive: "url('/public/img/drive.png')",
-        "drive-black": "url('/public/img/drive-black.png')",
+        "sleeper-green": "url('/public/img/companies/sleeper-green.png')",
+        drive: "url('/public/img/companies/drive.png')",
         "order-41": "url('/public/img/logo-secondary.png')",
 
         // info: (DIAMETER at X Y, colorCenter, colorEdge)
         rad: "radial-gradient(circle 70vh at 50% 50vh, #44403c, transparent);",
         "rad-red":
           "radial-gradient(circle 70vh at 50% 85vh, #A71504AA, transparent);",
+        "rad-orange":
+          "radial-gradient(circle 70vh at 50% 85vh, #e37235, #1d0505);",
         "rad-white":
           "radial-gradient(circle 70vh at 50% 50vh, #e7e3dd, #d0d0d099);",
         "rad-black":
@@ -33,6 +34,7 @@ module.exports = {
       },
       height: {
         "full-header": "calc(100vh - 3.5rem)",
+        "full-header-mobile": "calc(100vh - 3.25rem)",
       },
       borderWidth: {
         1: "1px",

@@ -16,7 +16,7 @@ export default function Standings({ leagues, rosters, users, nfl_state }) {
   return (
     <div className="relative w-full min-h-screen bg-rad-black">
       <Header active_route="standings" />
-      <div className="w-full pb-20 overflow-y-scroll h-full-header">
+      <div className="w-full pt-2 pb-20 overflow-y-scroll h-full-header-mobile sm:h-full-header">
         <StandingsSeason
           leagues={leagues}
           rosters={rosters}

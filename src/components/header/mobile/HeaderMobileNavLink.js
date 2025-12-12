@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { HEADER_LINK_CLASSNAMES } from "../../../utils/styles";
+import { HEADER_LINK_CLASSNAMES } from "../../../styles";
 export default function HeaderMobileNavLink({ to, active_route, label }) {
   if (to === "/" && active_route === "matchups") {
     return (

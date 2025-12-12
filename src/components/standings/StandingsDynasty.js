@@ -1,11 +1,11 @@
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { DYNASTIES } from "../../constants/leagueInfo";
 import { League, Roster, User } from "../../models/_helper";
 import { Loading } from "../../pages/_helper";
 import {} from "../../services/_helper";
-import { DYNASTIES } from "../../utils/leagueInfo";
-import { TABLE_CLASSNAMES } from "../../utils/styles";
+import { TABLE_CLASSNAMES } from "../../styles";
 import {
   StandingsSelector,
   StandingsTableHeader,
