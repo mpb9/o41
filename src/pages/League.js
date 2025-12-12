@@ -37,22 +37,27 @@ export default function League({ leagues, rosters, users, nfl_state }) {
           <div className="fixed bottom-0 w-full md:w-3/4 xl:w-4/5 2xl:w-5/6">
             <div className="flex items-end justify-between w-full">
               <img
+                alt=""
                 className="hidden object-left h-32 drop-shadow-2xl opacity-90 lg:h-40 xl:h-48 md:block"
                 src={`${IMAGES.DIRS.owner_group}/manion-pech.png`}
               />
               <img
+                alt=""
                 className="hidden object-left pl-8 -mb-8 xl:-mb-9 h-36 opacity-90 drop-shadow-2xl lg:h-52 xl:h-44 xl:block"
                 src={`${IMAGES.DIRS.owner("beebe")}/full-body2.png`}
               />
               <img
+                alt=""
                 className="hidden object-left h-32 -mb-1 drop-shadow-2xl opacity-90 lg:h-40 xl:h-32 md:block"
                 src={`${IMAGES.DIRS.owner_group}/heads-milan.png`}
               />
               <img
+                alt=""
                 className="hidden object-left pr-8 -mb-8 drop-shadow-2xl opacity-90 xl:-mb-9 h-36 lg:h-52 xl:h-44 xl:block"
                 src={`${IMAGES.DIRS.owner("whalen")}/full-body.png`}
               />
               <img
+                alt=""
                 className="hidden object-right h-32 drop-shadow-2xl opacity-90 lg:h-40 xl:h-48 md:block"
                 src={`${IMAGES.DIRS.owner_group}/ruff-edel.png`}
               />

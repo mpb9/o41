@@ -17,12 +17,14 @@ export default function Teams({ rosters, users }) {
         {/* BACKGROUND IMAGES */}
         <div className="flex items-end sm:items-start justify-center w-full pl-10 mt-0 sm:pt-24 md:pt-2 sm:pl-10 lg:pt-4 lg:pl-20 xl:pl-0 xl:pt-1 lg:w-[85%] 2xl:pl-0 2xl:pt-0 xl:w-full overflow-clip h-full">
           <img
+            alt=""
             className="h-3/4 sm:h-full lg:h-[150%] xl:h-[175%] 2xl:h-auto overflow-clip grayscale-[40%] opacity-80 sm:opacity-70 drop-shadow-2xl"
             src={`${IMAGES.DIRS.owner("beebe")}/full-body.png`}
           />
         </div>
         <div className="fixed bottom-0 w-full">
           <img
+            alt=""
             className="opacity-95 drop-shadow-2xl"
             src={`${IMAGES.DIRS.owner_group}/table-milan.png`}
           />
