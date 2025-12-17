@@ -35,7 +35,7 @@ export default function MatchupTeam({
       setIr(getPlayersByLineupStatus(updatedPlayers, "ir"));
     }
     getPlayers();
-  }, []);
+  }, [matchup, roster]);
 
   function onBenchVisibilityChange(updatedShowBench) {
     setShowBench(updatedShowBench);

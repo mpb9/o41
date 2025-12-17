@@ -1,4 +1,4 @@
-import { Eye, EyeClosed, EyeSlash } from "@phosphor-icons/react";
+import { Eye, EyeClosed } from "@phosphor-icons/react";
 import PropTypes from "prop-types";
 import { TW_COLORS } from "../../styles";
 
