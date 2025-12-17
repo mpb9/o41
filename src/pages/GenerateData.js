@@ -1,7 +1,7 @@
 import { Header } from "../components/_helper";
 import PLAYER_DATA_JSON from "../PlayerData_2025.json";
 
-const keysToKeep = [
+const KEYS_TO_KEEP = [
   "player_id",
   "full_name",
   "first_name",
@@ -23,7 +23,7 @@ export default function GenerateData() {
       const player = PLAYER_DATA_JSON[playerId];
       filteredPlayers[playerId] = {};
 
-      keysToKeep.forEach((key) => {
+      KEYS_TO_KEEP.forEach((key) => {
         if (player[key] !== undefined) {
           filteredPlayers[playerId][key] = player[key];
         }

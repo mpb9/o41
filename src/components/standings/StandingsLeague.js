@@ -7,7 +7,7 @@ import {
   getAllUsersByRosters,
   getRostersByDivisionId,
 } from "../../services/_helper";
-import { TABLE_CLASSNAMES } from "../../styles";
+import { TABLE_CSS_CLASSES } from "../../styles";
 import { StandingsTableHeader, StandingsTableTitle } from "../_helper";
 
 StandingsLeague.propTypes = {
@@ -68,15 +68,15 @@ export default function StandingsLeague({
               <StandingsTableHeader headers={headers} />
               <tbody>
                 <tr>
-                  <td className={TABLE_CLASSNAMES.td}>tbd</td>
-                  <td className={TABLE_CLASSNAMES.td}>tbd</td>
-                  <td className={TABLE_CLASSNAMES.td}>tbd</td>
-                  <td className={TABLE_CLASSNAMES.td}>tbd</td>
-                  <td className={TABLE_CLASSNAMES.td}>tbd</td>
-                  <td className={TABLE_CLASSNAMES.td}>tbd</td>
-                  <td className={TABLE_CLASSNAMES.td}>tbd</td>
-                  <td className={TABLE_CLASSNAMES.td}>tbd</td>
-                  <td className={TABLE_CLASSNAMES.td}>tbd</td>
+                  <td className={TABLE_CSS_CLASSES.td}>tbd</td>
+                  <td className={TABLE_CSS_CLASSES.td}>tbd</td>
+                  <td className={TABLE_CSS_CLASSES.td}>tbd</td>
+                  <td className={TABLE_CSS_CLASSES.td}>tbd</td>
+                  <td className={TABLE_CSS_CLASSES.td}>tbd</td>
+                  <td className={TABLE_CSS_CLASSES.td}>tbd</td>
+                  <td className={TABLE_CSS_CLASSES.td}>tbd</td>
+                  <td className={TABLE_CSS_CLASSES.td}>tbd</td>
+                  <td className={TABLE_CSS_CLASSES.td}>tbd</td>
                 </tr>
               </tbody>
             </table>

@@ -18,11 +18,14 @@ export const PLAYOFF_SCHEDULE = [
   {
     season: 2025,
     week: 16,
-    matchup_titles: ["ROUND 2", "ROUND 2", "TOILET BOWL"],
+    matchup_titles: ["SEMI-FINAL", "SEMI-FINAL", "TOILET BOWL"],
     matchups: [
       { roster_id: 2, matchup_id: 1, owner: OWNERS.WHALEN },
+      { roster_id: 4, matchup_id: 1, owner: OWNERS.EDEL },
       { roster_id: 1, matchup_id: 2, owner: OWNERS.BEEBE },
-      { roster_id: 3, matchup_id: 3, owner: OWNERS.RUFF },
+      { roster_id: 6, matchup_id: 2, owner: OWNERS.MANION },
+      { roster_id: 5, matchup_id: 3, owner: OWNERS.RUFF },
+      { roster_id: 3, matchup_id: 3, owner: OWNERS.PECHULONIS },
     ],
     byes: [],
   },

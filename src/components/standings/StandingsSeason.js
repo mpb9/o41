@@ -10,7 +10,7 @@ import {
   getLeagueBySeason,
   getRostersByDivisionId,
 } from "../../services/_helper";
-import { TABLE_CLASSNAMES } from "../../styles";
+import { TABLE_CSS_CLASSES } from "../../styles";
 import {
   StandingsSelector,
   StandingsTableHeader,
@@ -93,31 +93,31 @@ export default function StandingsSeason({ leagues, rosters, users }) {
         </div>
 
         <StandingsTableTitle title={`${leagues[0].metadata.division_2}`} />
-        <div className={TABLE_CLASSNAMES.flex_container}>
-          <div className={TABLE_CLASSNAMES.scroll_container}>
-            <table className={TABLE_CLASSNAMES.table}>
+        <div className={TABLE_CSS_CLASSES.flex_container}>
+          <div className={TABLE_CSS_CLASSES.scroll_container}>
+            <table className={TABLE_CSS_CLASSES.table}>
               <StandingsTableHeader headers={headers} />
               <tbody>
                 {divisionRosters[1].map((roster, index) => (
                   <tr key={roster.user_id}>
-                    <td className={TABLE_CLASSNAMES.td}>
+                    <td className={TABLE_CSS_CLASSES.td}>
                       {divisionUsers[1][index].team_name}
                     </td>
-                    <td className={TABLE_CLASSNAMES.td}>
+                    <td className={TABLE_CSS_CLASSES.td}>
                       {roster.record.wins}
                     </td>
-                    <td className={TABLE_CLASSNAMES.td}>
+                    <td className={TABLE_CSS_CLASSES.td}>
                       {roster.record.losses}
                     </td>
-                    <td className={TABLE_CLASSNAMES.td}>{roster.pts.fpts}</td>
-                    <td className={TABLE_CLASSNAMES.td}>{roster.pts.ppts}</td>
-                    <td className={TABLE_CLASSNAMES.td}>
+                    <td className={TABLE_CSS_CLASSES.td}>{roster.pts.fpts}</td>
+                    <td className={TABLE_CSS_CLASSES.td}>{roster.pts.ppts}</td>
+                    <td className={TABLE_CSS_CLASSES.td}>
                       {roster.pts.fpts_against}
                     </td>
-                    <td className={TABLE_CLASSNAMES.td}>
+                    <td className={TABLE_CSS_CLASSES.td}>
                       {roster.record.streak}
                     </td>
-                    <td className={TABLE_CLASSNAMES.td}>
+                    <td className={TABLE_CSS_CLASSES.td}>
                       ${100 - roster.waiver_budget_used}
                     </td>
                   </tr>
@@ -127,31 +127,31 @@ export default function StandingsSeason({ leagues, rosters, users }) {
           </div>
         </div>
         <StandingsTableTitle title={leagues[0].metadata.division_1} />
-        <div className={TABLE_CLASSNAMES.flex_container}>
-          <div className={TABLE_CLASSNAMES.scroll_container}>
-            <table className={TABLE_CLASSNAMES.table}>
+        <div className={TABLE_CSS_CLASSES.flex_container}>
+          <div className={TABLE_CSS_CLASSES.scroll_container}>
+            <table className={TABLE_CSS_CLASSES.table}>
               <StandingsTableHeader headers={headers} />
               <tbody>
                 {divisionRosters[0].map((roster, index) => (
                   <tr key={roster.user_id}>
-                    <td className={TABLE_CLASSNAMES.td}>
+                    <td className={TABLE_CSS_CLASSES.td}>
                       {divisionUsers[0][index].team_name}
                     </td>
-                    <td className={TABLE_CLASSNAMES.td}>
+                    <td className={TABLE_CSS_CLASSES.td}>
                       {roster.record.wins}
                     </td>
-                    <td className={TABLE_CLASSNAMES.td}>
+                    <td className={TABLE_CSS_CLASSES.td}>
                       {roster.record.losses}
                     </td>
-                    <td className={TABLE_CLASSNAMES.td}>{roster.pts.fpts}</td>
-                    <td className={TABLE_CLASSNAMES.td}>{roster.pts.ppts}</td>
-                    <td className={TABLE_CLASSNAMES.td}>
+                    <td className={TABLE_CSS_CLASSES.td}>{roster.pts.fpts}</td>
+                    <td className={TABLE_CSS_CLASSES.td}>{roster.pts.ppts}</td>
+                    <td className={TABLE_CSS_CLASSES.td}>
                       {roster.pts.fpts_against}
                     </td>
-                    <td className={TABLE_CLASSNAMES.td}>
+                    <td className={TABLE_CSS_CLASSES.td}>
                       {roster.record.streak}
                     </td>
-                    <td className={TABLE_CLASSNAMES.td}>
+                    <td className={TABLE_CSS_CLASSES.td}>
                       ${100 - roster.waiver_budget_used}
                     </td>
                   </tr>

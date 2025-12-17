@@ -5,7 +5,7 @@ import { DYNASTIES } from "../../constants/leagueInfo";
 import { League, Roster, User } from "../../models/_helper";
 import { Loading } from "../../pages/_helper";
 import {} from "../../services/_helper";
-import { TABLE_CLASSNAMES } from "../../styles";
+import { TABLE_CSS_CLASSES } from "../../styles";
 import {
   StandingsSelector,
   StandingsTableHeader,
@@ -68,20 +68,20 @@ export default function StandingsDynasty({
               : activeDynasty.season_end - 2000
           }`}
         />
-        <div className={TABLE_CLASSNAMES.flex_container}>
-          <div className={TABLE_CLASSNAMES.scroll_container}>
-            <table className={TABLE_CLASSNAMES.table}>
+        <div className={TABLE_CSS_CLASSES.flex_container}>
+          <div className={TABLE_CSS_CLASSES.scroll_container}>
+            <table className={TABLE_CSS_CLASSES.table}>
               <StandingsTableHeader headers={headers} />
               <tbody>
                 <tr>
-                  <td className={TABLE_CLASSNAMES.td}>tbd</td>
-                  <td className={TABLE_CLASSNAMES.td}>tbd</td>
-                  <td className={TABLE_CLASSNAMES.td}>tbd</td>
-                  <td className={TABLE_CLASSNAMES.td}>tbd</td>
-                  <td className={TABLE_CLASSNAMES.td}>tbd</td>
-                  <td className={TABLE_CLASSNAMES.td}>tbd</td>
-                  <td className={TABLE_CLASSNAMES.td}>tbd</td>
-                  <td className={TABLE_CLASSNAMES.td}>tbd</td>
+                  <td className={TABLE_CSS_CLASSES.td}>tbd</td>
+                  <td className={TABLE_CSS_CLASSES.td}>tbd</td>
+                  <td className={TABLE_CSS_CLASSES.td}>tbd</td>
+                  <td className={TABLE_CSS_CLASSES.td}>tbd</td>
+                  <td className={TABLE_CSS_CLASSES.td}>tbd</td>
+                  <td className={TABLE_CSS_CLASSES.td}>tbd</td>
+                  <td className={TABLE_CSS_CLASSES.td}>tbd</td>
+                  <td className={TABLE_CSS_CLASSES.td}>tbd</td>
                 </tr>
                 {/* {dynastyData.map((team, index) => (
                   <></>
@@ -89,19 +89,19 @@ export default function StandingsDynasty({
                     <td className="text-sm sm:text-base px-1.5 sm:px-2.5 xl:px-4 py-1 bg-dark border sm:border-2 border-secondary text-center whitespace-nowrap text-light">
                       1
                     </td>
-                    <td className={TABLE_CLASSNAMES.td}>{team.record.wins}</td>
-                    <td className={TABLE_CLASSNAMES.td}>
+                    <td className={TABLE_CSS_CLASSES.td}>{team.record.wins}</td>
+                    <td className={TABLE_CSS_CLASSES.td}>
                       {team.record.losses}
                     </td>
-                    <td className={TABLE_CLASSNAMES.td}>
+                    <td className={TABLE_CSS_CLASSES.td}>
                       {team.record.streak}
                     </td>
-                    <td className={TABLE_CLASSNAMES.td}>{team.pts.fpts}</td>
-                    <td className={TABLE_CLASSNAMES.td}>{team.pts.ppts}</td>
-                    <td className={TABLE_CLASSNAMES.td}>
+                    <td className={TABLE_CSS_CLASSES.td}>{team.pts.fpts}</td>
+                    <td className={TABLE_CSS_CLASSES.td}>{team.pts.ppts}</td>
+                    <td className={TABLE_CSS_CLASSES.td}>
                       {team.pts.fpts_against}
                     </td>
-                    <td className={TABLE_CLASSNAMES.td}>
+                    <td className={TABLE_CSS_CLASSES.td}>
                       ${100 - team.waiver_budget_used}
                     </td>
                   </tr>

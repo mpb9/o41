@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { TABLE_CLASSNAMES } from "../../styles";
+import { TABLE_CSS_CLASSES } from "../../styles";
 
 StandingsTableHeader.propTypes = {
   headers: PropTypes.arrayOf(PropTypes.any).isRequired,
@@ -10,7 +10,7 @@ export default function StandingsTableHeader({ headers }) {
     <thead>
       <tr>
         {headers.map((header, index) => (
-          <th key={index} className={TABLE_CLASSNAMES.th}>
+          <th key={index} className={TABLE_CSS_CLASSES.th}>
             {header}
           </th>
         ))}

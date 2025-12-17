@@ -40,25 +40,20 @@ export default function Matchups({
   }
 
   return (
-    <div className="relative w-full min-h-screen bg-rad-black">
+    <div className="relative bg-rad-black w-full min-h-screen">
       <Header last_updated={last_updated} active_route="matchups" />
-      <div className="flex flex-col items-center justify-start w-full overflow-scroll h-full-header-mobile sm:h-full-header">
-        <div className="w-[95%] px-4 h-full">
-          <div className="flex items-center justify-center w-full my-2 h-14 sm:h-20 sm:pt-0">
-            <div className="hidden w-1/3 sm:block"></div>
-            <h1 className="block w-1/2 text-2xl text-center cursor-default sm:text-2xl md:text-3xl sm:hidden text-light">
+      <div className="flex flex-col justify-start items-center w-full h-full-header-mobile sm:h-full-header overflow-scroll">
+        <div className="px-4 w-[95%] h-full">
+          <div className="flex justify-center items-center my-2.5 w-full h-14 sm:h-20">
+            <div className="hidden sm:block w-1/3"></div>
+            <h1 className="w-1/2 sm:w-1/3 text-light text-xl sm:text-2xl md:text-3xl text-center cursor-default">
               {nfl_state.status === "in_season"
                 ? `WEEK ${nfl_state.display_week}`
                 : `${playoffRound?.matchup_titles[currentMatchup - 1]}`}
             </h1>
-            <h1 className="hidden w-1/3 text-3xl text-center cursor-default sm:text-2xl md:text-3xl sm:block text-light">
-              {nfl_state.status === "in_season"
-                ? `WEEK ${nfl_state.display_week}`
-                : `${playoffRound?.matchup_titles[currentMatchup - 1]}`}
-            </h1>
-            <div className="flex items-center pt-0.5 justify-end w-1/3 h-full md:pr-14 text-primary">
+            <div className="flex justify-end items-center pt-0.5 md:pr-14 w-1/3 h-full text-primary">
               <button
-                className="flex items-center justify-center px-3 text-base sm:text-[1.3rem] rounded-lg h-2/3 sm:h-1/2 bg-stone-900 hover:bg-primary hover:text-stone-900"
+                className="flex justify-center items-center bg-stone-800 sm:hover:bg-primary px-3 rounded-lg h-2/3 sm:h-1/2 sm:hover:text-stone-900 sm:text-[1.3rem] text-base"
                 onClick={toggleMatchup}
               >
                 <span>NEXT</span>

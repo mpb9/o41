@@ -130,15 +130,15 @@ function App() {
   // MARK: ERROR
   if (error) {
     return (
-      <div className="flex items-center justify-center w-full min-h-screen bg-stone-800">
-        <span className="text-lg font-bold text-red-600">{`Error: ${error}`}</span>
+      <div className="flex justify-center items-center bg-stone-800 w-full min-h-screen">
+        <span className="font-bold text-red-600 text-lg">{`Error: ${error}`}</span>
       </div>
     );
   }
 
   // MARK: BASE
   return (
-    <div className="min-h-screen bg-rad-outer">
+    <div className="bg-rad-outer min-h-screen">
       <BrowserRouter>
         <Routes>
           <Route

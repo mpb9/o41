@@ -17,7 +17,7 @@ import StandingsSeason from "./standings/StandingsSeason";
 import StandingsSelector from "./standings/StandingsSelector";
 import StandingsTableHeader from "./standings/StandingsTableHeader";
 import StandingsTableTitle from "./standings/StandingsTableTitle";
-import TypographyTitle from "./typography/TypographyTitle";
+import TeamBenchVisibilityBtn from "./team/TeamBenchVisibilityBtn";
 
 export {
   BylawArticleHeading,
@@ -39,5 +39,5 @@ export {
   StandingsSelector,
   StandingsTableHeader,
   StandingsTableTitle,
-  TypographyTitle,
+  TeamBenchVisibilityBtn,
 };

@@ -11,8 +11,8 @@ export default function StandingsSelector({
   additional_text = "",
   onStandingsChange,
 }) {
-  function handleChange(event) {
-    onStandingsChange(event.target.value);
+  function handleChange(e) {
+    onStandingsChange(e.target.value);
   }
 
   return (

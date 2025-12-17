@@ -1,18 +1,23 @@
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import { Matchup, Roster, User } from "../../models/_helper";
+import { Loading } from "../../pages/_helper";
 import {
   getPlayersByLineupStatus,
   getPlayersByRosterAndMatchup,
 } from "../../services/_helper";
-import { MatchupPlayer } from "../_helper";
+import { MatchupPlayer, TeamBenchVisibilityBtn } from "../_helper";
 
 MatchupTeam.propTypes = {
   user: PropTypes.instanceOf(User).isRequired,
   roster: PropTypes.instanceOf(Roster).isRequired,
   matchup: PropTypes.instanceOf(Matchup).isRequired,
 };
-export default function MatchupTeam(props) {
+export default function MatchupTeam({
+  user = null,
+  roster = null,
+  matchup = null,
+}) {
   const [showBench, setShowBench] = useState(false);
   const [players, setPlayers] = useState(null);
   const [starters, setStarters] = useState([]);
@@ -22,10 +27,7 @@ export default function MatchupTeam(props) {
 
   useEffect(() => {
     function getPlayers() {
-      const updatedPlayers = getPlayersByRosterAndMatchup(
-        props.roster,
-        props.matchup
-      );
+      const updatedPlayers = getPlayersByRosterAndMatchup(roster, matchup);
       setPlayers(updatedPlayers);
       setStarters(getPlayersByLineupStatus(updatedPlayers, "starter"));
       setBench(getPlayersByLineupStatus(updatedPlayers, "bench"));
@@ -33,71 +35,76 @@ export default function MatchupTeam(props) {
       setIr(getPlayersByLineupStatus(updatedPlayers, "ir"));
     }
     getPlayers();
-  }, [props]);
+  }, []);
 
+  function onBenchVisibilityChange(updatedShowBench) {
+    setShowBench(updatedShowBench);
+  }
+
+  if (
+    user === null ||
+    roster === null ||
+    matchup === null ||
+    players === null
+  ) {
+    return <Loading />;
+  }
   return (
-    <div className="w-full h-full overflow-scroll text-center text-black cursor-default">
-      {/* NAME */}
-      <div className="flex flex-col items-center justify-center w-full px-2 py-3 h-[4.5rem] overflow-hidden border-2 rounded-t-lg border-secondary min-h-[4.5rem] bg-stone-900 lg:h-fill lg:min-h-0 lg:py-6">
-        <span className="text-base font-black leading-5 lg:text-lg text-stone-300">
-          {props.user.team_name}
+    <div className="w-full h-full text-black text-center cursor-default">
+      {/* TEAM NAME */}
+      <div className="flex flex-col justify-center items-center bg-stone-900 p-2 lg:py-3 pt-2.5 border-2 border-secondary rounded-t-lg w-full overflow-hidden">
+        <span className="font-black text-light text-base lg:text-lg leading-5">
+          {user.team_name}
         </span>
-        <span className="pt-1 text-sm italic text-stone-400 lg:pt-0">
-          {props.roster.record.wins}-{props.roster.record.losses}
-        </span>
-      </div>
-
-      {/* PTS */}
-      <div className="w-full py-1 bg-dark border-x-2 border-b-1 border-secondary">
-        <span className="text-lg font-bold text-primary">
-          {props.matchup.pts} pts
+        <span className="pt-1 lg:pt-0 text-stone-500 text-sm 2xl:text-base italic tracking-widest">
+          {roster.record.wins}-{roster.record.losses}
         </span>
       </div>
 
-      {players != null && starters.length > 0 ? (
-        <div className="w-full rounded-b-lg">
-          {/* STARTERS */}
-          {starters.map((player) => (
-            <MatchupPlayer key={player.player_id} player={player} />
-          ))}
+      {/* POINTS */}
+      <div className="bg-dark py-1 border-secondary border-x-2 border-b-1 w-full">
+        <span className="font-bold text-[1.075rem] text-primary">
+          {matchup.pts} pts
+        </span>
+      </div>
 
-          {/* BENCH */}
-          <div
-            className="flex items-center justify-center w-full transition-colors duration-300 border-2 border-b-0 cursor-pointer h-9 bg-stone-900 border-stone-600 hover:bg-stone-800 text-light hover:text-stone-500"
-            onClick={() => setShowBench(!showBench)}
-          >
-            <span className="tracking-[0.15rem]">BENCH</span>
-          </div>
-          {showBench ? (
-            <div className="bg-stone-400 sm:text-[0.85rem] lg:text-base text-base w-full border-b-1 border-secondary">
-              {bench.map((player) => (
-                <MatchupPlayer key={player.player_id} player={player} />
-              ))}
-              <div className="flex items-center justify-center w-full h-8 border-b-0 border-1 bg-stone-900 border-secondary text-light">
-                <span className="tracking-[0.15rem]">IR</span>
-              </div>
-              {/* IR */}
-              {ir.map((player) => (
-                <MatchupPlayer key={player.player_id} player={player} />
-              ))}
-              <div className="flex items-center justify-center w-full h-8 border-b-0 border-1 bg-stone-900 border-secondary text-light">
-                <span className="tracking-[0.15rem]">Taxi</span>
-              </div>
-              {/* TAXI */}
-              {taxi.map((player) => (
-                <MatchupPlayer key={player.player_id} player={player} />
-              ))}
+      <div className="w-full">
+        {/* STARTERS */}
+        {starters.map((player) => (
+          <MatchupPlayer key={player.player_id} player={player} />
+        ))}
+
+        {/* BENCH */}
+        <TeamBenchVisibilityBtn
+          show_bench={showBench}
+          onBenchVisibilityChange={onBenchVisibilityChange}
+        />
+        {showBench ? (
+          <div className="bg-secondary pb-0.5 border-secondary border-b-1 rounded-b w-full sm:text-[0.85rem] text-base lg:text-base">
+            {bench.map((player) => (
+              <MatchupPlayer key={player.player_id} player={player} />
+            ))}
+
+            {/* IR */}
+            <div className="flex justify-center items-center bg-stone-900 py-[0.3167rem] border-2 border-secondary border-b-1 w-full text-light">
+              <span className="tracking-[0.25rem]">IR</span>
             </div>
-          ) : (
-            <div className="w-full overflow-hidden border-t-2 border-secondary"></div>
-          )}
-        </div>
-      ) : (
-        // Loading
-        <div className="flex items-center justify-center w-full h-full bg-stone-700">
-          <span className="text-lg font-bold text-light">Loading...</span>
-        </div>
-      )}
+            {ir.map((player) => (
+              <MatchupPlayer key={player.player_id} player={player} />
+            ))}
+
+            {/* TAXI */}
+            <div className="flex justify-center items-center bg-stone-900 py-[0.3167rem] border-2 border-secondary border-b-1 w-full text-300 text-light">
+              <span className="tracking-[0.25rem]">TAXI</span>
+            </div>
+            {taxi.map((player) => (
+              <MatchupPlayer key={player.player_id} player={player} />
+            ))}
+          </div>
+        ) : (
+          <></>
+        )}
+      </div>
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { HEADER_LINK_CLASSNAMES } from "../../styles";
+import { HEADER_LINK_CSS_CLASSES } from "../../styles";
 import { HeaderDesktop, HeaderMobile } from "../_helper";
 
 export default function Header({ last_updated, active_route }) {
@@ -21,7 +21,7 @@ export default function Header({ last_updated, active_route }) {
         to="/"
         className={`${
           active_route === "matchups"
-            ? HEADER_LINK_CLASSNAMES.DESKTOP.active
+            ? HEADER_LINK_CSS_CLASSES.DESKTOP.active
             : "text-light hover:text-primary hover:font-bold text-5xl my-font-electro"
         } `}
       >

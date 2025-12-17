@@ -14,23 +14,23 @@ Standings.propTypes = {
 };
 export default function Standings({ leagues, rosters, users, nfl_state }) {
   return (
-    <div className="relative w-full min-h-screen bg-rad-black">
+    <div className="relative bg-rad-black w-full min-h-screen">
       <Header active_route="standings" />
-      <div className="w-full pt-2 pb-20 overflow-y-scroll h-full-header-mobile sm:h-full-header">
+      <div className="pt-2 pb-20 w-full h-full-header-mobile sm:h-full-header overflow-y-scroll">
         <StandingsSeason
           leagues={leagues}
           rosters={rosters}
           users={users}
           nfl_state={nfl_state}
         />
-        <div className="w-full h-1 my-4"></div>
+        <div className="my-4 w-full h-1"></div>
         <StandingsDynasty
           leagues={leagues}
           rosters={rosters}
           users={users}
           nfl_state={nfl_state}
         />
-        <div className="w-full h-1 my-4"></div>
+        <div className="my-4 w-full h-1"></div>
         <StandingsLeague
           leagues={leagues}
           rosters={rosters}

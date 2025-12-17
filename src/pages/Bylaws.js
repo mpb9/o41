@@ -3,7 +3,6 @@ import {
   BylawSubsectionHeading,
   BylawText,
   Header,
-  TypographyTitle,
 } from "../components/_helper";
 import { DOCUMENTS } from "../constants/fileInfo";
 
@@ -15,17 +14,15 @@ export default function Bylaws() {
         id="bylaws"
         className="flex flex-col items-center px-6 overflow-scroll sm:px-24 md:px-36 h-full-header-mobile sm:h-full-header font-[electro] text-dark"
       >
-        <TypographyTitle
-          text={
-            <>
-              BYLAWS
-              <br />
-              OF
-              <br />
-              "ORDER 41"
-            </>
-          }
-        />
+        <div className="flex justify-center mt-4 text-center cursor-default">
+          <h1 className="text-2xl md:text-3xl">
+            BYLAWS
+            <br />
+            OF
+            <br />
+            "ORDER 41"
+          </h1>
+        </div>
 
         {/* MARK: DYNASTY
          */}

@@ -19,7 +19,16 @@ export const PTS_COLORS = {
   NA: "#A7A19FC0",
 };
 
-export const HEADER_LINK_CLASSNAMES = {
+export const TW_COLORS = {
+  primary: "#AED998",
+  secondary: "#57534E", // stone-600
+  dark: "#0C0A09", // stone-950
+  light: "#E7E5E4", // stone-200
+  "rad-outer": "#292524", // stone-800"
+  "rad-inner": "#444",
+};
+
+export const HEADER_LINK_CSS_CLASSES = {
   DESKTOP: {
     active: "text-primary font-bold",
     inactive: "text-stone-200 hover:text-primary hover:font-bold",
@@ -30,7 +39,7 @@ export const HEADER_LINK_CLASSNAMES = {
   },
 };
 
-export const TABLE_CLASSNAMES = {
+export const TABLE_CSS_CLASSES = {
   flex_container: "flex justify-center w-full",
   scroll_container: "mx-2 overflow-x-auto no-scrollbar shadow-lg shadow-dark",
   table: "border border-collapse table-auto md:border-4 border-secondary",
