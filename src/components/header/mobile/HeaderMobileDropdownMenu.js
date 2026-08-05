@@ -5,7 +5,7 @@ export default function HeaderMobileDropdownMenu({ active_route }) {
   return (
     <>
       <button
-        className="mx-16 transition-transform brightness-110"
+        className="brightness-110 mx-16 transition-transform"
         onClick={() => setShowDropdown(!showDropdown)}
       >
         <img
@@ -18,12 +18,12 @@ export default function HeaderMobileDropdownMenu({ active_route }) {
 
       {showDropdown ? (
         <>
-          <div className="absolute z-10 top-[3.25rem] left-0 w-full h-[calc(100vh-3.25rem)] bg-[#aed99866]"></div>
-          <div className="absolute z-10 left-[28vw] w-[44vw] flex flex-col items-center justify-center border-4 top-[3.125rem] pt-3 pb-5 bg-dark border-secondary border-t-dark rounded-b-lg">
+          <div className="top-[3.25rem] left-0 z-10 absolute bg-[#aed99866] w-full h-[calc(100vh-3.25rem)]"></div>
+          <div className="top-[3.125rem] left-[28vw] z-10 absolute flex flex-col justify-center items-center bg-dark pt-3 pb-5 border-4 border-secondary border-t-dark rounded-b-lg w-[44vw]">
             <HeaderMobileNavLink
-              to="/league"
+              to="/dynasty"
               active_route={active_route}
-              label="LEAGUE"
+              label="DYNASTY"
             />
             <HeaderMobileNavLink
               to="/"

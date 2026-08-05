@@ -1,5 +1,5 @@
 import { Header } from "../components/_helper";
-import PLAYER_DATA_JSON from "../PlayerData_2025.json";
+import PLAYER_DATA_JSON from "../PlayerData_2026.json";
 
 const KEYS_TO_KEEP = [
   "player_id",
@@ -53,10 +53,10 @@ export default function GenerateData() {
 
   return (
     <div>
-      <Header activeRoute="GenerateData" />
-      <div className="w-full px-40 py-[30vh]">
+      <Header activeRoute="generate" />
+      <div className="px-40 py-[30vh] w-full">
         <div
-          className="p-4 text-3xl font-bold text-center border-8 cursor-pointer border-dark rounded-2xl hover:scale-105 hover:bg-stone-400 bg-[#AED998]"
+          className="bg-[#AED998] hover:bg-stone-400 p-4 border-8 border-dark rounded-2xl font-bold text-black text-3xl text-center hover:scale-105 cursor-pointer"
           onClick={() => filterPlayersData()}
         >
           generate data

@@ -1,14 +1,20 @@
-import { fetchMatchups, fetchNflState } from "../api/_helper";
+import { fetchMatchups } from "../api/_helper";
 import { PLAYOFF_SCHEDULE } from "../constants/playoffInfo";
 import { Matchup } from "../models/_helper";
-import { getRosterByUserId } from "./_helper";
+import { getNflState, getRosterByUserId } from "./_helper";
 
 export async function getAllMatchups(nfl_state = null) {
   try {
-    const nflState = nfl_state === null ? await fetchNflState() : nfl_state;
-    if (!nflState) throw new Error("NFL state data is unavailable.");
+    const nflState = nfl_state === null ? await getNflState() : nfl_state;
+    if (!nflState) throw new Error("No NFL State data is available.");
 
-    if (nflState.status !== "in_season") {
+    // info: Pre-Season (no matchups)
+    // ! might have to update this to check the league.status instead / also
+    if (nflState.season_type === "pre" && nflState.display_week === 0)
+      return [];
+
+    // info: Post-Season
+    if (nflState.season_type === "post") {
       const playoffMatchups = await getAllPlayoffMatchups(nflState);
       if (!playoffMatchups)
         throw new Error("Playoff matchup data is unavailable.");
@@ -24,10 +30,10 @@ export async function getAllMatchups(nfl_state = null) {
   }
 }
 
-// ! work in progress
+// ? work in progress (is it still?)
 export async function getAllPlayoffMatchups(nfl_state = null) {
   try {
-    const nflState = nfl_state === null ? await fetchNflState() : nfl_state;
+    const nflState = nfl_state === null ? await getNflState() : nfl_state;
     if (!nflState) throw new Error("NFL state data is unavailable.");
 
     let playoffRound = null;

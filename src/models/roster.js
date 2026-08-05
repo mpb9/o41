@@ -14,7 +14,7 @@ export default class Roster {
     losses: 0,
     ties: 0,
     results: "",
-    streak: "",
+    streak: "-",
   };
   ir = [];
   roster_id;
@@ -45,7 +45,10 @@ export default class Roster {
       losses: Number(json.settings?.losses) || 0,
       ties: Number(json.settings?.ties) || 0,
       results: String(json.metadata?.record) || "",
-      streak: String(json.metadata?.streak) || "",
+      streak:
+        json.metadata?.streak === undefined
+          ? "-"
+          : String(json.metadata?.streak),
     };
     this.ir = json.reserve || [];
     this.roster_id = Number(json.roster_id) || null;

@@ -1,13 +1,10 @@
-import { Header } from "../components/_helper";
-
 export default function InactiveLeague() {
   return (
-    <div className="min-h-screen bg-stone-800">
-      <Header activeRoute="Home" />
+    <div className="bg-stone-800 min-h-screen">
       <div className="p-36">
-        <div className="text-center text-yellow-50">
+        <div className="text-yellow-50 text-center">
           <h1 className="text-5xl">OFF-SEASON</h1>
-          <p className="pt-16 text-2xl text-red-500">
+          <p className="pt-16 text-red-500 text-2xl">
             (need to reactivate on Sleeper)
           </p>
           <p className="pt-4 text-2xl">come back later</p>

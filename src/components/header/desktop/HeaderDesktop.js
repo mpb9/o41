@@ -4,10 +4,10 @@ import { HeaderDesktopNavLink } from "../../_helper";
 
 export default function HeaderDesktop({ last_updated, active_route }) {
   return (
-    <div className="hidden sm:flex items-center justify-center w-full text-center bg-dark h-[3.25rem] sm:h-[3.5rem] px-2 sm:px-2 lg:px-8 xl:px-8 border-b-1 border-secondary">
+    <div className="hidden sm:flex justify-center items-center bg-dark px-2 sm:px-2 lg:px-8 xl:px-8 border-secondary border-b-1 w-full h-[3.25rem] sm:h-[3.5rem] text-center">
       {last_updated ? (
-        <div className="hidden w-1/4 text-left cursor-default lg:block">
-          <p className="text-xl md:text-xl my-font-terminess w-fit px-2 py-[4px] border-[1px] rounded-lg border-[#AED998] bg-stone-800 text-primary">
+        <div className="hidden lg:block w-1/4 text-left cursor-default">
+          <p className="bg-stone-800 px-2 py-[4px] border-[#AED998] border-[1px] rounded-lg w-fit my-font-terminess text-primary text-xl md:text-xl">
             {last_updated.toLocaleTimeString()}
           </p>
         </div>
@@ -16,11 +16,11 @@ export default function HeaderDesktop({ last_updated, active_route }) {
       )}
 
       {/* NAV LINKS */}
-      <div className="flex items-center justify-center w-5/6 h-full md:w-4/5 lg:w-1/2">
+      <div className="flex justify-center items-center w-5/6 md:w-4/5 lg:w-1/2 h-full">
         <HeaderDesktopNavLink
-          to="/league"
+          to="/dynasty"
           active_route={active_route}
-          label="LEAGUE"
+          label="DYNASTY"
         />
         <HeaderDesktopNavLink
           to="/"
@@ -45,12 +45,12 @@ export default function HeaderDesktop({ last_updated, active_route }) {
       </div>
 
       {/* ICONS */}
-      <div className="flex items-center justify-end w-1/6 h-full md:w-1/5 lg:w-1/4 lg:ml-6">
+      <div className="flex justify-end items-center lg:ml-6 w-1/6 md:w-1/5 lg:w-1/4 h-full">
         <a
           href={HYPERLINK.sleeper}
           target="_blank"
           rel="noreferrer"
-          className="mx-1 transition-transform md:mx-1.5 sm:hover:scale-110"
+          className="mx-1 md:mx-1.5 sm:hover:scale-110 transition-transform"
         >
           <img
             src="/img/companies/sleeper-green.png"
@@ -62,7 +62,7 @@ export default function HeaderDesktop({ last_updated, active_route }) {
           href={HYPERLINK.drive}
           target="_blank"
           rel="noreferrer"
-          className="mx-1.5 md:mx-2.5 transition-transform sm:hover:scale-110"
+          className="mx-1.5 md:mx-2.5 sm:hover:scale-110 transition-transform"
         >
           <img
             src="/img/companies/drive.png"
@@ -73,7 +73,7 @@ export default function HeaderDesktop({ last_updated, active_route }) {
         </a>
         <NavLink
           to="/"
-          className="mx-[5px] transition-transform md:mx-2 sm:hover:scale-110 brightness-110"
+          className="brightness-110 mx-[5px] md:mx-2 sm:hover:scale-110 transition-transform"
         >
           <img
             src="/img/logo-secondary.png"

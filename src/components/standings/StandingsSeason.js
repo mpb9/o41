@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import { LEAGUE_ID } from "../../constants/leagueInfo";
+import { LEAGUE_ID, SEASONS } from "../../constants/leagueInfo";
 import { League, Roster, User } from "../../models/_helper";
 import { Loading } from "../../pages/_helper";
 import {
@@ -84,9 +84,9 @@ export default function StandingsSeason({ leagues, rosters, users }) {
   if (divisionRosters !== null && divisionUsers !== null) {
     return (
       <>
-        <div className="flex items-center justify-center mt-4">
+        <div className="flex justify-center items-center mt-4">
           <StandingsSelector
-            options={[2025, 2024, 2023]}
+            options={SEASONS}
             additional_text=" SEASON"
             onStandingsChange={handleSeasonChange}
           />

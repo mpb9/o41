@@ -1,4 +1,4 @@
-import PLAYER_DATA_JSON from "../PlayerData_2025.json";
+import PLAYER_DATA_JSON from "../PlayerData_2026.json";
 
 export default function fetchPlayerState(playerId = "") {
   if (playerId.length === 0) return null;

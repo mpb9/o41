@@ -14,7 +14,7 @@ export async function getAllLeagues() {
     }
     return leagues;
   } catch (err) {
-    console.error("getLeagues:", err.message);
+    console.error("getAllLeagues:", err.message);
     return null;
   }
 }

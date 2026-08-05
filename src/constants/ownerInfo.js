@@ -38,7 +38,7 @@ export const OWNERS = {
     full_name: "drew pechulonis",
     first_name: "drew",
     last_name: "pechulonis",
-    city: "Atlanta, GA",
+    city: "St. Petersburg, FL",
     nfl_team: "Carolina Panthers",
     college: "South Carolina",
     dynasty_wins: [],

@@ -1,18 +1,18 @@
 import Bylaws from "./Bylaws";
+import Dynasty from "./Dynasty";
 import GenerateData from "./GenerateData";
-import InactiveLeague from "./InactiveLeague";
-import League from "./League";
-import Loading from "./Loading";
 import Matchups from "./Matchups";
 import NotFound from "./NotFound";
 import Standings from "./Standings";
+import InactiveLeague from "./static/InactiveLeague";
+import Loading from "./static/Loading";
 import Teams from "./Teams";
 
 export {
   Bylaws,
+  Dynasty,
   GenerateData,
   InactiveLeague,
-  League,
   Loading,
   Matchups,
   NotFound,

@@ -38,6 +38,11 @@ export const PLAYOFF_SCHEDULE = [
   },
   { season: 2025, matchup_titles: [], week: 18, matchups: [], byes: [] },
   { season: 2025, matchup_titles: [], week: 19, matchups: [], byes: [] },
+  { season: 2026, matchup_titles: [], week: 15, matchups: [], byes: [] },
+  { season: 2026, matchup_titles: [], week: 16, matchups: [], byes: [] },
+  { season: 2026, matchup_titles: [], week: 17, matchups: [], byes: [] },
+  { season: 2026, matchup_titles: [], week: 18, matchups: [], byes: [] },
+  { season: 2026, matchup_titles: [], week: 19, matchups: [], byes: [] },
 ];
 
 export const TOILET_BOWLS = [
@@ -50,5 +55,10 @@ export const TOILET_BOWLS = [
     season: 2024,
     owner: OWNERS.MANION,
     punishment: "24 Beers at a Bar",
+  },
+  {
+    season: 2025,
+    owner: OWNERS.PECHULONIS,
+    punishment: "???",
   },
 ];

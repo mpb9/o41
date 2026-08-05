@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { fetchNflState } from "./api/_helper";
 import { IS_LEAGUE_ACTIVE } from "./constants/leagueInfo";
 import {
   Bylaws,
+  Dynasty,
   GenerateData,
   InactiveLeague,
-  League,
   Loading,
   Matchups,
   NotFound,
@@ -18,14 +17,15 @@ import {
   getAllMatchups,
   getAllRosters,
   getAllUsers,
+  getNflState,
 } from "./services/_helper";
 
 const RELOAD_INTERVAL_MS = {
-  matchups: 10000,
+  matchups: 20000,
   nfl_state: 30000,
 };
 
-function App() {
+export default function App() {
   const [leagues, setLeagues] = useState(null);
   const [users, setUsers] = useState(null);
   const [rosters, setRosters] = useState(null);
@@ -72,9 +72,9 @@ function App() {
         setError(err.message);
       }
     }
-    async function getNflState() {
+    async function getState() {
       try {
-        const updatedNflState = await fetchNflState();
+        const updatedNflState = await getNflState();
         if (!updatedNflState) throw new Error("No NFL state data available.");
         setNflState(updatedNflState);
         setError(null);
@@ -86,25 +86,25 @@ function App() {
     getLeagues();
     getUsers();
     getRosters();
-    getNflState();
+    getState();
 
-    const timeout = setInterval(getNflState, RELOAD_INTERVAL_MS.nfl_state);
+    const timeout = setInterval(getState, RELOAD_INTERVAL_MS.nfl_state);
     return () => clearInterval(timeout);
   }, []);
 
   // MARK: useEffect([nflState])
-  // info: matchups, lastUpdated
   useEffect(() => {
     async function getMatchups() {
       try {
         const updatedMatchups = await getAllMatchups(nflState);
-        if (!updatedMatchups || updatedMatchups.length === 0)
-          throw new Error("No matchup data available.");
+        if (!updatedMatchups) {
+          throw new Error("Null response from getAllMatchups(nfl_state)");
+        }
         setMatchups(updatedMatchups);
         setLastUpdated(new Date());
         setError(null);
       } catch (err) {
-        console.error("App: Error fetching matchups.");
+        console.error("App: Error fetching matchups.", err.message);
         setError(err.message);
       }
     }
@@ -114,7 +114,9 @@ function App() {
   }, [nflState]);
 
   // MARK: INACTIVE
-  if (!IS_LEAGUE_ACTIVE) return <InactiveLeague />;
+  if (!IS_LEAGUE_ACTIVE) {
+    return <InactiveLeague />;
+  }
 
   // MARK: LOADING
   if (
@@ -142,9 +144,9 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route
-            path="/league"
+            path="/dynasty"
             element={
-              <League
+              <Dynasty
                 leagues={leagues}
                 rosters={rosters}
                 users={users}
@@ -187,5 +189,3 @@ function App() {
     </div>
   );
 }
-
-export default App;

@@ -9,6 +9,7 @@ import {
   getMatchupByUserId,
   getMatchupsByMatchupId,
 } from "./MatchupService";
+import { getNflState } from "./NflStateService";
 import {
   getPlayer,
   getPlayerPtsColor,
@@ -39,6 +40,7 @@ export {
   getMatchupByRosterId,
   getMatchupByUserId,
   getMatchupsByMatchupId,
+  getNflState,
   getPlayer,
   getPlayerPtsColor,
   getPlayersByLineupStatus,
