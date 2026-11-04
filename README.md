@@ -1,23 +1,26 @@
 # ORDER :four::one: - Fantasy Football
 
 - [order-41.com](https://order-41.com)
-- [Sleeper League](https://sleeper.com/leagues/1248116529610883072/team)
+  - [Sleeper League](https://sleeper.com/leagues/1248116529610883072/team)
+  - [Google Drive Folder](https://drive.google.com/drive/folders/1b8rxyCXi_al_9z5Wp39z8va5iE7OlB8h?usp=drive_link)
 - [Git Repository](https://github.com/mpb9/o41)
-- [Google Drive Folder](https://drive.google.com/drive/folders/1b8rxyCXi_al_9z5Wp39z8va5iE7OlB8h?usp=drive_link)
+  - [Project Notes (Obsidian)](https://github.com/mpb9/notes/blob/main/_DEV/PROJECTS/order-41.md)
 
 ## Code :robot:
 
-### Run Locally
+### [Run Locally](https://github.com/mpb9/notes/blob/main/_DEV/PROJECTS/order-41.md#run-locally)
 
 ```shell
 cd o41 && npm run start
 ```
 
-### Deployment
+### [Deployment](https://github.com/mpb9/notes/blob/main/_DEV/PROJECTS/order-41.md#deployment)
 
 ```shell
 cd o41 && npm run deploy
 ```
+
+### [Models](https://github.com/mpb9/notes/blob/main/_DEV/PROJECTS/order-41.md#models)
 
 ### APIs
 
