@@ -8,7 +8,7 @@ export default class Matchup {
     this.custom_pts = Number(json.custom_points) || 0.0;
     this.matchup_id = Number(json.matchup_id) || null;
     this.player_ids = [...json.players];
-    this.players_pts = { ...json.players_points };
+    this.player_pts = { ...json.players_points };
     this.pts = json.points ? Number(json.points) : 0.0;
     this.roster_id = Number(json.roster_id) || null;
     this.starters = json.starters || [];

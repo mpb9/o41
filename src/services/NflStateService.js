@@ -7,7 +7,7 @@ export async function getNflState() {
     if (!nflStateJson) throw new Error("No NFL State data available.");
     return new NflState(nflStateJson);
   } catch (error) {
-    console.log("getNflState:", error.message);
+    console.error("getNflState:", error.message);
     return null;
   }
 }

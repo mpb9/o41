@@ -22,7 +22,7 @@ export function getPlayersByRosterAndMatchup(roster, matchup) {
   const players = roster.player_ids.map((playerId) => {
     return getPlayer(
       playerId,
-      matchup.players_pts[playerId] || 0,
+      matchup.player_pts[playerId] || 0,
       matchup.starters,
       roster.ir,
       roster.taxi
