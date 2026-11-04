@@ -3,9 +3,15 @@ import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import { Header, Matchup } from "../components/_helper";
 import { PLAYOFF_SCHEDULE } from "../constants/playoffInfo";
-import { Matchup as MatchupModel, Roster, User } from "../models/_helper";
+import {
+  League,
+  Matchup as MatchupModel,
+  Roster,
+  User,
+} from "../models/_helper";
 
 Matchups.propTypes = {
+  leagues: PropTypes.arrayOf(PropTypes.instanceOf(League)).isRequired,
   matchups: PropTypes.arrayOf(PropTypes.instanceOf(MatchupModel)).isRequired,
   rosters: PropTypes.arrayOf(PropTypes.instanceOf(Roster)).isRequired,
   users: PropTypes.arrayOf(PropTypes.instanceOf(User)).isRequired,
@@ -13,6 +19,7 @@ Matchups.propTypes = {
   last_updated: PropTypes.instanceOf(Date).isRequired,
 };
 export default function Matchups({
+  leagues,
   matchups,
   rosters,
   users,
@@ -51,7 +58,7 @@ export default function Matchups({
             <div className="flex justify-center items-center my-2.5 w-full h-14 sm:h-20">
               <div className="hidden sm:block w-1/3"></div>
               <h1 className="w-1/2 sm:w-1/3 text-light text-xl sm:text-2xl md:text-3xl text-center cursor-default">
-                {nfl_state.status === "in_season"
+                {leagues[0].status === "in_season"
                   ? `WEEK ${nfl_state.display_week}`
                   : `${playoffRound?.matchup_titles[currentMatchup - 1]}`}
               </h1>

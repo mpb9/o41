@@ -162,6 +162,7 @@ export default function App() {
             path="/"
             element={
               <Matchups
+                leagues={leagues}
                 matchups={matchups}
                 rosters={rosters}
                 users={users}
