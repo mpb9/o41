@@ -1,5 +1,5 @@
 import { Header } from "../components/_helper";
-import PLAYER_DATA_JSON from "../PlayerData_2026.json";
+import PLAYER_DATA_JSON from "../data/PlayerData.json";
 
 const KEYS_TO_KEEP = [
   "player_id",

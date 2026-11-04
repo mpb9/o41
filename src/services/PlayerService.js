@@ -1,5 +1,5 @@
+import PLAYER_DATA_JSON from "../data/PlayerData.json";
 import { Player } from "../models/_helper";
-import PLAYER_DATA_JSON from "../PlayerData_2025.json";
 import { PTS_COLORS } from "../styles";
 
 export function getPlayer(playerId, playerPts, starters, ir, taxi) {
