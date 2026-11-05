@@ -64,7 +64,7 @@ export default function Matchups({
               </h1>
               <div className="flex justify-end items-center pt-0.5 md:pr-14 w-1/3 h-full text-primary">
                 <button
-                  className="flex justify-center items-center bg-stone-800 sm:hover:bg-primary px-3 rounded-lg h-2/3 sm:h-1/2 sm:hover:text-stone-900 sm:text-[1.3rem] text-base"
+                  className="flex justify-center items-center bg-stone-900 sm:hover:bg-primary px-3 border-2 border-secondary sm:hover:border-primary rounded-lg h-2/3 sm:h-1/2 sm:hover:text-stone-900 sm:text-[1.3rem] text-base"
                   onClick={toggleMatchup}
                 >
                   <span>NEXT</span>
