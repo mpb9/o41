@@ -61,20 +61,23 @@ export default function Player({ player, btn_type }) {
 
               <div className="flex justify-start space-x-2 px-2 lg:px-3 pt-0 lg:pt-1.5 overflow-hidden font-bold text-primary-accent text-xs lg:text-sm italic">
                 <a
-                  href={`https://www.espn.com/nfl/player/_/id/${player.espn_id}`}
                   className="underline"
+                  href={`https://www.espn.com/nfl/player/_/id/${player.espn_id}`}
+                  target="_blank"
                 >
                   ESPN
                 </a>
                 <a
                   className="underline"
                   href={`https://fantasydata.com/nfl/${player.first_name}-${player.last_name}-fantasy/${player.fantasy_data_id}`}
+                  target="_blank"
                 >
                   FANTASY_DATA
                 </a>
                 <a
                   className="underline"
                   href={`https://www.rotowire.com/football/player/${player.first_name}-${player.last_name}-${player.rotowire_id}`}
+                  target="_blank"
                 >
                   ROTOWIRE
                 </a>
