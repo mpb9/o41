@@ -55,7 +55,7 @@ export default function Matchups({
       <div className="flex flex-col justify-start items-center w-full h-full-header-mobile sm:h-full-header overflow-scroll">
         {matchupsExist ? (
           <div className="px-4 w-[95%] h-full">
-            <div className="flex justify-center items-center my-2.5 w-full h-14 sm:h-20">
+            <div className="flex justify-center items-center my-1.5 w-full h-14 sm:h-20">
               <div className="hidden sm:block w-1/3"></div>
               <h1 className="w-1/2 sm:w-1/3 text-light text-xl sm:text-2xl md:text-3xl text-center cursor-default">
                 {leagues[0].status === "in_season"
@@ -64,7 +64,7 @@ export default function Matchups({
               </h1>
               <div className="flex justify-end items-center pt-0.5 md:pr-14 w-1/3 h-full text-primary">
                 <button
-                  className="flex justify-center items-center bg-stone-900 sm:hover:bg-primary px-3 border-2 border-secondary sm:hover:border-primary rounded-lg h-2/3 sm:h-1/2 sm:hover:text-stone-900 sm:text-[1.3rem] text-base"
+                  className="flex justify-center items-center bg-dark sm:hover:bg-primary px-3 border-1 border-secondary sm:hover:border-primary rounded-lg h-2/3 sm:h-1/2 sm:hover:text-dark sm:text-[1.3rem] text-base"
                   onClick={toggleMatchup}
                 >
                   <span>NEXT</span>

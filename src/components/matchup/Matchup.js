@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { Matchup as MatchupModel, Roster, User } from "../../models/_helper";
 import {
   getMatchupByRosterId,
   getRostersByMatchupId,
@@ -7,15 +8,15 @@ import {
 import { MatchupTeam } from "../_helper";
 
 Matchup.propTypes = {
-  matchups: PropTypes.arrayOf(PropTypes.object).isRequired,
-  rosters: PropTypes.arrayOf(PropTypes.object).isRequired,
-  users: PropTypes.arrayOf(PropTypes.object).isRequired,
+  matchups: PropTypes.arrayOf(PropTypes.instanceOf(MatchupModel)).isRequired,
+  rosters: PropTypes.arrayOf(PropTypes.instanceOf(Roster)).isRequired,
+  users: PropTypes.arrayOf(PropTypes.instanceOf(User)).isRequired,
   current_matchup: PropTypes.number.isRequired,
 };
 export default function Matchup({ matchups, rosters, users, current_matchup }) {
   if (getRostersByMatchupId(current_matchup, rosters, matchups).length >= 3) {
     return (
-      <div className="gap-2 xl:gap-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:mx-10 pb-12 sm:pb-24">
+      <div className="gap-2 xl:gap-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:mx-10 pb-12 sm:pb-20">
         {getRostersByMatchupId(current_matchup, rosters, matchups).map(
           (roster) => (
             <MatchupTeam
@@ -30,7 +31,7 @@ export default function Matchup({ matchups, rosters, users, current_matchup }) {
     );
   }
   return (
-    <div className="gap-2 xl:gap-8 grid grid-cols-1 sm:grid-cols-2 xl:mx-14 pb-12 sm:pb-24">
+    <div className="gap-2 xl:gap-8 grid grid-cols-1 sm:grid-cols-2 xl:mx-14 pb-12 sm:pb-20">
       {getRostersByMatchupId(current_matchup, rosters, matchups).map(
         (roster) => (
           <MatchupTeam
