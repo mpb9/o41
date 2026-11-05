@@ -31,6 +31,7 @@ tags:
   description: information related to a specific Sleeper user
 
 paths:
+  # MARK:
   /avatars/{avatar_id}:
     servers:
     - url: https://sleepercdn.com
@@ -62,7 +63,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-
+  # MARK:
   /avatars/thumbs/{avatar_id}:
     servers:
     - url: https://sleepercdn.com
@@ -94,7 +95,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-
+  # MARK:
   /draft/{draft_id}:
     parameters:
     - in: path
@@ -124,7 +125,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-
+  # MARK:
   /draft/{draft_id}/picks:
     parameters:
     - in: path
@@ -156,7 +157,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-
+  # MARK:
   /draft/{draft_id}/traded_picks:
     parameters:
     - in: path
@@ -188,7 +189,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-
+  # MARK:
   /league/{league_id}:
     parameters:
     - in: path
@@ -216,7 +217,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-
+  # MARK:
   /league/{league_id}/drafts:
     parameters:
     - in: path
@@ -247,7 +248,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-
+  # MARK:
   /league/{league_id}/losers_bracket:
     parameters:
     - in: path
@@ -276,7 +277,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-
+  # MARK:
   /league/{league_id}/matchups/{week}:
     parameters:
     - in: path
@@ -316,7 +317,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-
+  # MARK:
   /league/{league_id}/rosters:
     parameters:
     - in: path
@@ -346,7 +347,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-
+  # MARK:
   /league/{league_id}/traded_picks:
     parameters:
     - in: path
@@ -377,7 +378,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-
+  # MARK:
   /league/{league_id}/transactions/{week}:
     parameters:
     - in: path
@@ -418,7 +419,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-
+  # MARK:
   /league/{league_id}/users:
     parameters:
     - in: path
@@ -448,7 +449,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-
+  # MARK:
   /league/{league_id}/winners_bracket:
     parameters:
     - in: path
@@ -477,7 +478,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-
+  # MARK:
   /players/nfl:
     get:
       summary: all NFL players
@@ -499,7 +500,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-
+  # MARK:
   /players/nfl/trending/{type}:
     parameters:
     - in: path
@@ -558,7 +559,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-
+  # MARK:
   /state/nfl:
     get:
       summary: current NFL state
@@ -578,7 +579,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-
+  # MARK:
   /user/{user_id}:
     parameters:
     - in: path
@@ -606,7 +607,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-
+  # MARK:
   /user/{user_id}/drafts/nfl/{season}:
     parameters:
     - in: path
@@ -642,7 +643,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-
+  # MARK:
   /user/{user_id}/leagues/nfl/{season}:
     parameters:
     - in: path
@@ -681,6 +682,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+# MARK:
 components:
   schemas:
 
@@ -699,7 +701,7 @@ components:
           description: error message
           example: "User not found"
       additionalProperties: false
-
+    # MARK:
     League:
       type: object
       properties:
@@ -808,7 +810,7 @@ components:
           description: roster id of the most recent **League** champion
           example: "4"
       additionalProperties: true
-
+    # MARK:
     Matchup:
       type: object
       properties:
@@ -867,7 +869,7 @@ components:
       - roster_id
       - starters
       - starters_points
-
+    # MARK:
     NflState:
       type: object
       properties:
@@ -938,7 +940,7 @@ components:
       - season_start_date
       - season_type
       - week
-
+    # MARK:
     Player:
       type: object
       properties:
@@ -1090,7 +1092,7 @@ components:
       pattern: ^[A-Z0-9]{1,6}$
       description: unique id of the **Player**
       example: "3976"
-
+    # MARK:
     Roster:
       type: object
       properties:
@@ -1261,7 +1263,7 @@ components:
       - waiver_budget_used
       - waiver_position
       - division
-
+    # MARK:
     User:
       type: object
       properties:

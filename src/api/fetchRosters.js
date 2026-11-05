@@ -1,4 +1,4 @@
-import { API__SLEEPER } from "../constants/apiRoutes";
+import { API__SLEEPER } from "../constants/apiConstants";
 import { LEAGUE_ID } from "../constants/leagueInfo";
 
 export default async function fetchRosters(league_id = LEAGUE_ID) {

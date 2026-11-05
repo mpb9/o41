@@ -1,5 +1,6 @@
 export default class Roster {
   division_id;
+  ir = [];
   league_id;
   locker_room_guy;
   nicknames;
@@ -16,7 +17,6 @@ export default class Roster {
     results: "",
     streak: "-",
   };
-  ir = [];
   roster_id;
   starters = [];
   taxi = [];
@@ -25,6 +25,7 @@ export default class Roster {
 
   constructor(json = {}) {
     this.division_id = Number(json.settings?.division) || null;
+    this.ir = json.reserve || [];
     this.league_id = String(json.league_id) || null;
     this.locker_room_guy = null; // ? null for now
     this.nicknames = null; // ? null for now
@@ -50,7 +51,6 @@ export default class Roster {
           ? "-"
           : String(json.metadata?.streak),
     };
-    this.ir = json.reserve || [];
     this.roster_id = Number(json.roster_id) || null;
     this.starters = json.starters || [];
     this.taxi = json.taxi || [];

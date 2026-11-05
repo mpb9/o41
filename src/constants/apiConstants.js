@@ -3,6 +3,25 @@ import { LEAGUE_ID } from "./leagueInfo";
 const API_URL__SLEEPER = "https://api.sleeper.app/v1/";
 const API_URL__SLEEPER_AVATARS = "https://sleepercdn.com/avatars/";
 
+export const API__SLEEPER_PLAYER_KEYS = [
+  "age",
+  "college",
+  "espn_id",
+  "fantasy_data_id",
+  "fantasy_positions",
+  "first_name",
+  "full_name",
+  "injury_status",
+  "last_name",
+  "number",
+  "player_id",
+  "position",
+  "rotowire_id",
+  "status",
+  "team",
+  "years_exp",
+];
+
 export const API__SLEEPER = {
   AVATARS: {
     full: (avatar_id = "") => `${API_URL__SLEEPER_AVATARS}${avatar_id}`,

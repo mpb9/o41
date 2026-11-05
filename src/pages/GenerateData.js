@@ -1,29 +1,16 @@
 import { Header } from "../components/_helper";
-import PLAYER_DATA_JSON from "../data/PlayerData.json";
-
-const KEYS_TO_KEEP = [
-  "player_id",
-  "full_name",
-  "first_name",
-  "last_name",
-  "team",
-  "position",
-  "fantasy_positions",
-  "number",
-  "age",
-  "years_exp",
-  "status",
-];
+import { API__SLEEPER_PLAYER_KEYS } from "../constants/apiConstants";
+import RAW_PLAYER_DATA_JSON from "../data/PlayerData_Raw.json";
 
 export default function GenerateData() {
   function filterPlayersData() {
     const filteredPlayers = {};
 
-    Object.keys(PLAYER_DATA_JSON).forEach((playerId) => {
-      const player = PLAYER_DATA_JSON[playerId];
+    Object.keys(RAW_PLAYER_DATA_JSON).forEach((playerId) => {
+      const player = RAW_PLAYER_DATA_JSON[playerId];
       filteredPlayers[playerId] = {};
 
-      KEYS_TO_KEEP.forEach((key) => {
+      API__SLEEPER_PLAYER_KEYS.forEach((key) => {
         if (player[key] !== undefined) {
           filteredPlayers[playerId][key] = player[key];
         }
@@ -59,7 +46,7 @@ export default function GenerateData() {
           className="bg-[#AED998] hover:bg-stone-400 p-4 border-8 border-dark rounded-2xl font-bold text-black text-3xl text-center hover:scale-105 cursor-pointer"
           onClick={() => filterPlayersData()}
         >
-          generate data
+          filter raw data
         </div>
       </div>
     </div>

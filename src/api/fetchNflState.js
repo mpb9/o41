@@ -1,4 +1,4 @@
-import { API__SLEEPER } from "../constants/apiRoutes";
+import { API__SLEEPER } from "../constants/apiConstants";
 
 export default async function fetchNflState() {
   try {

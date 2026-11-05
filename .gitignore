@@ -31,3 +31,6 @@ package-lock.json
 .42c
 
 **/EXAMPLE-*.*
+
+/src/data/PlayerData_Raw.json
+/src/data/PlayerData_Temp.json
