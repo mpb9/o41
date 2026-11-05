@@ -31,11 +31,11 @@ export const TW_COLORS = {
 export const HEADER_LINK_CSS_CLASSES = {
   DESKTOP: {
     active: "text-primary font-bold",
-    inactive: "text-stone-200 hover:text-primary hover:font-bold",
+    inactive: "text-light hover:text-primary hover:font-bold",
   },
   MOBILE: {
     active: "text-primary font-bold",
-    inactive: "text-stone-200 hover:text-primary hover:font-bold",
+    inactive: "text-light hover:text-primary hover:font-bold",
   },
 };
 

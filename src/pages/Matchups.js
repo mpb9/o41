@@ -1,11 +1,12 @@
 import { ArrowFatRight } from "@phosphor-icons/react";
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
-import { Header, Matchup } from "../components/_helper";
+import { Header, Matchup, NoMatchup } from "../components/_helper";
 import { PLAYOFF_SCHEDULE } from "../constants/playoffInfo";
 import {
   League,
   Matchup as MatchupModel,
+  NflState,
   Roster,
   User,
 } from "../models/_helper";
@@ -15,7 +16,7 @@ Matchups.propTypes = {
   matchups: PropTypes.arrayOf(PropTypes.instanceOf(MatchupModel)).isRequired,
   rosters: PropTypes.arrayOf(PropTypes.instanceOf(Roster)).isRequired,
   users: PropTypes.arrayOf(PropTypes.instanceOf(User)).isRequired,
-  nfl_state: PropTypes.object.isRequired,
+  nfl_state: PropTypes.instanceOf(NflState).isRequired,
   last_updated: PropTypes.instanceOf(Date).isRequired,
 };
 export default function Matchups({
@@ -80,14 +81,7 @@ export default function Matchups({
             />
           </div>
         ) : (
-          // ! turn this into its own static component
-          <div className="px-4 w-[95%] h-full">
-            <div className="flex justify-center items-center my-2.5 w-full h-3/4">
-              <h1 className="w-1/2 sm:w-2/3 text-black text-xl md:text-2xl text-center italic cursor-default">
-                Sorry, there aren't any scheduled matchups at this time.
-              </h1>
-            </div>
-          </div>
+          <NoMatchup />
         )}
       </div>
     </div>

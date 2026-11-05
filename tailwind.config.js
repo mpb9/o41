@@ -10,6 +10,7 @@ module.exports = {
         light: "#E7E5E4", // stone-200
         "rad-outer": "#292524", // stone-800"
         "rad-inner": "#444",
+        "primary-accent": "#daedd1",
       },
       backgroundImage: {
         "sleeper-green": "url('/public/img/companies/sleeper-green.png')",
@@ -18,6 +19,10 @@ module.exports = {
 
         // info: (DIAMETER at X Y, colorCenter, colorEdge)
         rad: "radial-gradient(circle 70vh at 50% 50vh, #44403c, transparent);",
+        "rad-dim":
+          "radial-gradient(circle 140vh at 50% 50%, #0C0A09CC, #AED99822);",
+        "rad-primary":
+          "radial-gradient(circle 70vh at 90% 95%, #e7e5e477, #AED998);",
         "rad-red":
           "radial-gradient(circle 70vh at 50% 85vh, #A71504AA, transparent);",
         "rad-orange":
@@ -35,6 +40,10 @@ module.exports = {
       height: {
         "full-header": "calc(100vh - 3.5rem)",
         "full-header-mobile": "calc(100vh - 3.25rem)",
+      },
+      margin: {
+        header: "3.5rem 0 0 0",
+        "header-mobile": "3.25rem 0 0 0",
       },
       borderWidth: {
         1: "1px",

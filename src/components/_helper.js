@@ -11,6 +11,8 @@ import HeaderMobileNavLink from "./header/mobile/HeaderMobileNavLink";
 import Matchup from "./matchup/Matchup";
 import MatchupPlayer from "./matchup/MatchupPlayer";
 import MatchupTeam from "./matchup/MatchupTeam";
+import NoMatchup from "./matchup/NoMatchup";
+import Player from "./player/Player";
 import StandingsDynasty from "./standings/StandingsDynasty";
 import StandingsLeague from "./standings/StandingsLeague";
 import StandingsSeason from "./standings/StandingsSeason";
@@ -33,6 +35,8 @@ export {
   Matchup,
   MatchupPlayer,
   MatchupTeam,
+  NoMatchup,
+  Player,
   StandingsDynasty,
   StandingsLeague,
   StandingsSeason,

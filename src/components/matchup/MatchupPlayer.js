@@ -1,11 +1,12 @@
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
-import { Player } from "../../models/_helper";
+import { Player as PlayerModel } from "../../models/_helper";
 import { getPlayerPtsColor } from "../../services/_helper";
 import { POSITION_COLORS, PTS_COLORS } from "../../styles";
+import { Player } from "../_helper";
 
 MatchupPlayer.propTypes = {
-  player: PropTypes.instanceOf(Player).isRequired,
+  player: PropTypes.instanceOf(PlayerModel).isRequired,
 };
 export default function MatchupPlayer(props) {
   const [positionColor, setPositionColor] = useState("#f59cff");
@@ -23,13 +24,13 @@ export default function MatchupPlayer(props) {
     >
       <div className="flex flex-1 items-baseline overflow-hidden text-stone-100 text-left whitespace-nowrap">
         <span
-          className="flex-none pr-1 w-10 text-sm text-center"
+          className="flex-none pr-0.5 w-10 text-sm text-center"
           style={{ color: positionColor }}
         >
           {props.player.position}
         </span>
         <span className="font-mono text-base xl:text-lg cursor-pointer">
-          {props.player.first_name[0]} {props.player.last_name}
+          <Player player={props.player} btn_type={"text"} />
         </span>
         <span className="pl-2 overflow-hidden text-stone-400 text-xs">
           {props.player.team_name}
