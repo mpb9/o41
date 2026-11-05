@@ -64,11 +64,13 @@ export default function StandingsLeague({
         <StandingsTableTitle title="All-Time" />
         <div className="flex justify-center w-full">
           <div className="px-2 overflow-x-auto no-scrollbar">
-            <table className="border-2 border-collapse table-auto sm:border-4 border-secondary">
+            <table className="border-2 border-secondary sm:border-4 border-collapse table-auto">
               <StandingsTableHeader headers={headers} />
               <tbody>
                 <tr>
-                  <td className={TABLE_CSS_CLASSES.td}>tbd</td>
+                  <td className={TABLE_CSS_CLASSES.td + " cursor-pointer"}>
+                    TEAM_NAME
+                  </td>
                   <td className={TABLE_CSS_CLASSES.td}>tbd</td>
                   <td className={TABLE_CSS_CLASSES.td}>tbd</td>
                   <td className={TABLE_CSS_CLASSES.td}>tbd</td>

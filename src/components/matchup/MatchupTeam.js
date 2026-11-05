@@ -53,7 +53,7 @@ export default function MatchupTeam({
     <div className="w-full h-full text-black text-center cursor-default">
       {/* TEAM NAME */}
       <div className="flex flex-col justify-center items-center bg-stone-900 p-2 lg:py-3 pt-2.5 border-2 border-secondary rounded-t-lg w-full overflow-hidden">
-        <span className="font-black text-light text-base lg:text-lg leading-5">
+        <span className="font-black text-light text-base lg:text-lg leading-5 cursor-pointer">
           {user.team_name}
         </span>
         <span className="pt-1 lg:pt-0 text-stone-500 text-sm 2xl:text-base italic tracking-widest">

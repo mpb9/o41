@@ -55,7 +55,7 @@ export default function StandingsDynasty({
   if (activeDynasty !== null) {
     return (
       <>
-        <div className="flex items-center justify-center mt-4">
+        <div className="flex justify-center items-center mt-4">
           <StandingsSelector
             options={DYNASTIES.map((dynasty) => dynasty.name)}
             onStandingsChange={handleDynastyChange}
@@ -74,7 +74,9 @@ export default function StandingsDynasty({
               <StandingsTableHeader headers={headers} />
               <tbody>
                 <tr>
-                  <td className={TABLE_CSS_CLASSES.td}>tbd</td>
+                  <td className={TABLE_CSS_CLASSES.td + " cursor-pointer"}>
+                    TEAM_NAME
+                  </td>
                   <td className={TABLE_CSS_CLASSES.td}>tbd</td>
                   <td className={TABLE_CSS_CLASSES.td}>tbd</td>
                   <td className={TABLE_CSS_CLASSES.td}>tbd</td>
@@ -86,7 +88,7 @@ export default function StandingsDynasty({
                 {/* {dynastyData.map((team, index) => (
                   <></>
                   <tr key={team.user_id}>
-                    <td className="text-sm sm:text-base px-1.5 sm:px-2.5 xl:px-4 py-1 bg-dark border sm:border-2 border-secondary text-center whitespace-nowrap text-light">
+                    <td className="bg-dark px-1.5 sm:px-2.5 xl:px-4 py-1 border border-secondary sm:border-2 text-light text-sm sm:text-base text-center whitespace-nowrap">
                       1
                     </td>
                     <td className={TABLE_CSS_CLASSES.td}>{team.record.wins}</td>

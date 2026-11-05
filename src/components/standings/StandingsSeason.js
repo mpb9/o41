@@ -28,7 +28,7 @@ export default function StandingsSeason({ leagues, rosters, users }) {
   const [activeLeague, setActiveLeague] = useState(leagues[0]);
   const [activeRosters, setActiveRosters] = useState(rosters);
   const headers = [
-    <NavLink to="/teams" className="hover:underline">
+    <NavLink to="/teams" className="">
       Team
     </NavLink>,
     "W",
@@ -100,7 +100,7 @@ export default function StandingsSeason({ leagues, rosters, users }) {
               <tbody>
                 {divisionRosters[1].map((roster, index) => (
                   <tr key={roster.user_id}>
-                    <td className={TABLE_CSS_CLASSES.td}>
+                    <td className={TABLE_CSS_CLASSES.td + " cursor-pointer"}>
                       {divisionUsers[1][index].team_name}
                     </td>
                     <td className={TABLE_CSS_CLASSES.td}>
@@ -134,7 +134,7 @@ export default function StandingsSeason({ leagues, rosters, users }) {
               <tbody>
                 {divisionRosters[0].map((roster, index) => (
                   <tr key={roster.user_id}>
-                    <td className={TABLE_CSS_CLASSES.td}>
+                    <td className={TABLE_CSS_CLASSES.td + " cursor-pointer"}>
                       {divisionUsers[0][index].team_name}
                     </td>
                     <td className={TABLE_CSS_CLASSES.td}>

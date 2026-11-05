@@ -43,6 +43,6 @@ export const TABLE_CSS_CLASSES = {
   flex_container: "flex justify-center w-full",
   scroll_container: "mx-2 overflow-x-auto no-scrollbar shadow-lg shadow-dark",
   table: "border border-collapse table-auto md:border-4 border-secondary",
-  th: "text-base xl:text-[1.1rem] px-2 sm:px-2.5 xl:px-3 py-1 xl:py-1.5 border sm:border-2 border-secondary bg-dark text-primary",
+  th: "text-base xl:text-[1.1rem] px-2 sm:px-2.5 xl:px-3 py-1 xl:py-1.5 border sm:border-2 border-secondary bg-dark text-primary cursor-default",
   td: "text-sm sm:text-base px-1.5 sm:px-2.5 xl:px-4 py-1 bg-dark border sm:border-2 border-secondary text-center whitespace-nowrap text-light",
 };

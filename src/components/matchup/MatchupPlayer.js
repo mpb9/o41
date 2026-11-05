@@ -19,24 +19,24 @@ export default function MatchupPlayer(props) {
   return (
     <div
       key={props.player.player_id}
-      className="flex bg-stone-700 items-center overflow-hidden justify-center w-full border-b-0 border-t-1 sm:text-[0.85rem] lg:text-base border-2 border-secondary"
+      className="flex justify-center items-center bg-stone-700 border-2 border-secondary border-t-1 border-b-0 w-full overflow-hidden sm:text-[0.85rem] lg:text-base"
     >
-      <div className="flex items-baseline flex-1 overflow-hidden text-left text-stone-100 whitespace-nowrap">
+      <div className="flex flex-1 items-baseline overflow-hidden text-stone-100 text-left whitespace-nowrap">
         <span
-          className="flex-none w-10 pr-1 text-sm text-center"
+          className="flex-none pr-1 w-10 text-sm text-center"
           style={{ color: positionColor }}
         >
           {props.player.position}
         </span>
-        <span className="font-mono text-base xl:text-lg">
+        <span className="font-mono text-base xl:text-lg cursor-pointer">
           {props.player.first_name[0]} {props.player.last_name}
         </span>
-        <span className="pl-2 overflow-hidden text-xs text-stone-400">
+        <span className="pl-2 overflow-hidden text-stone-400 text-xs">
           {props.player.team_name}
         </span>
       </div>
       <div
-        className="w-[64px] sm:w-[56px] lg:w-[72px] py-[3px] bg-stone-900 tracking-wider text-primary font-mono border-l-[1px] pl-[2px] text-[0.9rem] sm:text-sm lg:text-base text-center"
+        className="bg-stone-900 py-[3px] pl-[2px] border-l-[1px] w-[64px] sm:w-[56px] lg:w-[72px] font-mono text-[0.9rem] text-primary sm:text-sm lg:text-base text-center tracking-wider"
         style={{
           color: ptsColor,
           borderColor: ptsColor,
