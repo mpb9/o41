@@ -21,7 +21,7 @@ import {
 } from "./services/_helper";
 
 const RELOAD_INTERVAL_MS = {
-  matchups: 20000,
+  matchups: 10000,
   nfl_state: 30000,
 };
 
